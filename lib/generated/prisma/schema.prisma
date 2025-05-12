@@ -1,0 +1,90 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String    @id @default(cuid())
+  name     String?
+  username String    @unique
+  email    String    @unique
+  password String
+  sessions Session[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("user")
+}
+
+model Session {
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("session")
+}
+
+model Senior {
+  id         Int                    @id @default(autoincrement())
+  lastname   String
+  firstname  String
+  middlename String? // nullable
+  email      String? // nullable
+  barangay   String
+  purok      String
+  gender     Gender
+  birthdate  DateTime
+  age        String
+  contact_no String
+  remarks_id Int                    @default(1)
+  remarks    Remarks                @relation(fields: [remarks_id], references: [id], onDelete: NoAction)
+  documents  RegistrationDocument[] // one-to-many relation
+  createdAt  DateTime               @default(now())
+  updatedAt  DateTime               @updatedAt
+
+  @@map("senior")
+}
+
+model RegistrationDocument {
+  id         Int      @id @default(autoincrement())
+  tag        String
+  path       String
+  file_name  String
+  seniors_id Int
+  senior     Senior   @relation(fields: [seniors_id], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("registration_document")
+}
+
+model Remarks {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  seniors   Senior[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("remarks")
+}
+
+enum Gender {
+  male
+  female
+}
