@@ -3,10 +3,14 @@ import prisma from './prisma'
 import bcrypt from 'bcryptjs'
 import { seedAdmin } from './seeders/user'
 import { seedRemarks } from './seeders/remarks'
+import { seedSeniorCategories } from './seeders/category'
+import { seedStatuses } from './seeders/status'
 
 async function main() {
     await seedAdmin()
     await seedRemarks()
+    await seedSeniorCategories()
+    await seedStatuses()
 }
 
 main()

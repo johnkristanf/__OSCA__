@@ -1,13 +1,11 @@
 // app/api/auth/[...nextauth]/route.ts
 
-export const runtime = 'nodejs'
-
 import NextAuth from 'next-auth'
 import prisma from '@/prisma/prisma'
 
 import Credentials from 'next-auth/providers/credentials'
 import { PrismaAdapter } from '@auth/prisma-adapter'
-import { loginSchema } from '@/features/auth/login.schema'
+import { loginSchema } from '@/schema/auth/login.schema'
 import { ZodError } from 'zod'
 import { comparePassword } from '@/utils/password'
 

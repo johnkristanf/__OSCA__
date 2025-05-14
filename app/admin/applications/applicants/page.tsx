@@ -3,6 +3,9 @@ import { DataTable } from '@/components/data-table'
 import { applicantsColumn } from './columns'
 import { useState } from 'react'
 import { ListBoxComponent } from '@/components/listbox-component'
+import { apiService } from '@/lib/axios'
+import { useQuery } from '@tanstack/react-query'
+import { BenefitApplicationData } from '@/types/application'
 
 const dummyApplicantsData = [
     {
@@ -11,75 +14,69 @@ const dummyApplicantsData = [
         middlename: 'Santos',
         lastname: 'Reyes',
         email: 'maria.reyes@example.com',
-        contact_no: '09171234567',
-        birthdate: new Date('1950-05-10'),
-        age: '74',
-        gender: 'female',
-        barangay: 'San Roque',
-        purok: 'Purok 2',
-        remarks: {
-            name: 'For Review',
+        benefits: {
+            name: 'Monthly Allowance',
+        },
+
+        status: {
+            name: 'PENDING',
+        },
+
+        category: {
+            name: 'Low-income seniors',
         },
         createdAt: new Date('2024-12-01T10:00:00Z'),
-        updatedAt: new Date('2025-01-15T15:45:00Z'),
     },
+
     {
-        id: 2,
-        firstname: 'Juan',
-        middlename: '',
-        lastname: 'Dela Cruz',
-        email: 'juan.dc@example.com',
-        contact_no: '09181234567',
-        birthdate: new Date('1948-11-20'),
-        age: '76',
-        gender: 'male',
-        barangay: 'Barangay Uno',
-        purok: 'Purok 5',
-        remarks: {
-            name: 'Approved',
+        id: 1,
+        firstname: 'Maria',
+        middlename: 'Santos',
+        lastname: 'Reyes',
+        email: 'maria.reyes@example.com',
+        benefits: {
+            name: 'Monthly Allowance',
         },
-        createdAt: new Date('2025-02-10T08:30:00Z'),
-        updatedAt: new Date('2025-03-01T09:00:00Z'),
-    },
-    {
-        id: 3,
-        firstname: 'Luzviminda',
-        middlename: 'G.',
-        lastname: 'Torres',
-        email: 'luz.torres@example.com',
-        contact_no: '09192223333',
-        birthdate: new Date('1952-07-25'),
-        age: '72',
-        gender: 'female',
-        barangay: 'Malinis',
-        purok: 'Purok 7',
-        remarks: null, // No remarks
-        createdAt: new Date('2025-01-05T12:00:00Z'),
-        updatedAt: new Date('2025-01-06T13:00:00Z'),
+
+        status: {
+            name: 'PENDING',
+        },
+
+        category: null,
+        createdAt: new Date('2024-12-01T10:00:00Z'),
     },
 ]
 
-const people = [
+const benefits = [
     {
         id: 1,
-        name: 'Wade Cooper',
-        avatar: 'https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        name: 'Monthly Allowance',
     },
     {
         id: 2,
-        name: 'Arlene Mccoy',
-        avatar: 'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        name: 'Medical assistance',
     },
     {
         id: 3,
-        name: 'Devon Webb',
-        avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80',
+        name: 'Discount privileges',
     },
 ]
 
 const ApplicantPage = () => {
-    const [selected, setSelected] = useState(people[2])
+    // USE QUERY FOR FETCHING APPLICATIONS DATA
+    const benefitApplicationQuery = useQuery({
+        queryKey: ['applications'],
+        queryFn: async () => {
+            const respData = await apiService.get<BenefitApplicationData[]>(
+                '/api/benefits/application'
+            )
+            console.log('respData /benefits/application: ', respData)
+            return respData
+        },
+    })
 
+    // SELECTED BENEFIT FILTER STATE
+    const [selected, setSelected] = useState(benefits[2])
     console.log('selected: ', selected)
 
     return (
@@ -95,7 +92,7 @@ const ApplicantPage = () => {
             <div className="flex justify-end gap-3 mb-3">
                 <ListBoxComponent
                     label="Filter by Benefits"
-                    options={people}
+                    options={benefits}
                     selected={selected}
                     onChange={setSelected}
                     getLabel={(person) => person.name}
@@ -130,7 +127,17 @@ const ApplicantPage = () => {
                 </div>
             </div>
 
-            <DataTable columns={applicantsColumn} data={dummyApplicantsData} />
+            {benefitApplicationQuery.isLoading ? (
+                <div className="py-10 text-gray-500 text-lg">Loading applications...</div>
+            ) : benefitApplicationQuery.isError ? (
+                <div className="py-10 text-red-500 text-lg">
+                    Failed to load application data.
+                </div>
+            ) : benefitApplicationQuery.data && benefitApplicationQuery.data.length === 0 ? (
+                <div className="py-10 text-gray-400 text-lg">No application records found.</div>
+            ) : (
+                <DataTable columns={applicantsColumn} data={benefitApplicationQuery.data ?? []} />
+            )}
         </div>
     )
 }

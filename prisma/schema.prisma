@@ -90,9 +90,17 @@ model Remarks {
   @@map("remarks")
 }
 
-
-
 // ------------------------------------ UNMIGRATED TABLES BELOW ---------------------------
+
+model SeniorCategory {
+  id           Int            @id @default(autoincrement())
+  name         String         @unique
+  applications Applications[] // ONE CATEGORY CAN BE USE IN MANY APPLICATIONS
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  @@map("senior_category")
+}
 
 // REMARKS TABLE SCHEMA
 model Status {
@@ -107,25 +115,45 @@ model Status {
 
 // BENEFIT TABLE SCHEMA
 model Benefits {
-  id           Int            @id @default(autoincrement())
-  name         String
-  tag         String
-  applications Applications[] // ONE BENEFIT CAN BE USED IN MANY APPLICATIONS
+  id                   Int                   @id @default(autoincrement())
+  name                 String
+  description          String
+  tag                  String
+
+  applications         Applications[] // ONE BENEFIT CAN BE USED IN MANY APPLICATIONS
+  benefit_requirements BenefitRequirements[] // ONE BENEFIT CAN BE USED IN MANY BENEFIT REQUIREMENTS
+
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt
 
   @@map("benefits")
+}
 
+// BENEFIT TABLE SCHEMA
+model BenefitRequirements {
+  id         Int      @id @default(autoincrement())
+  name       String
+  benefit_id Int
+  benefit    Benefits @relation(fields: [benefit_id], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("benefit_requirements")
 }
 
 // APPLICATIONS TABLE SCHEMA
 model Applications {
-  id         Int @id @default(autoincrement())
-  benefit_id Int
-  senior_id  Int
-  status_id  Int
+  id          Int @id @default(autoincrement())
+  benefit_id  Int
+  senior_id   Int
+  status_id   Int
+  category_id Int?
 
-  senior  Senior  @relation(fields: [senior_id], references: [id], onDelete: Cascade)
-  benefit Benefits @relation(fields: [benefit_id], references: [id])
-  status  Status  @relation(fields: [status_id], references: [id])
+  senior   Senior         @relation(fields: [senior_id], references: [id], onDelete: Cascade)
+  benefit  Benefits       @relation(fields: [benefit_id], references: [id])
+  status   Status         @relation(fields: [status_id], references: [id])
+  category SeniorCategory? @relation(fields: [category_id], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

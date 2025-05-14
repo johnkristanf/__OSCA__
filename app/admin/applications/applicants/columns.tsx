@@ -3,16 +3,15 @@
 import { formatDateTime } from '@/utils/format'
 import { ColumnDef } from '@tanstack/react-table'
 
-
 // THIS IS FOR APPLICANTS DATA TABLE COLUMN
 export const applicantsColumn: ColumnDef<any>[] = [
     {
         accessorKey: 'fullname',
         header: 'Full Name',
         cell: ({ row }) => {
-            const first = row.original.firstname || ''
-            const middle = row.original.middlename || ''
-            const last = row.original.lastname || ''
+            const first = row.original.senior.firstname || ''
+            const middle = row.original.senior.middlename || ''
+            const last = row.original.senior.lastname || ''
             const fullName = [first, middle, last].filter(Boolean).join(' ')
             return <div>{fullName}</div>
         },
@@ -21,43 +20,31 @@ export const applicantsColumn: ColumnDef<any>[] = [
     {
         accessorKey: 'email',
         header: 'Email',
-    },
-    {
-        accessorKey: 'contact_no',
-        header: 'Contact No.',
-    },
-    {
-        accessorKey: 'birthdate',
-        header: 'Birthdate',
         cell: ({ row }) => {
-            return formatDateTime(row.getValue('birthdate'))
+            const email = row.original.senior.email || ''
+            return <div>{email}</div>
         },
     },
+
     {
-        accessorKey: 'age',
-        header: 'Age',
-        cell: ({ row }) => <div className="text-right">{row.getValue('age')}</div>,
-    },
-    {
-        accessorKey: 'gender',
-        header: 'Gender',
-    },
-    {
-        accessorKey: 'barangay',
-        header: 'Barangay',
-    },
-    {
-        accessorKey: 'purok',
-        header: 'Purok',
-    },
-    {
-        accessorKey: 'remarks',
-        header: 'Remarks',
+        accessorKey: 'applied_benefit',
+        header: 'Applied Benefit',
         cell: ({ row }) => {
-          const remarks = row.original.remarks?.name || 'N/A'
-          return <div>{remarks}</div>
+            const benefit = row.original.benefit.name || ''
+            return <div>{benefit}</div>
         },
     },
+
+    {
+        accessorKey: 'senior_category',
+        header: 'Senior Category',
+        cell: ({ row }) => {
+            const category = row.original.category
+            const categoryName = category ? category.name : 'N/A'
+            return <div>{categoryName}</div>
+        },
+    },
+
     {
         accessorKey: 'createdAt',
         header: 'Registered Date',
@@ -72,4 +59,35 @@ export const applicantsColumn: ColumnDef<any>[] = [
     //         return formatDateTime(row.getValue('updatedAt'))
     //     },
     // },
+
+    {
+        accessorKey: 'actions',
+        header: 'Actions',
+        cell: ({ row }) => {
+            const applicant = row.original
+
+            return (
+                <div className="flex gap-4 text-sm">
+                    <button
+                        onClick={() => console.log('View Documents', applicant)}
+                        className="text-green-600 hover:underline hover:cursor-pointer"
+                    >
+                        View Documents
+                    </button>
+                    <button
+                        onClick={() => console.log('Edit', applicant)}
+                        className="text-blue-600 hover:underline hover:cursor-pointer"
+                    >
+                        Edit
+                    </button>
+                    <button
+                        onClick={() => console.log('Delete', applicant)}
+                        className="text-red-600 hover:underline hover:cursor-pointer"
+                    >
+                        Delete
+                    </button>
+                </div>
+            )
+        },
+    },
 ]

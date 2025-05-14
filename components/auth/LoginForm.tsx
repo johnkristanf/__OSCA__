@@ -1,6 +1,6 @@
 'use client'
 
-import { LoginFormData, loginSchema } from '@/features/auth/login.schema'
+import { LoginFormData, loginSchema } from '@/schema/auth/login.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import Image from 'next/image'
@@ -55,7 +55,6 @@ const LoginForm = () => {
 
         router.push('/admin/dashboard')
         setIsLoggingIn(false)
-
     }
 
     return (
@@ -142,12 +141,14 @@ const LoginForm = () => {
                             <PrimaryButton
                                 type="submit"
                                 className={cn(
-                                    "flex w-full justify-center rounded-md  px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600",
-                                    isLoggingIn ? "bg-gray-400" : "bg-green-600 hover:bg-green-700 hover:cursor-pointer  "
+                                    'flex w-full justify-center rounded-md  px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600',
+                                    isLoggingIn
+                                        ? 'bg-gray-400'
+                                        : 'bg-green-600 hover:bg-green-700 hover:cursor-pointer  '
                                 )}
                                 disabled={isLoggingIn}
                             >
-                                { isLoggingIn ? "Logging In..." : "Login" }
+                                {isLoggingIn ? 'Logging In...' : 'Login'}
                             </PrimaryButton>
                         </div>
                     </form>

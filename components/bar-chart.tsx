@@ -9,15 +9,12 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/ui/card'
-import {
-    ChartConfig,
-    ChartContainer,
-    ChartTooltip,
-    ChartTooltipContent,
-} from '@/components/ui/chart'
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart'
 import { ChartProps } from '@/types/chart'
 
 export const BarChartComponent = <T extends Record<string, unknown>>({
+    title,
+    description,
     chartData,
     chartConfig,
     xAxisKey,
@@ -25,14 +22,14 @@ export const BarChartComponent = <T extends Record<string, unknown>>({
     console.log('chart keys: ', Object.keys(chartConfig))
 
     return (
-        <Card className="p-2 ">
-            <CardHeader className="pb-2">
-                <CardTitle className="text-base">Visitors</CardTitle>
-                <CardDescription className="text-xs">Jan - Jun 2024</CardDescription>
+        <Card>
+            <CardHeader>
+                <CardTitle>{title}</CardTitle>
+                <CardDescription>{description}</CardDescription>
             </CardHeader>
-            <CardContent className="pb-1">
+            <CardContent>
                 <ChartContainer config={chartConfig} className="h-full w-full">
-                    <BarChart accessibilityLayer data={chartData} margin={{ top: 10 }}>
+                    <BarChart accessibilityLayer data={chartData}>
                         <CartesianGrid vertical={true} />
                         <XAxis
                             dataKey={xAxisKey as string}
@@ -46,10 +43,8 @@ export const BarChartComponent = <T extends Record<string, unknown>>({
 
                         {/* DYNAMIC BAR CHART DATA DEPENDS ON THE GIVEN CONFIG */}
                         {Object.keys(chartConfig).map((key) => (
-                            <Bar  key={key} dataKey={key} fill={chartConfig[key].color} />
+                            <Bar key={key} dataKey={key} fill={chartConfig[key].color} />
                         ))}
-
-
                     </BarChart>
                 </ChartContainer>
             </CardContent>

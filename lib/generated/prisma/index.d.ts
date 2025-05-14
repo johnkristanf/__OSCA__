@@ -38,6 +38,31 @@ export type RegistrationDocument = $Result.DefaultSelection<Prisma.$Registration
  * 
  */
 export type Remarks = $Result.DefaultSelection<Prisma.$RemarksPayload>
+/**
+ * Model SeniorCategory
+ * 
+ */
+export type SeniorCategory = $Result.DefaultSelection<Prisma.$SeniorCategoryPayload>
+/**
+ * Model Status
+ * 
+ */
+export type Status = $Result.DefaultSelection<Prisma.$StatusPayload>
+/**
+ * Model Benefits
+ * 
+ */
+export type Benefits = $Result.DefaultSelection<Prisma.$BenefitsPayload>
+/**
+ * Model BenefitRequirements
+ * 
+ */
+export type BenefitRequirements = $Result.DefaultSelection<Prisma.$BenefitRequirementsPayload>
+/**
+ * Model Applications
+ * 
+ */
+export type Applications = $Result.DefaultSelection<Prisma.$ApplicationsPayload>
 
 /**
  * Enums
@@ -230,6 +255,56 @@ export class PrismaClient<
     * ```
     */
   get remarks(): Prisma.RemarksDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.seniorCategory`: Exposes CRUD operations for the **SeniorCategory** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SeniorCategories
+    * const seniorCategories = await prisma.seniorCategory.findMany()
+    * ```
+    */
+  get seniorCategory(): Prisma.SeniorCategoryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.status`: Exposes CRUD operations for the **Status** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Statuses
+    * const statuses = await prisma.status.findMany()
+    * ```
+    */
+  get status(): Prisma.StatusDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.benefits`: Exposes CRUD operations for the **Benefits** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Benefits
+    * const benefits = await prisma.benefits.findMany()
+    * ```
+    */
+  get benefits(): Prisma.BenefitsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.benefitRequirements`: Exposes CRUD operations for the **BenefitRequirements** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BenefitRequirements
+    * const benefitRequirements = await prisma.benefitRequirements.findMany()
+    * ```
+    */
+  get benefitRequirements(): Prisma.BenefitRequirementsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.applications`: Exposes CRUD operations for the **Applications** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Applications
+    * const applications = await prisma.applications.findMany()
+    * ```
+    */
+  get applications(): Prisma.ApplicationsDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -674,7 +749,12 @@ export namespace Prisma {
     Session: 'Session',
     Senior: 'Senior',
     RegistrationDocument: 'RegistrationDocument',
-    Remarks: 'Remarks'
+    Remarks: 'Remarks',
+    SeniorCategory: 'SeniorCategory',
+    Status: 'Status',
+    Benefits: 'Benefits',
+    BenefitRequirements: 'BenefitRequirements',
+    Applications: 'Applications'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -693,7 +773,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "session" | "senior" | "registrationDocument" | "remarks"
+      modelProps: "user" | "session" | "senior" | "registrationDocument" | "remarks" | "seniorCategory" | "status" | "benefits" | "benefitRequirements" | "applications"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1067,6 +1147,376 @@ export namespace Prisma {
           }
         }
       }
+      SeniorCategory: {
+        payload: Prisma.$SeniorCategoryPayload<ExtArgs>
+        fields: Prisma.SeniorCategoryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SeniorCategoryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SeniorCategoryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SeniorCategoryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SeniorCategoryPayload>
+          }
+          findFirst: {
+            args: Prisma.SeniorCategoryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SeniorCategoryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SeniorCategoryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SeniorCategoryPayload>
+          }
+          findMany: {
+            args: Prisma.SeniorCategoryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SeniorCategoryPayload>[]
+          }
+          create: {
+            args: Prisma.SeniorCategoryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SeniorCategoryPayload>
+          }
+          createMany: {
+            args: Prisma.SeniorCategoryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SeniorCategoryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SeniorCategoryPayload>[]
+          }
+          delete: {
+            args: Prisma.SeniorCategoryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SeniorCategoryPayload>
+          }
+          update: {
+            args: Prisma.SeniorCategoryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SeniorCategoryPayload>
+          }
+          deleteMany: {
+            args: Prisma.SeniorCategoryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SeniorCategoryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.SeniorCategoryUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SeniorCategoryPayload>[]
+          }
+          upsert: {
+            args: Prisma.SeniorCategoryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SeniorCategoryPayload>
+          }
+          aggregate: {
+            args: Prisma.SeniorCategoryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSeniorCategory>
+          }
+          groupBy: {
+            args: Prisma.SeniorCategoryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SeniorCategoryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SeniorCategoryCountArgs<ExtArgs>
+            result: $Utils.Optional<SeniorCategoryCountAggregateOutputType> | number
+          }
+        }
+      }
+      Status: {
+        payload: Prisma.$StatusPayload<ExtArgs>
+        fields: Prisma.StatusFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.StatusFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.StatusFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusPayload>
+          }
+          findFirst: {
+            args: Prisma.StatusFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.StatusFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusPayload>
+          }
+          findMany: {
+            args: Prisma.StatusFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusPayload>[]
+          }
+          create: {
+            args: Prisma.StatusCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusPayload>
+          }
+          createMany: {
+            args: Prisma.StatusCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.StatusCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusPayload>[]
+          }
+          delete: {
+            args: Prisma.StatusDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusPayload>
+          }
+          update: {
+            args: Prisma.StatusUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusPayload>
+          }
+          deleteMany: {
+            args: Prisma.StatusDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.StatusUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.StatusUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusPayload>[]
+          }
+          upsert: {
+            args: Prisma.StatusUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StatusPayload>
+          }
+          aggregate: {
+            args: Prisma.StatusAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateStatus>
+          }
+          groupBy: {
+            args: Prisma.StatusGroupByArgs<ExtArgs>
+            result: $Utils.Optional<StatusGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.StatusCountArgs<ExtArgs>
+            result: $Utils.Optional<StatusCountAggregateOutputType> | number
+          }
+        }
+      }
+      Benefits: {
+        payload: Prisma.$BenefitsPayload<ExtArgs>
+        fields: Prisma.BenefitsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BenefitsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BenefitsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BenefitsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BenefitsPayload>
+          }
+          findFirst: {
+            args: Prisma.BenefitsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BenefitsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BenefitsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BenefitsPayload>
+          }
+          findMany: {
+            args: Prisma.BenefitsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BenefitsPayload>[]
+          }
+          create: {
+            args: Prisma.BenefitsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BenefitsPayload>
+          }
+          createMany: {
+            args: Prisma.BenefitsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BenefitsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BenefitsPayload>[]
+          }
+          delete: {
+            args: Prisma.BenefitsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BenefitsPayload>
+          }
+          update: {
+            args: Prisma.BenefitsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BenefitsPayload>
+          }
+          deleteMany: {
+            args: Prisma.BenefitsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BenefitsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BenefitsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BenefitsPayload>[]
+          }
+          upsert: {
+            args: Prisma.BenefitsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BenefitsPayload>
+          }
+          aggregate: {
+            args: Prisma.BenefitsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBenefits>
+          }
+          groupBy: {
+            args: Prisma.BenefitsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BenefitsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BenefitsCountArgs<ExtArgs>
+            result: $Utils.Optional<BenefitsCountAggregateOutputType> | number
+          }
+        }
+      }
+      BenefitRequirements: {
+        payload: Prisma.$BenefitRequirementsPayload<ExtArgs>
+        fields: Prisma.BenefitRequirementsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BenefitRequirementsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BenefitRequirementsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BenefitRequirementsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BenefitRequirementsPayload>
+          }
+          findFirst: {
+            args: Prisma.BenefitRequirementsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BenefitRequirementsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BenefitRequirementsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BenefitRequirementsPayload>
+          }
+          findMany: {
+            args: Prisma.BenefitRequirementsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BenefitRequirementsPayload>[]
+          }
+          create: {
+            args: Prisma.BenefitRequirementsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BenefitRequirementsPayload>
+          }
+          createMany: {
+            args: Prisma.BenefitRequirementsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BenefitRequirementsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BenefitRequirementsPayload>[]
+          }
+          delete: {
+            args: Prisma.BenefitRequirementsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BenefitRequirementsPayload>
+          }
+          update: {
+            args: Prisma.BenefitRequirementsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BenefitRequirementsPayload>
+          }
+          deleteMany: {
+            args: Prisma.BenefitRequirementsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BenefitRequirementsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BenefitRequirementsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BenefitRequirementsPayload>[]
+          }
+          upsert: {
+            args: Prisma.BenefitRequirementsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BenefitRequirementsPayload>
+          }
+          aggregate: {
+            args: Prisma.BenefitRequirementsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBenefitRequirements>
+          }
+          groupBy: {
+            args: Prisma.BenefitRequirementsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BenefitRequirementsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BenefitRequirementsCountArgs<ExtArgs>
+            result: $Utils.Optional<BenefitRequirementsCountAggregateOutputType> | number
+          }
+        }
+      }
+      Applications: {
+        payload: Prisma.$ApplicationsPayload<ExtArgs>
+        fields: Prisma.ApplicationsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ApplicationsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ApplicationsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ApplicationsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ApplicationsPayload>
+          }
+          findFirst: {
+            args: Prisma.ApplicationsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ApplicationsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ApplicationsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ApplicationsPayload>
+          }
+          findMany: {
+            args: Prisma.ApplicationsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ApplicationsPayload>[]
+          }
+          create: {
+            args: Prisma.ApplicationsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ApplicationsPayload>
+          }
+          createMany: {
+            args: Prisma.ApplicationsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ApplicationsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ApplicationsPayload>[]
+          }
+          delete: {
+            args: Prisma.ApplicationsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ApplicationsPayload>
+          }
+          update: {
+            args: Prisma.ApplicationsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ApplicationsPayload>
+          }
+          deleteMany: {
+            args: Prisma.ApplicationsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ApplicationsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ApplicationsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ApplicationsPayload>[]
+          }
+          upsert: {
+            args: Prisma.ApplicationsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ApplicationsPayload>
+          }
+          aggregate: {
+            args: Prisma.ApplicationsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateApplications>
+          }
+          groupBy: {
+            args: Prisma.ApplicationsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ApplicationsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ApplicationsCountArgs<ExtArgs>
+            result: $Utils.Optional<ApplicationsCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1156,6 +1606,11 @@ export namespace Prisma {
     senior?: SeniorOmit
     registrationDocument?: RegistrationDocumentOmit
     remarks?: RemarksOmit
+    seniorCategory?: SeniorCategoryOmit
+    status?: StatusOmit
+    benefits?: BenefitsOmit
+    benefitRequirements?: BenefitRequirementsOmit
+    applications?: ApplicationsOmit
   }
 
   /* Types for Logging */
@@ -1282,10 +1737,12 @@ export namespace Prisma {
 
   export type SeniorCountOutputType = {
     documents: number
+    Applications: number
   }
 
   export type SeniorCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     documents?: boolean | SeniorCountOutputTypeCountDocumentsArgs
+    Applications?: boolean | SeniorCountOutputTypeCountApplicationsArgs
   }
 
   // Custom InputTypes
@@ -1304,6 +1761,13 @@ export namespace Prisma {
    */
   export type SeniorCountOutputTypeCountDocumentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: RegistrationDocumentWhereInput
+  }
+
+  /**
+   * SeniorCountOutputType without action
+   */
+  export type SeniorCountOutputTypeCountApplicationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ApplicationsWhereInput
   }
 
 
@@ -1335,6 +1799,108 @@ export namespace Prisma {
    */
   export type RemarksCountOutputTypeCountSeniorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SeniorWhereInput
+  }
+
+
+  /**
+   * Count Type SeniorCategoryCountOutputType
+   */
+
+  export type SeniorCategoryCountOutputType = {
+    applications: number
+  }
+
+  export type SeniorCategoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    applications?: boolean | SeniorCategoryCountOutputTypeCountApplicationsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * SeniorCategoryCountOutputType without action
+   */
+  export type SeniorCategoryCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SeniorCategoryCountOutputType
+     */
+    select?: SeniorCategoryCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * SeniorCategoryCountOutputType without action
+   */
+  export type SeniorCategoryCountOutputTypeCountApplicationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ApplicationsWhereInput
+  }
+
+
+  /**
+   * Count Type StatusCountOutputType
+   */
+
+  export type StatusCountOutputType = {
+    applications: number
+  }
+
+  export type StatusCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    applications?: boolean | StatusCountOutputTypeCountApplicationsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * StatusCountOutputType without action
+   */
+  export type StatusCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusCountOutputType
+     */
+    select?: StatusCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * StatusCountOutputType without action
+   */
+  export type StatusCountOutputTypeCountApplicationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ApplicationsWhereInput
+  }
+
+
+  /**
+   * Count Type BenefitsCountOutputType
+   */
+
+  export type BenefitsCountOutputType = {
+    applications: number
+    benefit_requirements: number
+  }
+
+  export type BenefitsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    applications?: boolean | BenefitsCountOutputTypeCountApplicationsArgs
+    benefit_requirements?: boolean | BenefitsCountOutputTypeCountBenefit_requirementsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * BenefitsCountOutputType without action
+   */
+  export type BenefitsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BenefitsCountOutputType
+     */
+    select?: BenefitsCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * BenefitsCountOutputType without action
+   */
+  export type BenefitsCountOutputTypeCountApplicationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ApplicationsWhereInput
+  }
+
+  /**
+   * BenefitsCountOutputType without action
+   */
+  export type BenefitsCountOutputTypeCountBenefit_requirementsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BenefitRequirementsWhereInput
   }
 
 
@@ -3772,6 +4338,7 @@ export namespace Prisma {
     updatedAt?: boolean
     remarks?: boolean | RemarksDefaultArgs<ExtArgs>
     documents?: boolean | Senior$documentsArgs<ExtArgs>
+    Applications?: boolean | Senior$ApplicationsArgs<ExtArgs>
     _count?: boolean | SeniorCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["senior"]>
 
@@ -3832,6 +4399,7 @@ export namespace Prisma {
   export type SeniorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     remarks?: boolean | RemarksDefaultArgs<ExtArgs>
     documents?: boolean | Senior$documentsArgs<ExtArgs>
+    Applications?: boolean | Senior$ApplicationsArgs<ExtArgs>
     _count?: boolean | SeniorCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type SeniorIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3846,6 +4414,7 @@ export namespace Prisma {
     objects: {
       remarks: Prisma.$RemarksPayload<ExtArgs>
       documents: Prisma.$RegistrationDocumentPayload<ExtArgs>[]
+      Applications: Prisma.$ApplicationsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -4258,6 +4827,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     remarks<T extends RemarksDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RemarksDefaultArgs<ExtArgs>>): Prisma__RemarksClient<$Result.GetResult<Prisma.$RemarksPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     documents<T extends Senior$documentsArgs<ExtArgs> = {}>(args?: Subset<T, Senior$documentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RegistrationDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Applications<T extends Senior$ApplicationsArgs<ExtArgs> = {}>(args?: Subset<T, Senior$ApplicationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ApplicationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4718,6 +5288,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: RegistrationDocumentScalarFieldEnum | RegistrationDocumentScalarFieldEnum[]
+  }
+
+  /**
+   * Senior.Applications
+   */
+  export type Senior$ApplicationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Applications
+     */
+    select?: ApplicationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Applications
+     */
+    omit?: ApplicationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ApplicationsInclude<ExtArgs> | null
+    where?: ApplicationsWhereInput
+    orderBy?: ApplicationsOrderByWithRelationInput | ApplicationsOrderByWithRelationInput[]
+    cursor?: ApplicationsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ApplicationsScalarFieldEnum | ApplicationsScalarFieldEnum[]
   }
 
   /**
@@ -6953,6 +7547,5606 @@ export namespace Prisma {
 
 
   /**
+   * Model SeniorCategory
+   */
+
+  export type AggregateSeniorCategory = {
+    _count: SeniorCategoryCountAggregateOutputType | null
+    _avg: SeniorCategoryAvgAggregateOutputType | null
+    _sum: SeniorCategorySumAggregateOutputType | null
+    _min: SeniorCategoryMinAggregateOutputType | null
+    _max: SeniorCategoryMaxAggregateOutputType | null
+  }
+
+  export type SeniorCategoryAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type SeniorCategorySumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type SeniorCategoryMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SeniorCategoryMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SeniorCategoryCountAggregateOutputType = {
+    id: number
+    name: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type SeniorCategoryAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type SeniorCategorySumAggregateInputType = {
+    id?: true
+  }
+
+  export type SeniorCategoryMinAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SeniorCategoryMaxAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SeniorCategoryCountAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type SeniorCategoryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SeniorCategory to aggregate.
+     */
+    where?: SeniorCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SeniorCategories to fetch.
+     */
+    orderBy?: SeniorCategoryOrderByWithRelationInput | SeniorCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SeniorCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SeniorCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SeniorCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SeniorCategories
+    **/
+    _count?: true | SeniorCategoryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SeniorCategoryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SeniorCategorySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SeniorCategoryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SeniorCategoryMaxAggregateInputType
+  }
+
+  export type GetSeniorCategoryAggregateType<T extends SeniorCategoryAggregateArgs> = {
+        [P in keyof T & keyof AggregateSeniorCategory]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSeniorCategory[P]>
+      : GetScalarType<T[P], AggregateSeniorCategory[P]>
+  }
+
+
+
+
+  export type SeniorCategoryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SeniorCategoryWhereInput
+    orderBy?: SeniorCategoryOrderByWithAggregationInput | SeniorCategoryOrderByWithAggregationInput[]
+    by: SeniorCategoryScalarFieldEnum[] | SeniorCategoryScalarFieldEnum
+    having?: SeniorCategoryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SeniorCategoryCountAggregateInputType | true
+    _avg?: SeniorCategoryAvgAggregateInputType
+    _sum?: SeniorCategorySumAggregateInputType
+    _min?: SeniorCategoryMinAggregateInputType
+    _max?: SeniorCategoryMaxAggregateInputType
+  }
+
+  export type SeniorCategoryGroupByOutputType = {
+    id: number
+    name: string
+    createdAt: Date
+    updatedAt: Date
+    _count: SeniorCategoryCountAggregateOutputType | null
+    _avg: SeniorCategoryAvgAggregateOutputType | null
+    _sum: SeniorCategorySumAggregateOutputType | null
+    _min: SeniorCategoryMinAggregateOutputType | null
+    _max: SeniorCategoryMaxAggregateOutputType | null
+  }
+
+  type GetSeniorCategoryGroupByPayload<T extends SeniorCategoryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SeniorCategoryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SeniorCategoryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SeniorCategoryGroupByOutputType[P]>
+            : GetScalarType<T[P], SeniorCategoryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SeniorCategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    applications?: boolean | SeniorCategory$applicationsArgs<ExtArgs>
+    _count?: boolean | SeniorCategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["seniorCategory"]>
+
+  export type SeniorCategorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["seniorCategory"]>
+
+  export type SeniorCategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["seniorCategory"]>
+
+  export type SeniorCategorySelectScalar = {
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type SeniorCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["seniorCategory"]>
+  export type SeniorCategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    applications?: boolean | SeniorCategory$applicationsArgs<ExtArgs>
+    _count?: boolean | SeniorCategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type SeniorCategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type SeniorCategoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $SeniorCategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SeniorCategory"
+    objects: {
+      applications: Prisma.$ApplicationsPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["seniorCategory"]>
+    composites: {}
+  }
+
+  type SeniorCategoryGetPayload<S extends boolean | null | undefined | SeniorCategoryDefaultArgs> = $Result.GetResult<Prisma.$SeniorCategoryPayload, S>
+
+  type SeniorCategoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SeniorCategoryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SeniorCategoryCountAggregateInputType | true
+    }
+
+  export interface SeniorCategoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SeniorCategory'], meta: { name: 'SeniorCategory' } }
+    /**
+     * Find zero or one SeniorCategory that matches the filter.
+     * @param {SeniorCategoryFindUniqueArgs} args - Arguments to find a SeniorCategory
+     * @example
+     * // Get one SeniorCategory
+     * const seniorCategory = await prisma.seniorCategory.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SeniorCategoryFindUniqueArgs>(args: SelectSubset<T, SeniorCategoryFindUniqueArgs<ExtArgs>>): Prisma__SeniorCategoryClient<$Result.GetResult<Prisma.$SeniorCategoryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one SeniorCategory that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {SeniorCategoryFindUniqueOrThrowArgs} args - Arguments to find a SeniorCategory
+     * @example
+     * // Get one SeniorCategory
+     * const seniorCategory = await prisma.seniorCategory.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SeniorCategoryFindUniqueOrThrowArgs>(args: SelectSubset<T, SeniorCategoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SeniorCategoryClient<$Result.GetResult<Prisma.$SeniorCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SeniorCategory that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SeniorCategoryFindFirstArgs} args - Arguments to find a SeniorCategory
+     * @example
+     * // Get one SeniorCategory
+     * const seniorCategory = await prisma.seniorCategory.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SeniorCategoryFindFirstArgs>(args?: SelectSubset<T, SeniorCategoryFindFirstArgs<ExtArgs>>): Prisma__SeniorCategoryClient<$Result.GetResult<Prisma.$SeniorCategoryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SeniorCategory that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SeniorCategoryFindFirstOrThrowArgs} args - Arguments to find a SeniorCategory
+     * @example
+     * // Get one SeniorCategory
+     * const seniorCategory = await prisma.seniorCategory.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SeniorCategoryFindFirstOrThrowArgs>(args?: SelectSubset<T, SeniorCategoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__SeniorCategoryClient<$Result.GetResult<Prisma.$SeniorCategoryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more SeniorCategories that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SeniorCategoryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SeniorCategories
+     * const seniorCategories = await prisma.seniorCategory.findMany()
+     * 
+     * // Get first 10 SeniorCategories
+     * const seniorCategories = await prisma.seniorCategory.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const seniorCategoryWithIdOnly = await prisma.seniorCategory.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SeniorCategoryFindManyArgs>(args?: SelectSubset<T, SeniorCategoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SeniorCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a SeniorCategory.
+     * @param {SeniorCategoryCreateArgs} args - Arguments to create a SeniorCategory.
+     * @example
+     * // Create one SeniorCategory
+     * const SeniorCategory = await prisma.seniorCategory.create({
+     *   data: {
+     *     // ... data to create a SeniorCategory
+     *   }
+     * })
+     * 
+     */
+    create<T extends SeniorCategoryCreateArgs>(args: SelectSubset<T, SeniorCategoryCreateArgs<ExtArgs>>): Prisma__SeniorCategoryClient<$Result.GetResult<Prisma.$SeniorCategoryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many SeniorCategories.
+     * @param {SeniorCategoryCreateManyArgs} args - Arguments to create many SeniorCategories.
+     * @example
+     * // Create many SeniorCategories
+     * const seniorCategory = await prisma.seniorCategory.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SeniorCategoryCreateManyArgs>(args?: SelectSubset<T, SeniorCategoryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many SeniorCategories and returns the data saved in the database.
+     * @param {SeniorCategoryCreateManyAndReturnArgs} args - Arguments to create many SeniorCategories.
+     * @example
+     * // Create many SeniorCategories
+     * const seniorCategory = await prisma.seniorCategory.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many SeniorCategories and only return the `id`
+     * const seniorCategoryWithIdOnly = await prisma.seniorCategory.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SeniorCategoryCreateManyAndReturnArgs>(args?: SelectSubset<T, SeniorCategoryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SeniorCategoryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a SeniorCategory.
+     * @param {SeniorCategoryDeleteArgs} args - Arguments to delete one SeniorCategory.
+     * @example
+     * // Delete one SeniorCategory
+     * const SeniorCategory = await prisma.seniorCategory.delete({
+     *   where: {
+     *     // ... filter to delete one SeniorCategory
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SeniorCategoryDeleteArgs>(args: SelectSubset<T, SeniorCategoryDeleteArgs<ExtArgs>>): Prisma__SeniorCategoryClient<$Result.GetResult<Prisma.$SeniorCategoryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one SeniorCategory.
+     * @param {SeniorCategoryUpdateArgs} args - Arguments to update one SeniorCategory.
+     * @example
+     * // Update one SeniorCategory
+     * const seniorCategory = await prisma.seniorCategory.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SeniorCategoryUpdateArgs>(args: SelectSubset<T, SeniorCategoryUpdateArgs<ExtArgs>>): Prisma__SeniorCategoryClient<$Result.GetResult<Prisma.$SeniorCategoryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more SeniorCategories.
+     * @param {SeniorCategoryDeleteManyArgs} args - Arguments to filter SeniorCategories to delete.
+     * @example
+     * // Delete a few SeniorCategories
+     * const { count } = await prisma.seniorCategory.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SeniorCategoryDeleteManyArgs>(args?: SelectSubset<T, SeniorCategoryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SeniorCategories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SeniorCategoryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SeniorCategories
+     * const seniorCategory = await prisma.seniorCategory.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SeniorCategoryUpdateManyArgs>(args: SelectSubset<T, SeniorCategoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SeniorCategories and returns the data updated in the database.
+     * @param {SeniorCategoryUpdateManyAndReturnArgs} args - Arguments to update many SeniorCategories.
+     * @example
+     * // Update many SeniorCategories
+     * const seniorCategory = await prisma.seniorCategory.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more SeniorCategories and only return the `id`
+     * const seniorCategoryWithIdOnly = await prisma.seniorCategory.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends SeniorCategoryUpdateManyAndReturnArgs>(args: SelectSubset<T, SeniorCategoryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SeniorCategoryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one SeniorCategory.
+     * @param {SeniorCategoryUpsertArgs} args - Arguments to update or create a SeniorCategory.
+     * @example
+     * // Update or create a SeniorCategory
+     * const seniorCategory = await prisma.seniorCategory.upsert({
+     *   create: {
+     *     // ... data to create a SeniorCategory
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SeniorCategory we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SeniorCategoryUpsertArgs>(args: SelectSubset<T, SeniorCategoryUpsertArgs<ExtArgs>>): Prisma__SeniorCategoryClient<$Result.GetResult<Prisma.$SeniorCategoryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of SeniorCategories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SeniorCategoryCountArgs} args - Arguments to filter SeniorCategories to count.
+     * @example
+     * // Count the number of SeniorCategories
+     * const count = await prisma.seniorCategory.count({
+     *   where: {
+     *     // ... the filter for the SeniorCategories we want to count
+     *   }
+     * })
+    **/
+    count<T extends SeniorCategoryCountArgs>(
+      args?: Subset<T, SeniorCategoryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SeniorCategoryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SeniorCategory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SeniorCategoryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SeniorCategoryAggregateArgs>(args: Subset<T, SeniorCategoryAggregateArgs>): Prisma.PrismaPromise<GetSeniorCategoryAggregateType<T>>
+
+    /**
+     * Group by SeniorCategory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SeniorCategoryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SeniorCategoryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SeniorCategoryGroupByArgs['orderBy'] }
+        : { orderBy?: SeniorCategoryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SeniorCategoryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSeniorCategoryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SeniorCategory model
+   */
+  readonly fields: SeniorCategoryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SeniorCategory.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SeniorCategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    applications<T extends SeniorCategory$applicationsArgs<ExtArgs> = {}>(args?: Subset<T, SeniorCategory$applicationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ApplicationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the SeniorCategory model
+   */
+  interface SeniorCategoryFieldRefs {
+    readonly id: FieldRef<"SeniorCategory", 'Int'>
+    readonly name: FieldRef<"SeniorCategory", 'String'>
+    readonly createdAt: FieldRef<"SeniorCategory", 'DateTime'>
+    readonly updatedAt: FieldRef<"SeniorCategory", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SeniorCategory findUnique
+   */
+  export type SeniorCategoryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SeniorCategory
+     */
+    select?: SeniorCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SeniorCategory
+     */
+    omit?: SeniorCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SeniorCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which SeniorCategory to fetch.
+     */
+    where: SeniorCategoryWhereUniqueInput
+  }
+
+  /**
+   * SeniorCategory findUniqueOrThrow
+   */
+  export type SeniorCategoryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SeniorCategory
+     */
+    select?: SeniorCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SeniorCategory
+     */
+    omit?: SeniorCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SeniorCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which SeniorCategory to fetch.
+     */
+    where: SeniorCategoryWhereUniqueInput
+  }
+
+  /**
+   * SeniorCategory findFirst
+   */
+  export type SeniorCategoryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SeniorCategory
+     */
+    select?: SeniorCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SeniorCategory
+     */
+    omit?: SeniorCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SeniorCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which SeniorCategory to fetch.
+     */
+    where?: SeniorCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SeniorCategories to fetch.
+     */
+    orderBy?: SeniorCategoryOrderByWithRelationInput | SeniorCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SeniorCategories.
+     */
+    cursor?: SeniorCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SeniorCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SeniorCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SeniorCategories.
+     */
+    distinct?: SeniorCategoryScalarFieldEnum | SeniorCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * SeniorCategory findFirstOrThrow
+   */
+  export type SeniorCategoryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SeniorCategory
+     */
+    select?: SeniorCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SeniorCategory
+     */
+    omit?: SeniorCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SeniorCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which SeniorCategory to fetch.
+     */
+    where?: SeniorCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SeniorCategories to fetch.
+     */
+    orderBy?: SeniorCategoryOrderByWithRelationInput | SeniorCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SeniorCategories.
+     */
+    cursor?: SeniorCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SeniorCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SeniorCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SeniorCategories.
+     */
+    distinct?: SeniorCategoryScalarFieldEnum | SeniorCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * SeniorCategory findMany
+   */
+  export type SeniorCategoryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SeniorCategory
+     */
+    select?: SeniorCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SeniorCategory
+     */
+    omit?: SeniorCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SeniorCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which SeniorCategories to fetch.
+     */
+    where?: SeniorCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SeniorCategories to fetch.
+     */
+    orderBy?: SeniorCategoryOrderByWithRelationInput | SeniorCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SeniorCategories.
+     */
+    cursor?: SeniorCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SeniorCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SeniorCategories.
+     */
+    skip?: number
+    distinct?: SeniorCategoryScalarFieldEnum | SeniorCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * SeniorCategory create
+   */
+  export type SeniorCategoryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SeniorCategory
+     */
+    select?: SeniorCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SeniorCategory
+     */
+    omit?: SeniorCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SeniorCategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a SeniorCategory.
+     */
+    data: XOR<SeniorCategoryCreateInput, SeniorCategoryUncheckedCreateInput>
+  }
+
+  /**
+   * SeniorCategory createMany
+   */
+  export type SeniorCategoryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SeniorCategories.
+     */
+    data: SeniorCategoryCreateManyInput | SeniorCategoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SeniorCategory createManyAndReturn
+   */
+  export type SeniorCategoryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SeniorCategory
+     */
+    select?: SeniorCategorySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SeniorCategory
+     */
+    omit?: SeniorCategoryOmit<ExtArgs> | null
+    /**
+     * The data used to create many SeniorCategories.
+     */
+    data: SeniorCategoryCreateManyInput | SeniorCategoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SeniorCategory update
+   */
+  export type SeniorCategoryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SeniorCategory
+     */
+    select?: SeniorCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SeniorCategory
+     */
+    omit?: SeniorCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SeniorCategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a SeniorCategory.
+     */
+    data: XOR<SeniorCategoryUpdateInput, SeniorCategoryUncheckedUpdateInput>
+    /**
+     * Choose, which SeniorCategory to update.
+     */
+    where: SeniorCategoryWhereUniqueInput
+  }
+
+  /**
+   * SeniorCategory updateMany
+   */
+  export type SeniorCategoryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SeniorCategories.
+     */
+    data: XOR<SeniorCategoryUpdateManyMutationInput, SeniorCategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which SeniorCategories to update
+     */
+    where?: SeniorCategoryWhereInput
+    /**
+     * Limit how many SeniorCategories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SeniorCategory updateManyAndReturn
+   */
+  export type SeniorCategoryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SeniorCategory
+     */
+    select?: SeniorCategorySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SeniorCategory
+     */
+    omit?: SeniorCategoryOmit<ExtArgs> | null
+    /**
+     * The data used to update SeniorCategories.
+     */
+    data: XOR<SeniorCategoryUpdateManyMutationInput, SeniorCategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which SeniorCategories to update
+     */
+    where?: SeniorCategoryWhereInput
+    /**
+     * Limit how many SeniorCategories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SeniorCategory upsert
+   */
+  export type SeniorCategoryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SeniorCategory
+     */
+    select?: SeniorCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SeniorCategory
+     */
+    omit?: SeniorCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SeniorCategoryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the SeniorCategory to update in case it exists.
+     */
+    where: SeniorCategoryWhereUniqueInput
+    /**
+     * In case the SeniorCategory found by the `where` argument doesn't exist, create a new SeniorCategory with this data.
+     */
+    create: XOR<SeniorCategoryCreateInput, SeniorCategoryUncheckedCreateInput>
+    /**
+     * In case the SeniorCategory was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SeniorCategoryUpdateInput, SeniorCategoryUncheckedUpdateInput>
+  }
+
+  /**
+   * SeniorCategory delete
+   */
+  export type SeniorCategoryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SeniorCategory
+     */
+    select?: SeniorCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SeniorCategory
+     */
+    omit?: SeniorCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SeniorCategoryInclude<ExtArgs> | null
+    /**
+     * Filter which SeniorCategory to delete.
+     */
+    where: SeniorCategoryWhereUniqueInput
+  }
+
+  /**
+   * SeniorCategory deleteMany
+   */
+  export type SeniorCategoryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SeniorCategories to delete
+     */
+    where?: SeniorCategoryWhereInput
+    /**
+     * Limit how many SeniorCategories to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * SeniorCategory.applications
+   */
+  export type SeniorCategory$applicationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Applications
+     */
+    select?: ApplicationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Applications
+     */
+    omit?: ApplicationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ApplicationsInclude<ExtArgs> | null
+    where?: ApplicationsWhereInput
+    orderBy?: ApplicationsOrderByWithRelationInput | ApplicationsOrderByWithRelationInput[]
+    cursor?: ApplicationsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ApplicationsScalarFieldEnum | ApplicationsScalarFieldEnum[]
+  }
+
+  /**
+   * SeniorCategory without action
+   */
+  export type SeniorCategoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SeniorCategory
+     */
+    select?: SeniorCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SeniorCategory
+     */
+    omit?: SeniorCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SeniorCategoryInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Status
+   */
+
+  export type AggregateStatus = {
+    _count: StatusCountAggregateOutputType | null
+    _avg: StatusAvgAggregateOutputType | null
+    _sum: StatusSumAggregateOutputType | null
+    _min: StatusMinAggregateOutputType | null
+    _max: StatusMaxAggregateOutputType | null
+  }
+
+  export type StatusAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type StatusSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type StatusMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type StatusMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type StatusCountAggregateOutputType = {
+    id: number
+    name: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type StatusAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type StatusSumAggregateInputType = {
+    id?: true
+  }
+
+  export type StatusMinAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type StatusMaxAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type StatusCountAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type StatusAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Status to aggregate.
+     */
+    where?: StatusWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Statuses to fetch.
+     */
+    orderBy?: StatusOrderByWithRelationInput | StatusOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: StatusWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Statuses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Statuses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Statuses
+    **/
+    _count?: true | StatusCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: StatusAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: StatusSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: StatusMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: StatusMaxAggregateInputType
+  }
+
+  export type GetStatusAggregateType<T extends StatusAggregateArgs> = {
+        [P in keyof T & keyof AggregateStatus]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateStatus[P]>
+      : GetScalarType<T[P], AggregateStatus[P]>
+  }
+
+
+
+
+  export type StatusGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StatusWhereInput
+    orderBy?: StatusOrderByWithAggregationInput | StatusOrderByWithAggregationInput[]
+    by: StatusScalarFieldEnum[] | StatusScalarFieldEnum
+    having?: StatusScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: StatusCountAggregateInputType | true
+    _avg?: StatusAvgAggregateInputType
+    _sum?: StatusSumAggregateInputType
+    _min?: StatusMinAggregateInputType
+    _max?: StatusMaxAggregateInputType
+  }
+
+  export type StatusGroupByOutputType = {
+    id: number
+    name: string
+    createdAt: Date
+    updatedAt: Date
+    _count: StatusCountAggregateOutputType | null
+    _avg: StatusAvgAggregateOutputType | null
+    _sum: StatusSumAggregateOutputType | null
+    _min: StatusMinAggregateOutputType | null
+    _max: StatusMaxAggregateOutputType | null
+  }
+
+  type GetStatusGroupByPayload<T extends StatusGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<StatusGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof StatusGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], StatusGroupByOutputType[P]>
+            : GetScalarType<T[P], StatusGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type StatusSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    applications?: boolean | Status$applicationsArgs<ExtArgs>
+    _count?: boolean | StatusCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["status"]>
+
+  export type StatusSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["status"]>
+
+  export type StatusSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["status"]>
+
+  export type StatusSelectScalar = {
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type StatusOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["status"]>
+  export type StatusInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    applications?: boolean | Status$applicationsArgs<ExtArgs>
+    _count?: boolean | StatusCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type StatusIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type StatusIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $StatusPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Status"
+    objects: {
+      applications: Prisma.$ApplicationsPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["status"]>
+    composites: {}
+  }
+
+  type StatusGetPayload<S extends boolean | null | undefined | StatusDefaultArgs> = $Result.GetResult<Prisma.$StatusPayload, S>
+
+  type StatusCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<StatusFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: StatusCountAggregateInputType | true
+    }
+
+  export interface StatusDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Status'], meta: { name: 'Status' } }
+    /**
+     * Find zero or one Status that matches the filter.
+     * @param {StatusFindUniqueArgs} args - Arguments to find a Status
+     * @example
+     * // Get one Status
+     * const status = await prisma.status.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends StatusFindUniqueArgs>(args: SelectSubset<T, StatusFindUniqueArgs<ExtArgs>>): Prisma__StatusClient<$Result.GetResult<Prisma.$StatusPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Status that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {StatusFindUniqueOrThrowArgs} args - Arguments to find a Status
+     * @example
+     * // Get one Status
+     * const status = await prisma.status.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends StatusFindUniqueOrThrowArgs>(args: SelectSubset<T, StatusFindUniqueOrThrowArgs<ExtArgs>>): Prisma__StatusClient<$Result.GetResult<Prisma.$StatusPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Status that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StatusFindFirstArgs} args - Arguments to find a Status
+     * @example
+     * // Get one Status
+     * const status = await prisma.status.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends StatusFindFirstArgs>(args?: SelectSubset<T, StatusFindFirstArgs<ExtArgs>>): Prisma__StatusClient<$Result.GetResult<Prisma.$StatusPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Status that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StatusFindFirstOrThrowArgs} args - Arguments to find a Status
+     * @example
+     * // Get one Status
+     * const status = await prisma.status.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends StatusFindFirstOrThrowArgs>(args?: SelectSubset<T, StatusFindFirstOrThrowArgs<ExtArgs>>): Prisma__StatusClient<$Result.GetResult<Prisma.$StatusPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Statuses that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StatusFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Statuses
+     * const statuses = await prisma.status.findMany()
+     * 
+     * // Get first 10 Statuses
+     * const statuses = await prisma.status.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const statusWithIdOnly = await prisma.status.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends StatusFindManyArgs>(args?: SelectSubset<T, StatusFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StatusPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Status.
+     * @param {StatusCreateArgs} args - Arguments to create a Status.
+     * @example
+     * // Create one Status
+     * const Status = await prisma.status.create({
+     *   data: {
+     *     // ... data to create a Status
+     *   }
+     * })
+     * 
+     */
+    create<T extends StatusCreateArgs>(args: SelectSubset<T, StatusCreateArgs<ExtArgs>>): Prisma__StatusClient<$Result.GetResult<Prisma.$StatusPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Statuses.
+     * @param {StatusCreateManyArgs} args - Arguments to create many Statuses.
+     * @example
+     * // Create many Statuses
+     * const status = await prisma.status.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends StatusCreateManyArgs>(args?: SelectSubset<T, StatusCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Statuses and returns the data saved in the database.
+     * @param {StatusCreateManyAndReturnArgs} args - Arguments to create many Statuses.
+     * @example
+     * // Create many Statuses
+     * const status = await prisma.status.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Statuses and only return the `id`
+     * const statusWithIdOnly = await prisma.status.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends StatusCreateManyAndReturnArgs>(args?: SelectSubset<T, StatusCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StatusPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Status.
+     * @param {StatusDeleteArgs} args - Arguments to delete one Status.
+     * @example
+     * // Delete one Status
+     * const Status = await prisma.status.delete({
+     *   where: {
+     *     // ... filter to delete one Status
+     *   }
+     * })
+     * 
+     */
+    delete<T extends StatusDeleteArgs>(args: SelectSubset<T, StatusDeleteArgs<ExtArgs>>): Prisma__StatusClient<$Result.GetResult<Prisma.$StatusPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Status.
+     * @param {StatusUpdateArgs} args - Arguments to update one Status.
+     * @example
+     * // Update one Status
+     * const status = await prisma.status.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends StatusUpdateArgs>(args: SelectSubset<T, StatusUpdateArgs<ExtArgs>>): Prisma__StatusClient<$Result.GetResult<Prisma.$StatusPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Statuses.
+     * @param {StatusDeleteManyArgs} args - Arguments to filter Statuses to delete.
+     * @example
+     * // Delete a few Statuses
+     * const { count } = await prisma.status.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends StatusDeleteManyArgs>(args?: SelectSubset<T, StatusDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Statuses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StatusUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Statuses
+     * const status = await prisma.status.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends StatusUpdateManyArgs>(args: SelectSubset<T, StatusUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Statuses and returns the data updated in the database.
+     * @param {StatusUpdateManyAndReturnArgs} args - Arguments to update many Statuses.
+     * @example
+     * // Update many Statuses
+     * const status = await prisma.status.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Statuses and only return the `id`
+     * const statusWithIdOnly = await prisma.status.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends StatusUpdateManyAndReturnArgs>(args: SelectSubset<T, StatusUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StatusPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Status.
+     * @param {StatusUpsertArgs} args - Arguments to update or create a Status.
+     * @example
+     * // Update or create a Status
+     * const status = await prisma.status.upsert({
+     *   create: {
+     *     // ... data to create a Status
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Status we want to update
+     *   }
+     * })
+     */
+    upsert<T extends StatusUpsertArgs>(args: SelectSubset<T, StatusUpsertArgs<ExtArgs>>): Prisma__StatusClient<$Result.GetResult<Prisma.$StatusPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Statuses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StatusCountArgs} args - Arguments to filter Statuses to count.
+     * @example
+     * // Count the number of Statuses
+     * const count = await prisma.status.count({
+     *   where: {
+     *     // ... the filter for the Statuses we want to count
+     *   }
+     * })
+    **/
+    count<T extends StatusCountArgs>(
+      args?: Subset<T, StatusCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], StatusCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Status.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StatusAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends StatusAggregateArgs>(args: Subset<T, StatusAggregateArgs>): Prisma.PrismaPromise<GetStatusAggregateType<T>>
+
+    /**
+     * Group by Status.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StatusGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends StatusGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: StatusGroupByArgs['orderBy'] }
+        : { orderBy?: StatusGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, StatusGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStatusGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Status model
+   */
+  readonly fields: StatusFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Status.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__StatusClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    applications<T extends Status$applicationsArgs<ExtArgs> = {}>(args?: Subset<T, Status$applicationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ApplicationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Status model
+   */
+  interface StatusFieldRefs {
+    readonly id: FieldRef<"Status", 'Int'>
+    readonly name: FieldRef<"Status", 'String'>
+    readonly createdAt: FieldRef<"Status", 'DateTime'>
+    readonly updatedAt: FieldRef<"Status", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Status findUnique
+   */
+  export type StatusFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Status
+     */
+    select?: StatusSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Status
+     */
+    omit?: StatusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusInclude<ExtArgs> | null
+    /**
+     * Filter, which Status to fetch.
+     */
+    where: StatusWhereUniqueInput
+  }
+
+  /**
+   * Status findUniqueOrThrow
+   */
+  export type StatusFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Status
+     */
+    select?: StatusSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Status
+     */
+    omit?: StatusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusInclude<ExtArgs> | null
+    /**
+     * Filter, which Status to fetch.
+     */
+    where: StatusWhereUniqueInput
+  }
+
+  /**
+   * Status findFirst
+   */
+  export type StatusFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Status
+     */
+    select?: StatusSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Status
+     */
+    omit?: StatusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusInclude<ExtArgs> | null
+    /**
+     * Filter, which Status to fetch.
+     */
+    where?: StatusWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Statuses to fetch.
+     */
+    orderBy?: StatusOrderByWithRelationInput | StatusOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Statuses.
+     */
+    cursor?: StatusWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Statuses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Statuses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Statuses.
+     */
+    distinct?: StatusScalarFieldEnum | StatusScalarFieldEnum[]
+  }
+
+  /**
+   * Status findFirstOrThrow
+   */
+  export type StatusFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Status
+     */
+    select?: StatusSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Status
+     */
+    omit?: StatusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusInclude<ExtArgs> | null
+    /**
+     * Filter, which Status to fetch.
+     */
+    where?: StatusWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Statuses to fetch.
+     */
+    orderBy?: StatusOrderByWithRelationInput | StatusOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Statuses.
+     */
+    cursor?: StatusWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Statuses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Statuses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Statuses.
+     */
+    distinct?: StatusScalarFieldEnum | StatusScalarFieldEnum[]
+  }
+
+  /**
+   * Status findMany
+   */
+  export type StatusFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Status
+     */
+    select?: StatusSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Status
+     */
+    omit?: StatusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusInclude<ExtArgs> | null
+    /**
+     * Filter, which Statuses to fetch.
+     */
+    where?: StatusWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Statuses to fetch.
+     */
+    orderBy?: StatusOrderByWithRelationInput | StatusOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Statuses.
+     */
+    cursor?: StatusWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Statuses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Statuses.
+     */
+    skip?: number
+    distinct?: StatusScalarFieldEnum | StatusScalarFieldEnum[]
+  }
+
+  /**
+   * Status create
+   */
+  export type StatusCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Status
+     */
+    select?: StatusSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Status
+     */
+    omit?: StatusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Status.
+     */
+    data: XOR<StatusCreateInput, StatusUncheckedCreateInput>
+  }
+
+  /**
+   * Status createMany
+   */
+  export type StatusCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Statuses.
+     */
+    data: StatusCreateManyInput | StatusCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Status createManyAndReturn
+   */
+  export type StatusCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Status
+     */
+    select?: StatusSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Status
+     */
+    omit?: StatusOmit<ExtArgs> | null
+    /**
+     * The data used to create many Statuses.
+     */
+    data: StatusCreateManyInput | StatusCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Status update
+   */
+  export type StatusUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Status
+     */
+    select?: StatusSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Status
+     */
+    omit?: StatusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Status.
+     */
+    data: XOR<StatusUpdateInput, StatusUncheckedUpdateInput>
+    /**
+     * Choose, which Status to update.
+     */
+    where: StatusWhereUniqueInput
+  }
+
+  /**
+   * Status updateMany
+   */
+  export type StatusUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Statuses.
+     */
+    data: XOR<StatusUpdateManyMutationInput, StatusUncheckedUpdateManyInput>
+    /**
+     * Filter which Statuses to update
+     */
+    where?: StatusWhereInput
+    /**
+     * Limit how many Statuses to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Status updateManyAndReturn
+   */
+  export type StatusUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Status
+     */
+    select?: StatusSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Status
+     */
+    omit?: StatusOmit<ExtArgs> | null
+    /**
+     * The data used to update Statuses.
+     */
+    data: XOR<StatusUpdateManyMutationInput, StatusUncheckedUpdateManyInput>
+    /**
+     * Filter which Statuses to update
+     */
+    where?: StatusWhereInput
+    /**
+     * Limit how many Statuses to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Status upsert
+   */
+  export type StatusUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Status
+     */
+    select?: StatusSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Status
+     */
+    omit?: StatusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Status to update in case it exists.
+     */
+    where: StatusWhereUniqueInput
+    /**
+     * In case the Status found by the `where` argument doesn't exist, create a new Status with this data.
+     */
+    create: XOR<StatusCreateInput, StatusUncheckedCreateInput>
+    /**
+     * In case the Status was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<StatusUpdateInput, StatusUncheckedUpdateInput>
+  }
+
+  /**
+   * Status delete
+   */
+  export type StatusDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Status
+     */
+    select?: StatusSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Status
+     */
+    omit?: StatusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusInclude<ExtArgs> | null
+    /**
+     * Filter which Status to delete.
+     */
+    where: StatusWhereUniqueInput
+  }
+
+  /**
+   * Status deleteMany
+   */
+  export type StatusDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Statuses to delete
+     */
+    where?: StatusWhereInput
+    /**
+     * Limit how many Statuses to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Status.applications
+   */
+  export type Status$applicationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Applications
+     */
+    select?: ApplicationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Applications
+     */
+    omit?: ApplicationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ApplicationsInclude<ExtArgs> | null
+    where?: ApplicationsWhereInput
+    orderBy?: ApplicationsOrderByWithRelationInput | ApplicationsOrderByWithRelationInput[]
+    cursor?: ApplicationsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ApplicationsScalarFieldEnum | ApplicationsScalarFieldEnum[]
+  }
+
+  /**
+   * Status without action
+   */
+  export type StatusDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Status
+     */
+    select?: StatusSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Status
+     */
+    omit?: StatusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StatusInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Benefits
+   */
+
+  export type AggregateBenefits = {
+    _count: BenefitsCountAggregateOutputType | null
+    _avg: BenefitsAvgAggregateOutputType | null
+    _sum: BenefitsSumAggregateOutputType | null
+    _min: BenefitsMinAggregateOutputType | null
+    _max: BenefitsMaxAggregateOutputType | null
+  }
+
+  export type BenefitsAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type BenefitsSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type BenefitsMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    description: string | null
+    tag: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BenefitsMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    description: string | null
+    tag: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BenefitsCountAggregateOutputType = {
+    id: number
+    name: number
+    description: number
+    tag: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type BenefitsAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type BenefitsSumAggregateInputType = {
+    id?: true
+  }
+
+  export type BenefitsMinAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    tag?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BenefitsMaxAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    tag?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BenefitsCountAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    tag?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type BenefitsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Benefits to aggregate.
+     */
+    where?: BenefitsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Benefits to fetch.
+     */
+    orderBy?: BenefitsOrderByWithRelationInput | BenefitsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BenefitsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Benefits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Benefits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Benefits
+    **/
+    _count?: true | BenefitsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BenefitsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BenefitsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BenefitsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BenefitsMaxAggregateInputType
+  }
+
+  export type GetBenefitsAggregateType<T extends BenefitsAggregateArgs> = {
+        [P in keyof T & keyof AggregateBenefits]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBenefits[P]>
+      : GetScalarType<T[P], AggregateBenefits[P]>
+  }
+
+
+
+
+  export type BenefitsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BenefitsWhereInput
+    orderBy?: BenefitsOrderByWithAggregationInput | BenefitsOrderByWithAggregationInput[]
+    by: BenefitsScalarFieldEnum[] | BenefitsScalarFieldEnum
+    having?: BenefitsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BenefitsCountAggregateInputType | true
+    _avg?: BenefitsAvgAggregateInputType
+    _sum?: BenefitsSumAggregateInputType
+    _min?: BenefitsMinAggregateInputType
+    _max?: BenefitsMaxAggregateInputType
+  }
+
+  export type BenefitsGroupByOutputType = {
+    id: number
+    name: string
+    description: string
+    tag: string
+    createdAt: Date
+    updatedAt: Date
+    _count: BenefitsCountAggregateOutputType | null
+    _avg: BenefitsAvgAggregateOutputType | null
+    _sum: BenefitsSumAggregateOutputType | null
+    _min: BenefitsMinAggregateOutputType | null
+    _max: BenefitsMaxAggregateOutputType | null
+  }
+
+  type GetBenefitsGroupByPayload<T extends BenefitsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BenefitsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BenefitsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BenefitsGroupByOutputType[P]>
+            : GetScalarType<T[P], BenefitsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BenefitsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    tag?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    applications?: boolean | Benefits$applicationsArgs<ExtArgs>
+    benefit_requirements?: boolean | Benefits$benefit_requirementsArgs<ExtArgs>
+    _count?: boolean | BenefitsCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["benefits"]>
+
+  export type BenefitsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    tag?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["benefits"]>
+
+  export type BenefitsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    tag?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["benefits"]>
+
+  export type BenefitsSelectScalar = {
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    tag?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type BenefitsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "tag" | "createdAt" | "updatedAt", ExtArgs["result"]["benefits"]>
+  export type BenefitsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    applications?: boolean | Benefits$applicationsArgs<ExtArgs>
+    benefit_requirements?: boolean | Benefits$benefit_requirementsArgs<ExtArgs>
+    _count?: boolean | BenefitsCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type BenefitsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type BenefitsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $BenefitsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Benefits"
+    objects: {
+      applications: Prisma.$ApplicationsPayload<ExtArgs>[]
+      benefit_requirements: Prisma.$BenefitRequirementsPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      description: string
+      tag: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["benefits"]>
+    composites: {}
+  }
+
+  type BenefitsGetPayload<S extends boolean | null | undefined | BenefitsDefaultArgs> = $Result.GetResult<Prisma.$BenefitsPayload, S>
+
+  type BenefitsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BenefitsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BenefitsCountAggregateInputType | true
+    }
+
+  export interface BenefitsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Benefits'], meta: { name: 'Benefits' } }
+    /**
+     * Find zero or one Benefits that matches the filter.
+     * @param {BenefitsFindUniqueArgs} args - Arguments to find a Benefits
+     * @example
+     * // Get one Benefits
+     * const benefits = await prisma.benefits.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BenefitsFindUniqueArgs>(args: SelectSubset<T, BenefitsFindUniqueArgs<ExtArgs>>): Prisma__BenefitsClient<$Result.GetResult<Prisma.$BenefitsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Benefits that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BenefitsFindUniqueOrThrowArgs} args - Arguments to find a Benefits
+     * @example
+     * // Get one Benefits
+     * const benefits = await prisma.benefits.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BenefitsFindUniqueOrThrowArgs>(args: SelectSubset<T, BenefitsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BenefitsClient<$Result.GetResult<Prisma.$BenefitsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Benefits that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BenefitsFindFirstArgs} args - Arguments to find a Benefits
+     * @example
+     * // Get one Benefits
+     * const benefits = await prisma.benefits.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BenefitsFindFirstArgs>(args?: SelectSubset<T, BenefitsFindFirstArgs<ExtArgs>>): Prisma__BenefitsClient<$Result.GetResult<Prisma.$BenefitsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Benefits that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BenefitsFindFirstOrThrowArgs} args - Arguments to find a Benefits
+     * @example
+     * // Get one Benefits
+     * const benefits = await prisma.benefits.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BenefitsFindFirstOrThrowArgs>(args?: SelectSubset<T, BenefitsFindFirstOrThrowArgs<ExtArgs>>): Prisma__BenefitsClient<$Result.GetResult<Prisma.$BenefitsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Benefits that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BenefitsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Benefits
+     * const benefits = await prisma.benefits.findMany()
+     * 
+     * // Get first 10 Benefits
+     * const benefits = await prisma.benefits.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const benefitsWithIdOnly = await prisma.benefits.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BenefitsFindManyArgs>(args?: SelectSubset<T, BenefitsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BenefitsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Benefits.
+     * @param {BenefitsCreateArgs} args - Arguments to create a Benefits.
+     * @example
+     * // Create one Benefits
+     * const Benefits = await prisma.benefits.create({
+     *   data: {
+     *     // ... data to create a Benefits
+     *   }
+     * })
+     * 
+     */
+    create<T extends BenefitsCreateArgs>(args: SelectSubset<T, BenefitsCreateArgs<ExtArgs>>): Prisma__BenefitsClient<$Result.GetResult<Prisma.$BenefitsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Benefits.
+     * @param {BenefitsCreateManyArgs} args - Arguments to create many Benefits.
+     * @example
+     * // Create many Benefits
+     * const benefits = await prisma.benefits.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BenefitsCreateManyArgs>(args?: SelectSubset<T, BenefitsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Benefits and returns the data saved in the database.
+     * @param {BenefitsCreateManyAndReturnArgs} args - Arguments to create many Benefits.
+     * @example
+     * // Create many Benefits
+     * const benefits = await prisma.benefits.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Benefits and only return the `id`
+     * const benefitsWithIdOnly = await prisma.benefits.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BenefitsCreateManyAndReturnArgs>(args?: SelectSubset<T, BenefitsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BenefitsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Benefits.
+     * @param {BenefitsDeleteArgs} args - Arguments to delete one Benefits.
+     * @example
+     * // Delete one Benefits
+     * const Benefits = await prisma.benefits.delete({
+     *   where: {
+     *     // ... filter to delete one Benefits
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BenefitsDeleteArgs>(args: SelectSubset<T, BenefitsDeleteArgs<ExtArgs>>): Prisma__BenefitsClient<$Result.GetResult<Prisma.$BenefitsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Benefits.
+     * @param {BenefitsUpdateArgs} args - Arguments to update one Benefits.
+     * @example
+     * // Update one Benefits
+     * const benefits = await prisma.benefits.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BenefitsUpdateArgs>(args: SelectSubset<T, BenefitsUpdateArgs<ExtArgs>>): Prisma__BenefitsClient<$Result.GetResult<Prisma.$BenefitsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Benefits.
+     * @param {BenefitsDeleteManyArgs} args - Arguments to filter Benefits to delete.
+     * @example
+     * // Delete a few Benefits
+     * const { count } = await prisma.benefits.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BenefitsDeleteManyArgs>(args?: SelectSubset<T, BenefitsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Benefits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BenefitsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Benefits
+     * const benefits = await prisma.benefits.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BenefitsUpdateManyArgs>(args: SelectSubset<T, BenefitsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Benefits and returns the data updated in the database.
+     * @param {BenefitsUpdateManyAndReturnArgs} args - Arguments to update many Benefits.
+     * @example
+     * // Update many Benefits
+     * const benefits = await prisma.benefits.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Benefits and only return the `id`
+     * const benefitsWithIdOnly = await prisma.benefits.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BenefitsUpdateManyAndReturnArgs>(args: SelectSubset<T, BenefitsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BenefitsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Benefits.
+     * @param {BenefitsUpsertArgs} args - Arguments to update or create a Benefits.
+     * @example
+     * // Update or create a Benefits
+     * const benefits = await prisma.benefits.upsert({
+     *   create: {
+     *     // ... data to create a Benefits
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Benefits we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BenefitsUpsertArgs>(args: SelectSubset<T, BenefitsUpsertArgs<ExtArgs>>): Prisma__BenefitsClient<$Result.GetResult<Prisma.$BenefitsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Benefits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BenefitsCountArgs} args - Arguments to filter Benefits to count.
+     * @example
+     * // Count the number of Benefits
+     * const count = await prisma.benefits.count({
+     *   where: {
+     *     // ... the filter for the Benefits we want to count
+     *   }
+     * })
+    **/
+    count<T extends BenefitsCountArgs>(
+      args?: Subset<T, BenefitsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BenefitsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Benefits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BenefitsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BenefitsAggregateArgs>(args: Subset<T, BenefitsAggregateArgs>): Prisma.PrismaPromise<GetBenefitsAggregateType<T>>
+
+    /**
+     * Group by Benefits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BenefitsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BenefitsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BenefitsGroupByArgs['orderBy'] }
+        : { orderBy?: BenefitsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BenefitsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBenefitsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Benefits model
+   */
+  readonly fields: BenefitsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Benefits.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BenefitsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    applications<T extends Benefits$applicationsArgs<ExtArgs> = {}>(args?: Subset<T, Benefits$applicationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ApplicationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    benefit_requirements<T extends Benefits$benefit_requirementsArgs<ExtArgs> = {}>(args?: Subset<T, Benefits$benefit_requirementsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BenefitRequirementsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Benefits model
+   */
+  interface BenefitsFieldRefs {
+    readonly id: FieldRef<"Benefits", 'Int'>
+    readonly name: FieldRef<"Benefits", 'String'>
+    readonly description: FieldRef<"Benefits", 'String'>
+    readonly tag: FieldRef<"Benefits", 'String'>
+    readonly createdAt: FieldRef<"Benefits", 'DateTime'>
+    readonly updatedAt: FieldRef<"Benefits", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Benefits findUnique
+   */
+  export type BenefitsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Benefits
+     */
+    select?: BenefitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Benefits
+     */
+    omit?: BenefitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BenefitsInclude<ExtArgs> | null
+    /**
+     * Filter, which Benefits to fetch.
+     */
+    where: BenefitsWhereUniqueInput
+  }
+
+  /**
+   * Benefits findUniqueOrThrow
+   */
+  export type BenefitsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Benefits
+     */
+    select?: BenefitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Benefits
+     */
+    omit?: BenefitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BenefitsInclude<ExtArgs> | null
+    /**
+     * Filter, which Benefits to fetch.
+     */
+    where: BenefitsWhereUniqueInput
+  }
+
+  /**
+   * Benefits findFirst
+   */
+  export type BenefitsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Benefits
+     */
+    select?: BenefitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Benefits
+     */
+    omit?: BenefitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BenefitsInclude<ExtArgs> | null
+    /**
+     * Filter, which Benefits to fetch.
+     */
+    where?: BenefitsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Benefits to fetch.
+     */
+    orderBy?: BenefitsOrderByWithRelationInput | BenefitsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Benefits.
+     */
+    cursor?: BenefitsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Benefits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Benefits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Benefits.
+     */
+    distinct?: BenefitsScalarFieldEnum | BenefitsScalarFieldEnum[]
+  }
+
+  /**
+   * Benefits findFirstOrThrow
+   */
+  export type BenefitsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Benefits
+     */
+    select?: BenefitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Benefits
+     */
+    omit?: BenefitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BenefitsInclude<ExtArgs> | null
+    /**
+     * Filter, which Benefits to fetch.
+     */
+    where?: BenefitsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Benefits to fetch.
+     */
+    orderBy?: BenefitsOrderByWithRelationInput | BenefitsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Benefits.
+     */
+    cursor?: BenefitsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Benefits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Benefits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Benefits.
+     */
+    distinct?: BenefitsScalarFieldEnum | BenefitsScalarFieldEnum[]
+  }
+
+  /**
+   * Benefits findMany
+   */
+  export type BenefitsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Benefits
+     */
+    select?: BenefitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Benefits
+     */
+    omit?: BenefitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BenefitsInclude<ExtArgs> | null
+    /**
+     * Filter, which Benefits to fetch.
+     */
+    where?: BenefitsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Benefits to fetch.
+     */
+    orderBy?: BenefitsOrderByWithRelationInput | BenefitsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Benefits.
+     */
+    cursor?: BenefitsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Benefits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Benefits.
+     */
+    skip?: number
+    distinct?: BenefitsScalarFieldEnum | BenefitsScalarFieldEnum[]
+  }
+
+  /**
+   * Benefits create
+   */
+  export type BenefitsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Benefits
+     */
+    select?: BenefitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Benefits
+     */
+    omit?: BenefitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BenefitsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Benefits.
+     */
+    data: XOR<BenefitsCreateInput, BenefitsUncheckedCreateInput>
+  }
+
+  /**
+   * Benefits createMany
+   */
+  export type BenefitsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Benefits.
+     */
+    data: BenefitsCreateManyInput | BenefitsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Benefits createManyAndReturn
+   */
+  export type BenefitsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Benefits
+     */
+    select?: BenefitsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Benefits
+     */
+    omit?: BenefitsOmit<ExtArgs> | null
+    /**
+     * The data used to create many Benefits.
+     */
+    data: BenefitsCreateManyInput | BenefitsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Benefits update
+   */
+  export type BenefitsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Benefits
+     */
+    select?: BenefitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Benefits
+     */
+    omit?: BenefitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BenefitsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Benefits.
+     */
+    data: XOR<BenefitsUpdateInput, BenefitsUncheckedUpdateInput>
+    /**
+     * Choose, which Benefits to update.
+     */
+    where: BenefitsWhereUniqueInput
+  }
+
+  /**
+   * Benefits updateMany
+   */
+  export type BenefitsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Benefits.
+     */
+    data: XOR<BenefitsUpdateManyMutationInput, BenefitsUncheckedUpdateManyInput>
+    /**
+     * Filter which Benefits to update
+     */
+    where?: BenefitsWhereInput
+    /**
+     * Limit how many Benefits to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Benefits updateManyAndReturn
+   */
+  export type BenefitsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Benefits
+     */
+    select?: BenefitsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Benefits
+     */
+    omit?: BenefitsOmit<ExtArgs> | null
+    /**
+     * The data used to update Benefits.
+     */
+    data: XOR<BenefitsUpdateManyMutationInput, BenefitsUncheckedUpdateManyInput>
+    /**
+     * Filter which Benefits to update
+     */
+    where?: BenefitsWhereInput
+    /**
+     * Limit how many Benefits to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Benefits upsert
+   */
+  export type BenefitsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Benefits
+     */
+    select?: BenefitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Benefits
+     */
+    omit?: BenefitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BenefitsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Benefits to update in case it exists.
+     */
+    where: BenefitsWhereUniqueInput
+    /**
+     * In case the Benefits found by the `where` argument doesn't exist, create a new Benefits with this data.
+     */
+    create: XOR<BenefitsCreateInput, BenefitsUncheckedCreateInput>
+    /**
+     * In case the Benefits was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BenefitsUpdateInput, BenefitsUncheckedUpdateInput>
+  }
+
+  /**
+   * Benefits delete
+   */
+  export type BenefitsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Benefits
+     */
+    select?: BenefitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Benefits
+     */
+    omit?: BenefitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BenefitsInclude<ExtArgs> | null
+    /**
+     * Filter which Benefits to delete.
+     */
+    where: BenefitsWhereUniqueInput
+  }
+
+  /**
+   * Benefits deleteMany
+   */
+  export type BenefitsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Benefits to delete
+     */
+    where?: BenefitsWhereInput
+    /**
+     * Limit how many Benefits to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Benefits.applications
+   */
+  export type Benefits$applicationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Applications
+     */
+    select?: ApplicationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Applications
+     */
+    omit?: ApplicationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ApplicationsInclude<ExtArgs> | null
+    where?: ApplicationsWhereInput
+    orderBy?: ApplicationsOrderByWithRelationInput | ApplicationsOrderByWithRelationInput[]
+    cursor?: ApplicationsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ApplicationsScalarFieldEnum | ApplicationsScalarFieldEnum[]
+  }
+
+  /**
+   * Benefits.benefit_requirements
+   */
+  export type Benefits$benefit_requirementsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BenefitRequirements
+     */
+    select?: BenefitRequirementsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BenefitRequirements
+     */
+    omit?: BenefitRequirementsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BenefitRequirementsInclude<ExtArgs> | null
+    where?: BenefitRequirementsWhereInput
+    orderBy?: BenefitRequirementsOrderByWithRelationInput | BenefitRequirementsOrderByWithRelationInput[]
+    cursor?: BenefitRequirementsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BenefitRequirementsScalarFieldEnum | BenefitRequirementsScalarFieldEnum[]
+  }
+
+  /**
+   * Benefits without action
+   */
+  export type BenefitsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Benefits
+     */
+    select?: BenefitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Benefits
+     */
+    omit?: BenefitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BenefitsInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model BenefitRequirements
+   */
+
+  export type AggregateBenefitRequirements = {
+    _count: BenefitRequirementsCountAggregateOutputType | null
+    _avg: BenefitRequirementsAvgAggregateOutputType | null
+    _sum: BenefitRequirementsSumAggregateOutputType | null
+    _min: BenefitRequirementsMinAggregateOutputType | null
+    _max: BenefitRequirementsMaxAggregateOutputType | null
+  }
+
+  export type BenefitRequirementsAvgAggregateOutputType = {
+    id: number | null
+    benefit_id: number | null
+  }
+
+  export type BenefitRequirementsSumAggregateOutputType = {
+    id: number | null
+    benefit_id: number | null
+  }
+
+  export type BenefitRequirementsMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    benefit_id: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BenefitRequirementsMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    benefit_id: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BenefitRequirementsCountAggregateOutputType = {
+    id: number
+    name: number
+    benefit_id: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type BenefitRequirementsAvgAggregateInputType = {
+    id?: true
+    benefit_id?: true
+  }
+
+  export type BenefitRequirementsSumAggregateInputType = {
+    id?: true
+    benefit_id?: true
+  }
+
+  export type BenefitRequirementsMinAggregateInputType = {
+    id?: true
+    name?: true
+    benefit_id?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BenefitRequirementsMaxAggregateInputType = {
+    id?: true
+    name?: true
+    benefit_id?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BenefitRequirementsCountAggregateInputType = {
+    id?: true
+    name?: true
+    benefit_id?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type BenefitRequirementsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BenefitRequirements to aggregate.
+     */
+    where?: BenefitRequirementsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BenefitRequirements to fetch.
+     */
+    orderBy?: BenefitRequirementsOrderByWithRelationInput | BenefitRequirementsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BenefitRequirementsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BenefitRequirements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BenefitRequirements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BenefitRequirements
+    **/
+    _count?: true | BenefitRequirementsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BenefitRequirementsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BenefitRequirementsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BenefitRequirementsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BenefitRequirementsMaxAggregateInputType
+  }
+
+  export type GetBenefitRequirementsAggregateType<T extends BenefitRequirementsAggregateArgs> = {
+        [P in keyof T & keyof AggregateBenefitRequirements]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBenefitRequirements[P]>
+      : GetScalarType<T[P], AggregateBenefitRequirements[P]>
+  }
+
+
+
+
+  export type BenefitRequirementsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BenefitRequirementsWhereInput
+    orderBy?: BenefitRequirementsOrderByWithAggregationInput | BenefitRequirementsOrderByWithAggregationInput[]
+    by: BenefitRequirementsScalarFieldEnum[] | BenefitRequirementsScalarFieldEnum
+    having?: BenefitRequirementsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BenefitRequirementsCountAggregateInputType | true
+    _avg?: BenefitRequirementsAvgAggregateInputType
+    _sum?: BenefitRequirementsSumAggregateInputType
+    _min?: BenefitRequirementsMinAggregateInputType
+    _max?: BenefitRequirementsMaxAggregateInputType
+  }
+
+  export type BenefitRequirementsGroupByOutputType = {
+    id: number
+    name: string
+    benefit_id: number
+    createdAt: Date
+    updatedAt: Date
+    _count: BenefitRequirementsCountAggregateOutputType | null
+    _avg: BenefitRequirementsAvgAggregateOutputType | null
+    _sum: BenefitRequirementsSumAggregateOutputType | null
+    _min: BenefitRequirementsMinAggregateOutputType | null
+    _max: BenefitRequirementsMaxAggregateOutputType | null
+  }
+
+  type GetBenefitRequirementsGroupByPayload<T extends BenefitRequirementsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BenefitRequirementsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BenefitRequirementsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BenefitRequirementsGroupByOutputType[P]>
+            : GetScalarType<T[P], BenefitRequirementsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BenefitRequirementsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    benefit_id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    benefit?: boolean | BenefitsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["benefitRequirements"]>
+
+  export type BenefitRequirementsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    benefit_id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    benefit?: boolean | BenefitsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["benefitRequirements"]>
+
+  export type BenefitRequirementsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    benefit_id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    benefit?: boolean | BenefitsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["benefitRequirements"]>
+
+  export type BenefitRequirementsSelectScalar = {
+    id?: boolean
+    name?: boolean
+    benefit_id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type BenefitRequirementsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "benefit_id" | "createdAt" | "updatedAt", ExtArgs["result"]["benefitRequirements"]>
+  export type BenefitRequirementsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    benefit?: boolean | BenefitsDefaultArgs<ExtArgs>
+  }
+  export type BenefitRequirementsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    benefit?: boolean | BenefitsDefaultArgs<ExtArgs>
+  }
+  export type BenefitRequirementsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    benefit?: boolean | BenefitsDefaultArgs<ExtArgs>
+  }
+
+  export type $BenefitRequirementsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BenefitRequirements"
+    objects: {
+      benefit: Prisma.$BenefitsPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      benefit_id: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["benefitRequirements"]>
+    composites: {}
+  }
+
+  type BenefitRequirementsGetPayload<S extends boolean | null | undefined | BenefitRequirementsDefaultArgs> = $Result.GetResult<Prisma.$BenefitRequirementsPayload, S>
+
+  type BenefitRequirementsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BenefitRequirementsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BenefitRequirementsCountAggregateInputType | true
+    }
+
+  export interface BenefitRequirementsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BenefitRequirements'], meta: { name: 'BenefitRequirements' } }
+    /**
+     * Find zero or one BenefitRequirements that matches the filter.
+     * @param {BenefitRequirementsFindUniqueArgs} args - Arguments to find a BenefitRequirements
+     * @example
+     * // Get one BenefitRequirements
+     * const benefitRequirements = await prisma.benefitRequirements.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BenefitRequirementsFindUniqueArgs>(args: SelectSubset<T, BenefitRequirementsFindUniqueArgs<ExtArgs>>): Prisma__BenefitRequirementsClient<$Result.GetResult<Prisma.$BenefitRequirementsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one BenefitRequirements that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BenefitRequirementsFindUniqueOrThrowArgs} args - Arguments to find a BenefitRequirements
+     * @example
+     * // Get one BenefitRequirements
+     * const benefitRequirements = await prisma.benefitRequirements.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BenefitRequirementsFindUniqueOrThrowArgs>(args: SelectSubset<T, BenefitRequirementsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BenefitRequirementsClient<$Result.GetResult<Prisma.$BenefitRequirementsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BenefitRequirements that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BenefitRequirementsFindFirstArgs} args - Arguments to find a BenefitRequirements
+     * @example
+     * // Get one BenefitRequirements
+     * const benefitRequirements = await prisma.benefitRequirements.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BenefitRequirementsFindFirstArgs>(args?: SelectSubset<T, BenefitRequirementsFindFirstArgs<ExtArgs>>): Prisma__BenefitRequirementsClient<$Result.GetResult<Prisma.$BenefitRequirementsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BenefitRequirements that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BenefitRequirementsFindFirstOrThrowArgs} args - Arguments to find a BenefitRequirements
+     * @example
+     * // Get one BenefitRequirements
+     * const benefitRequirements = await prisma.benefitRequirements.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BenefitRequirementsFindFirstOrThrowArgs>(args?: SelectSubset<T, BenefitRequirementsFindFirstOrThrowArgs<ExtArgs>>): Prisma__BenefitRequirementsClient<$Result.GetResult<Prisma.$BenefitRequirementsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more BenefitRequirements that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BenefitRequirementsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BenefitRequirements
+     * const benefitRequirements = await prisma.benefitRequirements.findMany()
+     * 
+     * // Get first 10 BenefitRequirements
+     * const benefitRequirements = await prisma.benefitRequirements.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const benefitRequirementsWithIdOnly = await prisma.benefitRequirements.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BenefitRequirementsFindManyArgs>(args?: SelectSubset<T, BenefitRequirementsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BenefitRequirementsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a BenefitRequirements.
+     * @param {BenefitRequirementsCreateArgs} args - Arguments to create a BenefitRequirements.
+     * @example
+     * // Create one BenefitRequirements
+     * const BenefitRequirements = await prisma.benefitRequirements.create({
+     *   data: {
+     *     // ... data to create a BenefitRequirements
+     *   }
+     * })
+     * 
+     */
+    create<T extends BenefitRequirementsCreateArgs>(args: SelectSubset<T, BenefitRequirementsCreateArgs<ExtArgs>>): Prisma__BenefitRequirementsClient<$Result.GetResult<Prisma.$BenefitRequirementsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many BenefitRequirements.
+     * @param {BenefitRequirementsCreateManyArgs} args - Arguments to create many BenefitRequirements.
+     * @example
+     * // Create many BenefitRequirements
+     * const benefitRequirements = await prisma.benefitRequirements.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BenefitRequirementsCreateManyArgs>(args?: SelectSubset<T, BenefitRequirementsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many BenefitRequirements and returns the data saved in the database.
+     * @param {BenefitRequirementsCreateManyAndReturnArgs} args - Arguments to create many BenefitRequirements.
+     * @example
+     * // Create many BenefitRequirements
+     * const benefitRequirements = await prisma.benefitRequirements.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many BenefitRequirements and only return the `id`
+     * const benefitRequirementsWithIdOnly = await prisma.benefitRequirements.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BenefitRequirementsCreateManyAndReturnArgs>(args?: SelectSubset<T, BenefitRequirementsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BenefitRequirementsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a BenefitRequirements.
+     * @param {BenefitRequirementsDeleteArgs} args - Arguments to delete one BenefitRequirements.
+     * @example
+     * // Delete one BenefitRequirements
+     * const BenefitRequirements = await prisma.benefitRequirements.delete({
+     *   where: {
+     *     // ... filter to delete one BenefitRequirements
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BenefitRequirementsDeleteArgs>(args: SelectSubset<T, BenefitRequirementsDeleteArgs<ExtArgs>>): Prisma__BenefitRequirementsClient<$Result.GetResult<Prisma.$BenefitRequirementsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one BenefitRequirements.
+     * @param {BenefitRequirementsUpdateArgs} args - Arguments to update one BenefitRequirements.
+     * @example
+     * // Update one BenefitRequirements
+     * const benefitRequirements = await prisma.benefitRequirements.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BenefitRequirementsUpdateArgs>(args: SelectSubset<T, BenefitRequirementsUpdateArgs<ExtArgs>>): Prisma__BenefitRequirementsClient<$Result.GetResult<Prisma.$BenefitRequirementsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more BenefitRequirements.
+     * @param {BenefitRequirementsDeleteManyArgs} args - Arguments to filter BenefitRequirements to delete.
+     * @example
+     * // Delete a few BenefitRequirements
+     * const { count } = await prisma.benefitRequirements.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BenefitRequirementsDeleteManyArgs>(args?: SelectSubset<T, BenefitRequirementsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BenefitRequirements.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BenefitRequirementsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BenefitRequirements
+     * const benefitRequirements = await prisma.benefitRequirements.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BenefitRequirementsUpdateManyArgs>(args: SelectSubset<T, BenefitRequirementsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BenefitRequirements and returns the data updated in the database.
+     * @param {BenefitRequirementsUpdateManyAndReturnArgs} args - Arguments to update many BenefitRequirements.
+     * @example
+     * // Update many BenefitRequirements
+     * const benefitRequirements = await prisma.benefitRequirements.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more BenefitRequirements and only return the `id`
+     * const benefitRequirementsWithIdOnly = await prisma.benefitRequirements.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BenefitRequirementsUpdateManyAndReturnArgs>(args: SelectSubset<T, BenefitRequirementsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BenefitRequirementsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one BenefitRequirements.
+     * @param {BenefitRequirementsUpsertArgs} args - Arguments to update or create a BenefitRequirements.
+     * @example
+     * // Update or create a BenefitRequirements
+     * const benefitRequirements = await prisma.benefitRequirements.upsert({
+     *   create: {
+     *     // ... data to create a BenefitRequirements
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BenefitRequirements we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BenefitRequirementsUpsertArgs>(args: SelectSubset<T, BenefitRequirementsUpsertArgs<ExtArgs>>): Prisma__BenefitRequirementsClient<$Result.GetResult<Prisma.$BenefitRequirementsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of BenefitRequirements.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BenefitRequirementsCountArgs} args - Arguments to filter BenefitRequirements to count.
+     * @example
+     * // Count the number of BenefitRequirements
+     * const count = await prisma.benefitRequirements.count({
+     *   where: {
+     *     // ... the filter for the BenefitRequirements we want to count
+     *   }
+     * })
+    **/
+    count<T extends BenefitRequirementsCountArgs>(
+      args?: Subset<T, BenefitRequirementsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BenefitRequirementsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BenefitRequirements.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BenefitRequirementsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BenefitRequirementsAggregateArgs>(args: Subset<T, BenefitRequirementsAggregateArgs>): Prisma.PrismaPromise<GetBenefitRequirementsAggregateType<T>>
+
+    /**
+     * Group by BenefitRequirements.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BenefitRequirementsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BenefitRequirementsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BenefitRequirementsGroupByArgs['orderBy'] }
+        : { orderBy?: BenefitRequirementsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BenefitRequirementsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBenefitRequirementsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BenefitRequirements model
+   */
+  readonly fields: BenefitRequirementsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BenefitRequirements.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BenefitRequirementsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    benefit<T extends BenefitsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BenefitsDefaultArgs<ExtArgs>>): Prisma__BenefitsClient<$Result.GetResult<Prisma.$BenefitsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the BenefitRequirements model
+   */
+  interface BenefitRequirementsFieldRefs {
+    readonly id: FieldRef<"BenefitRequirements", 'Int'>
+    readonly name: FieldRef<"BenefitRequirements", 'String'>
+    readonly benefit_id: FieldRef<"BenefitRequirements", 'Int'>
+    readonly createdAt: FieldRef<"BenefitRequirements", 'DateTime'>
+    readonly updatedAt: FieldRef<"BenefitRequirements", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * BenefitRequirements findUnique
+   */
+  export type BenefitRequirementsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BenefitRequirements
+     */
+    select?: BenefitRequirementsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BenefitRequirements
+     */
+    omit?: BenefitRequirementsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BenefitRequirementsInclude<ExtArgs> | null
+    /**
+     * Filter, which BenefitRequirements to fetch.
+     */
+    where: BenefitRequirementsWhereUniqueInput
+  }
+
+  /**
+   * BenefitRequirements findUniqueOrThrow
+   */
+  export type BenefitRequirementsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BenefitRequirements
+     */
+    select?: BenefitRequirementsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BenefitRequirements
+     */
+    omit?: BenefitRequirementsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BenefitRequirementsInclude<ExtArgs> | null
+    /**
+     * Filter, which BenefitRequirements to fetch.
+     */
+    where: BenefitRequirementsWhereUniqueInput
+  }
+
+  /**
+   * BenefitRequirements findFirst
+   */
+  export type BenefitRequirementsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BenefitRequirements
+     */
+    select?: BenefitRequirementsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BenefitRequirements
+     */
+    omit?: BenefitRequirementsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BenefitRequirementsInclude<ExtArgs> | null
+    /**
+     * Filter, which BenefitRequirements to fetch.
+     */
+    where?: BenefitRequirementsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BenefitRequirements to fetch.
+     */
+    orderBy?: BenefitRequirementsOrderByWithRelationInput | BenefitRequirementsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BenefitRequirements.
+     */
+    cursor?: BenefitRequirementsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BenefitRequirements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BenefitRequirements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BenefitRequirements.
+     */
+    distinct?: BenefitRequirementsScalarFieldEnum | BenefitRequirementsScalarFieldEnum[]
+  }
+
+  /**
+   * BenefitRequirements findFirstOrThrow
+   */
+  export type BenefitRequirementsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BenefitRequirements
+     */
+    select?: BenefitRequirementsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BenefitRequirements
+     */
+    omit?: BenefitRequirementsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BenefitRequirementsInclude<ExtArgs> | null
+    /**
+     * Filter, which BenefitRequirements to fetch.
+     */
+    where?: BenefitRequirementsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BenefitRequirements to fetch.
+     */
+    orderBy?: BenefitRequirementsOrderByWithRelationInput | BenefitRequirementsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BenefitRequirements.
+     */
+    cursor?: BenefitRequirementsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BenefitRequirements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BenefitRequirements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BenefitRequirements.
+     */
+    distinct?: BenefitRequirementsScalarFieldEnum | BenefitRequirementsScalarFieldEnum[]
+  }
+
+  /**
+   * BenefitRequirements findMany
+   */
+  export type BenefitRequirementsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BenefitRequirements
+     */
+    select?: BenefitRequirementsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BenefitRequirements
+     */
+    omit?: BenefitRequirementsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BenefitRequirementsInclude<ExtArgs> | null
+    /**
+     * Filter, which BenefitRequirements to fetch.
+     */
+    where?: BenefitRequirementsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BenefitRequirements to fetch.
+     */
+    orderBy?: BenefitRequirementsOrderByWithRelationInput | BenefitRequirementsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BenefitRequirements.
+     */
+    cursor?: BenefitRequirementsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BenefitRequirements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BenefitRequirements.
+     */
+    skip?: number
+    distinct?: BenefitRequirementsScalarFieldEnum | BenefitRequirementsScalarFieldEnum[]
+  }
+
+  /**
+   * BenefitRequirements create
+   */
+  export type BenefitRequirementsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BenefitRequirements
+     */
+    select?: BenefitRequirementsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BenefitRequirements
+     */
+    omit?: BenefitRequirementsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BenefitRequirementsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a BenefitRequirements.
+     */
+    data: XOR<BenefitRequirementsCreateInput, BenefitRequirementsUncheckedCreateInput>
+  }
+
+  /**
+   * BenefitRequirements createMany
+   */
+  export type BenefitRequirementsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BenefitRequirements.
+     */
+    data: BenefitRequirementsCreateManyInput | BenefitRequirementsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BenefitRequirements createManyAndReturn
+   */
+  export type BenefitRequirementsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BenefitRequirements
+     */
+    select?: BenefitRequirementsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BenefitRequirements
+     */
+    omit?: BenefitRequirementsOmit<ExtArgs> | null
+    /**
+     * The data used to create many BenefitRequirements.
+     */
+    data: BenefitRequirementsCreateManyInput | BenefitRequirementsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BenefitRequirementsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BenefitRequirements update
+   */
+  export type BenefitRequirementsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BenefitRequirements
+     */
+    select?: BenefitRequirementsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BenefitRequirements
+     */
+    omit?: BenefitRequirementsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BenefitRequirementsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a BenefitRequirements.
+     */
+    data: XOR<BenefitRequirementsUpdateInput, BenefitRequirementsUncheckedUpdateInput>
+    /**
+     * Choose, which BenefitRequirements to update.
+     */
+    where: BenefitRequirementsWhereUniqueInput
+  }
+
+  /**
+   * BenefitRequirements updateMany
+   */
+  export type BenefitRequirementsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BenefitRequirements.
+     */
+    data: XOR<BenefitRequirementsUpdateManyMutationInput, BenefitRequirementsUncheckedUpdateManyInput>
+    /**
+     * Filter which BenefitRequirements to update
+     */
+    where?: BenefitRequirementsWhereInput
+    /**
+     * Limit how many BenefitRequirements to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BenefitRequirements updateManyAndReturn
+   */
+  export type BenefitRequirementsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BenefitRequirements
+     */
+    select?: BenefitRequirementsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BenefitRequirements
+     */
+    omit?: BenefitRequirementsOmit<ExtArgs> | null
+    /**
+     * The data used to update BenefitRequirements.
+     */
+    data: XOR<BenefitRequirementsUpdateManyMutationInput, BenefitRequirementsUncheckedUpdateManyInput>
+    /**
+     * Filter which BenefitRequirements to update
+     */
+    where?: BenefitRequirementsWhereInput
+    /**
+     * Limit how many BenefitRequirements to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BenefitRequirementsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BenefitRequirements upsert
+   */
+  export type BenefitRequirementsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BenefitRequirements
+     */
+    select?: BenefitRequirementsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BenefitRequirements
+     */
+    omit?: BenefitRequirementsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BenefitRequirementsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the BenefitRequirements to update in case it exists.
+     */
+    where: BenefitRequirementsWhereUniqueInput
+    /**
+     * In case the BenefitRequirements found by the `where` argument doesn't exist, create a new BenefitRequirements with this data.
+     */
+    create: XOR<BenefitRequirementsCreateInput, BenefitRequirementsUncheckedCreateInput>
+    /**
+     * In case the BenefitRequirements was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BenefitRequirementsUpdateInput, BenefitRequirementsUncheckedUpdateInput>
+  }
+
+  /**
+   * BenefitRequirements delete
+   */
+  export type BenefitRequirementsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BenefitRequirements
+     */
+    select?: BenefitRequirementsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BenefitRequirements
+     */
+    omit?: BenefitRequirementsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BenefitRequirementsInclude<ExtArgs> | null
+    /**
+     * Filter which BenefitRequirements to delete.
+     */
+    where: BenefitRequirementsWhereUniqueInput
+  }
+
+  /**
+   * BenefitRequirements deleteMany
+   */
+  export type BenefitRequirementsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BenefitRequirements to delete
+     */
+    where?: BenefitRequirementsWhereInput
+    /**
+     * Limit how many BenefitRequirements to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * BenefitRequirements without action
+   */
+  export type BenefitRequirementsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BenefitRequirements
+     */
+    select?: BenefitRequirementsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BenefitRequirements
+     */
+    omit?: BenefitRequirementsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BenefitRequirementsInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Applications
+   */
+
+  export type AggregateApplications = {
+    _count: ApplicationsCountAggregateOutputType | null
+    _avg: ApplicationsAvgAggregateOutputType | null
+    _sum: ApplicationsSumAggregateOutputType | null
+    _min: ApplicationsMinAggregateOutputType | null
+    _max: ApplicationsMaxAggregateOutputType | null
+  }
+
+  export type ApplicationsAvgAggregateOutputType = {
+    id: number | null
+    benefit_id: number | null
+    senior_id: number | null
+    status_id: number | null
+    category_id: number | null
+  }
+
+  export type ApplicationsSumAggregateOutputType = {
+    id: number | null
+    benefit_id: number | null
+    senior_id: number | null
+    status_id: number | null
+    category_id: number | null
+  }
+
+  export type ApplicationsMinAggregateOutputType = {
+    id: number | null
+    benefit_id: number | null
+    senior_id: number | null
+    status_id: number | null
+    category_id: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ApplicationsMaxAggregateOutputType = {
+    id: number | null
+    benefit_id: number | null
+    senior_id: number | null
+    status_id: number | null
+    category_id: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ApplicationsCountAggregateOutputType = {
+    id: number
+    benefit_id: number
+    senior_id: number
+    status_id: number
+    category_id: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ApplicationsAvgAggregateInputType = {
+    id?: true
+    benefit_id?: true
+    senior_id?: true
+    status_id?: true
+    category_id?: true
+  }
+
+  export type ApplicationsSumAggregateInputType = {
+    id?: true
+    benefit_id?: true
+    senior_id?: true
+    status_id?: true
+    category_id?: true
+  }
+
+  export type ApplicationsMinAggregateInputType = {
+    id?: true
+    benefit_id?: true
+    senior_id?: true
+    status_id?: true
+    category_id?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ApplicationsMaxAggregateInputType = {
+    id?: true
+    benefit_id?: true
+    senior_id?: true
+    status_id?: true
+    category_id?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ApplicationsCountAggregateInputType = {
+    id?: true
+    benefit_id?: true
+    senior_id?: true
+    status_id?: true
+    category_id?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ApplicationsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Applications to aggregate.
+     */
+    where?: ApplicationsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Applications to fetch.
+     */
+    orderBy?: ApplicationsOrderByWithRelationInput | ApplicationsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ApplicationsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Applications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Applications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Applications
+    **/
+    _count?: true | ApplicationsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ApplicationsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ApplicationsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ApplicationsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ApplicationsMaxAggregateInputType
+  }
+
+  export type GetApplicationsAggregateType<T extends ApplicationsAggregateArgs> = {
+        [P in keyof T & keyof AggregateApplications]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateApplications[P]>
+      : GetScalarType<T[P], AggregateApplications[P]>
+  }
+
+
+
+
+  export type ApplicationsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ApplicationsWhereInput
+    orderBy?: ApplicationsOrderByWithAggregationInput | ApplicationsOrderByWithAggregationInput[]
+    by: ApplicationsScalarFieldEnum[] | ApplicationsScalarFieldEnum
+    having?: ApplicationsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ApplicationsCountAggregateInputType | true
+    _avg?: ApplicationsAvgAggregateInputType
+    _sum?: ApplicationsSumAggregateInputType
+    _min?: ApplicationsMinAggregateInputType
+    _max?: ApplicationsMaxAggregateInputType
+  }
+
+  export type ApplicationsGroupByOutputType = {
+    id: number
+    benefit_id: number
+    senior_id: number
+    status_id: number
+    category_id: number | null
+    createdAt: Date
+    updatedAt: Date
+    _count: ApplicationsCountAggregateOutputType | null
+    _avg: ApplicationsAvgAggregateOutputType | null
+    _sum: ApplicationsSumAggregateOutputType | null
+    _min: ApplicationsMinAggregateOutputType | null
+    _max: ApplicationsMaxAggregateOutputType | null
+  }
+
+  type GetApplicationsGroupByPayload<T extends ApplicationsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ApplicationsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ApplicationsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ApplicationsGroupByOutputType[P]>
+            : GetScalarType<T[P], ApplicationsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ApplicationsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    benefit_id?: boolean
+    senior_id?: boolean
+    status_id?: boolean
+    category_id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    senior?: boolean | SeniorDefaultArgs<ExtArgs>
+    benefit?: boolean | BenefitsDefaultArgs<ExtArgs>
+    status?: boolean | StatusDefaultArgs<ExtArgs>
+    category?: boolean | Applications$categoryArgs<ExtArgs>
+  }, ExtArgs["result"]["applications"]>
+
+  export type ApplicationsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    benefit_id?: boolean
+    senior_id?: boolean
+    status_id?: boolean
+    category_id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    senior?: boolean | SeniorDefaultArgs<ExtArgs>
+    benefit?: boolean | BenefitsDefaultArgs<ExtArgs>
+    status?: boolean | StatusDefaultArgs<ExtArgs>
+    category?: boolean | Applications$categoryArgs<ExtArgs>
+  }, ExtArgs["result"]["applications"]>
+
+  export type ApplicationsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    benefit_id?: boolean
+    senior_id?: boolean
+    status_id?: boolean
+    category_id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    senior?: boolean | SeniorDefaultArgs<ExtArgs>
+    benefit?: boolean | BenefitsDefaultArgs<ExtArgs>
+    status?: boolean | StatusDefaultArgs<ExtArgs>
+    category?: boolean | Applications$categoryArgs<ExtArgs>
+  }, ExtArgs["result"]["applications"]>
+
+  export type ApplicationsSelectScalar = {
+    id?: boolean
+    benefit_id?: boolean
+    senior_id?: boolean
+    status_id?: boolean
+    category_id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ApplicationsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "benefit_id" | "senior_id" | "status_id" | "category_id" | "createdAt" | "updatedAt", ExtArgs["result"]["applications"]>
+  export type ApplicationsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    senior?: boolean | SeniorDefaultArgs<ExtArgs>
+    benefit?: boolean | BenefitsDefaultArgs<ExtArgs>
+    status?: boolean | StatusDefaultArgs<ExtArgs>
+    category?: boolean | Applications$categoryArgs<ExtArgs>
+  }
+  export type ApplicationsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    senior?: boolean | SeniorDefaultArgs<ExtArgs>
+    benefit?: boolean | BenefitsDefaultArgs<ExtArgs>
+    status?: boolean | StatusDefaultArgs<ExtArgs>
+    category?: boolean | Applications$categoryArgs<ExtArgs>
+  }
+  export type ApplicationsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    senior?: boolean | SeniorDefaultArgs<ExtArgs>
+    benefit?: boolean | BenefitsDefaultArgs<ExtArgs>
+    status?: boolean | StatusDefaultArgs<ExtArgs>
+    category?: boolean | Applications$categoryArgs<ExtArgs>
+  }
+
+  export type $ApplicationsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Applications"
+    objects: {
+      senior: Prisma.$SeniorPayload<ExtArgs>
+      benefit: Prisma.$BenefitsPayload<ExtArgs>
+      status: Prisma.$StatusPayload<ExtArgs>
+      category: Prisma.$SeniorCategoryPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      benefit_id: number
+      senior_id: number
+      status_id: number
+      category_id: number | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["applications"]>
+    composites: {}
+  }
+
+  type ApplicationsGetPayload<S extends boolean | null | undefined | ApplicationsDefaultArgs> = $Result.GetResult<Prisma.$ApplicationsPayload, S>
+
+  type ApplicationsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ApplicationsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ApplicationsCountAggregateInputType | true
+    }
+
+  export interface ApplicationsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Applications'], meta: { name: 'Applications' } }
+    /**
+     * Find zero or one Applications that matches the filter.
+     * @param {ApplicationsFindUniqueArgs} args - Arguments to find a Applications
+     * @example
+     * // Get one Applications
+     * const applications = await prisma.applications.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ApplicationsFindUniqueArgs>(args: SelectSubset<T, ApplicationsFindUniqueArgs<ExtArgs>>): Prisma__ApplicationsClient<$Result.GetResult<Prisma.$ApplicationsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Applications that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ApplicationsFindUniqueOrThrowArgs} args - Arguments to find a Applications
+     * @example
+     * // Get one Applications
+     * const applications = await prisma.applications.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ApplicationsFindUniqueOrThrowArgs>(args: SelectSubset<T, ApplicationsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ApplicationsClient<$Result.GetResult<Prisma.$ApplicationsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Applications that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ApplicationsFindFirstArgs} args - Arguments to find a Applications
+     * @example
+     * // Get one Applications
+     * const applications = await prisma.applications.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ApplicationsFindFirstArgs>(args?: SelectSubset<T, ApplicationsFindFirstArgs<ExtArgs>>): Prisma__ApplicationsClient<$Result.GetResult<Prisma.$ApplicationsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Applications that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ApplicationsFindFirstOrThrowArgs} args - Arguments to find a Applications
+     * @example
+     * // Get one Applications
+     * const applications = await prisma.applications.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ApplicationsFindFirstOrThrowArgs>(args?: SelectSubset<T, ApplicationsFindFirstOrThrowArgs<ExtArgs>>): Prisma__ApplicationsClient<$Result.GetResult<Prisma.$ApplicationsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Applications that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ApplicationsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Applications
+     * const applications = await prisma.applications.findMany()
+     * 
+     * // Get first 10 Applications
+     * const applications = await prisma.applications.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const applicationsWithIdOnly = await prisma.applications.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ApplicationsFindManyArgs>(args?: SelectSubset<T, ApplicationsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ApplicationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Applications.
+     * @param {ApplicationsCreateArgs} args - Arguments to create a Applications.
+     * @example
+     * // Create one Applications
+     * const Applications = await prisma.applications.create({
+     *   data: {
+     *     // ... data to create a Applications
+     *   }
+     * })
+     * 
+     */
+    create<T extends ApplicationsCreateArgs>(args: SelectSubset<T, ApplicationsCreateArgs<ExtArgs>>): Prisma__ApplicationsClient<$Result.GetResult<Prisma.$ApplicationsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Applications.
+     * @param {ApplicationsCreateManyArgs} args - Arguments to create many Applications.
+     * @example
+     * // Create many Applications
+     * const applications = await prisma.applications.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ApplicationsCreateManyArgs>(args?: SelectSubset<T, ApplicationsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Applications and returns the data saved in the database.
+     * @param {ApplicationsCreateManyAndReturnArgs} args - Arguments to create many Applications.
+     * @example
+     * // Create many Applications
+     * const applications = await prisma.applications.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Applications and only return the `id`
+     * const applicationsWithIdOnly = await prisma.applications.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ApplicationsCreateManyAndReturnArgs>(args?: SelectSubset<T, ApplicationsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ApplicationsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Applications.
+     * @param {ApplicationsDeleteArgs} args - Arguments to delete one Applications.
+     * @example
+     * // Delete one Applications
+     * const Applications = await prisma.applications.delete({
+     *   where: {
+     *     // ... filter to delete one Applications
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ApplicationsDeleteArgs>(args: SelectSubset<T, ApplicationsDeleteArgs<ExtArgs>>): Prisma__ApplicationsClient<$Result.GetResult<Prisma.$ApplicationsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Applications.
+     * @param {ApplicationsUpdateArgs} args - Arguments to update one Applications.
+     * @example
+     * // Update one Applications
+     * const applications = await prisma.applications.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ApplicationsUpdateArgs>(args: SelectSubset<T, ApplicationsUpdateArgs<ExtArgs>>): Prisma__ApplicationsClient<$Result.GetResult<Prisma.$ApplicationsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Applications.
+     * @param {ApplicationsDeleteManyArgs} args - Arguments to filter Applications to delete.
+     * @example
+     * // Delete a few Applications
+     * const { count } = await prisma.applications.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ApplicationsDeleteManyArgs>(args?: SelectSubset<T, ApplicationsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Applications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ApplicationsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Applications
+     * const applications = await prisma.applications.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ApplicationsUpdateManyArgs>(args: SelectSubset<T, ApplicationsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Applications and returns the data updated in the database.
+     * @param {ApplicationsUpdateManyAndReturnArgs} args - Arguments to update many Applications.
+     * @example
+     * // Update many Applications
+     * const applications = await prisma.applications.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Applications and only return the `id`
+     * const applicationsWithIdOnly = await prisma.applications.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ApplicationsUpdateManyAndReturnArgs>(args: SelectSubset<T, ApplicationsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ApplicationsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Applications.
+     * @param {ApplicationsUpsertArgs} args - Arguments to update or create a Applications.
+     * @example
+     * // Update or create a Applications
+     * const applications = await prisma.applications.upsert({
+     *   create: {
+     *     // ... data to create a Applications
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Applications we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ApplicationsUpsertArgs>(args: SelectSubset<T, ApplicationsUpsertArgs<ExtArgs>>): Prisma__ApplicationsClient<$Result.GetResult<Prisma.$ApplicationsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Applications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ApplicationsCountArgs} args - Arguments to filter Applications to count.
+     * @example
+     * // Count the number of Applications
+     * const count = await prisma.applications.count({
+     *   where: {
+     *     // ... the filter for the Applications we want to count
+     *   }
+     * })
+    **/
+    count<T extends ApplicationsCountArgs>(
+      args?: Subset<T, ApplicationsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ApplicationsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Applications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ApplicationsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ApplicationsAggregateArgs>(args: Subset<T, ApplicationsAggregateArgs>): Prisma.PrismaPromise<GetApplicationsAggregateType<T>>
+
+    /**
+     * Group by Applications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ApplicationsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ApplicationsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ApplicationsGroupByArgs['orderBy'] }
+        : { orderBy?: ApplicationsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ApplicationsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetApplicationsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Applications model
+   */
+  readonly fields: ApplicationsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Applications.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ApplicationsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    senior<T extends SeniorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SeniorDefaultArgs<ExtArgs>>): Prisma__SeniorClient<$Result.GetResult<Prisma.$SeniorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    benefit<T extends BenefitsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BenefitsDefaultArgs<ExtArgs>>): Prisma__BenefitsClient<$Result.GetResult<Prisma.$BenefitsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    status<T extends StatusDefaultArgs<ExtArgs> = {}>(args?: Subset<T, StatusDefaultArgs<ExtArgs>>): Prisma__StatusClient<$Result.GetResult<Prisma.$StatusPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    category<T extends Applications$categoryArgs<ExtArgs> = {}>(args?: Subset<T, Applications$categoryArgs<ExtArgs>>): Prisma__SeniorCategoryClient<$Result.GetResult<Prisma.$SeniorCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Applications model
+   */
+  interface ApplicationsFieldRefs {
+    readonly id: FieldRef<"Applications", 'Int'>
+    readonly benefit_id: FieldRef<"Applications", 'Int'>
+    readonly senior_id: FieldRef<"Applications", 'Int'>
+    readonly status_id: FieldRef<"Applications", 'Int'>
+    readonly category_id: FieldRef<"Applications", 'Int'>
+    readonly createdAt: FieldRef<"Applications", 'DateTime'>
+    readonly updatedAt: FieldRef<"Applications", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Applications findUnique
+   */
+  export type ApplicationsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Applications
+     */
+    select?: ApplicationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Applications
+     */
+    omit?: ApplicationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ApplicationsInclude<ExtArgs> | null
+    /**
+     * Filter, which Applications to fetch.
+     */
+    where: ApplicationsWhereUniqueInput
+  }
+
+  /**
+   * Applications findUniqueOrThrow
+   */
+  export type ApplicationsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Applications
+     */
+    select?: ApplicationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Applications
+     */
+    omit?: ApplicationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ApplicationsInclude<ExtArgs> | null
+    /**
+     * Filter, which Applications to fetch.
+     */
+    where: ApplicationsWhereUniqueInput
+  }
+
+  /**
+   * Applications findFirst
+   */
+  export type ApplicationsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Applications
+     */
+    select?: ApplicationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Applications
+     */
+    omit?: ApplicationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ApplicationsInclude<ExtArgs> | null
+    /**
+     * Filter, which Applications to fetch.
+     */
+    where?: ApplicationsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Applications to fetch.
+     */
+    orderBy?: ApplicationsOrderByWithRelationInput | ApplicationsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Applications.
+     */
+    cursor?: ApplicationsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Applications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Applications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Applications.
+     */
+    distinct?: ApplicationsScalarFieldEnum | ApplicationsScalarFieldEnum[]
+  }
+
+  /**
+   * Applications findFirstOrThrow
+   */
+  export type ApplicationsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Applications
+     */
+    select?: ApplicationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Applications
+     */
+    omit?: ApplicationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ApplicationsInclude<ExtArgs> | null
+    /**
+     * Filter, which Applications to fetch.
+     */
+    where?: ApplicationsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Applications to fetch.
+     */
+    orderBy?: ApplicationsOrderByWithRelationInput | ApplicationsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Applications.
+     */
+    cursor?: ApplicationsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Applications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Applications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Applications.
+     */
+    distinct?: ApplicationsScalarFieldEnum | ApplicationsScalarFieldEnum[]
+  }
+
+  /**
+   * Applications findMany
+   */
+  export type ApplicationsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Applications
+     */
+    select?: ApplicationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Applications
+     */
+    omit?: ApplicationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ApplicationsInclude<ExtArgs> | null
+    /**
+     * Filter, which Applications to fetch.
+     */
+    where?: ApplicationsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Applications to fetch.
+     */
+    orderBy?: ApplicationsOrderByWithRelationInput | ApplicationsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Applications.
+     */
+    cursor?: ApplicationsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Applications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Applications.
+     */
+    skip?: number
+    distinct?: ApplicationsScalarFieldEnum | ApplicationsScalarFieldEnum[]
+  }
+
+  /**
+   * Applications create
+   */
+  export type ApplicationsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Applications
+     */
+    select?: ApplicationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Applications
+     */
+    omit?: ApplicationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ApplicationsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Applications.
+     */
+    data: XOR<ApplicationsCreateInput, ApplicationsUncheckedCreateInput>
+  }
+
+  /**
+   * Applications createMany
+   */
+  export type ApplicationsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Applications.
+     */
+    data: ApplicationsCreateManyInput | ApplicationsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Applications createManyAndReturn
+   */
+  export type ApplicationsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Applications
+     */
+    select?: ApplicationsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Applications
+     */
+    omit?: ApplicationsOmit<ExtArgs> | null
+    /**
+     * The data used to create many Applications.
+     */
+    data: ApplicationsCreateManyInput | ApplicationsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ApplicationsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Applications update
+   */
+  export type ApplicationsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Applications
+     */
+    select?: ApplicationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Applications
+     */
+    omit?: ApplicationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ApplicationsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Applications.
+     */
+    data: XOR<ApplicationsUpdateInput, ApplicationsUncheckedUpdateInput>
+    /**
+     * Choose, which Applications to update.
+     */
+    where: ApplicationsWhereUniqueInput
+  }
+
+  /**
+   * Applications updateMany
+   */
+  export type ApplicationsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Applications.
+     */
+    data: XOR<ApplicationsUpdateManyMutationInput, ApplicationsUncheckedUpdateManyInput>
+    /**
+     * Filter which Applications to update
+     */
+    where?: ApplicationsWhereInput
+    /**
+     * Limit how many Applications to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Applications updateManyAndReturn
+   */
+  export type ApplicationsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Applications
+     */
+    select?: ApplicationsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Applications
+     */
+    omit?: ApplicationsOmit<ExtArgs> | null
+    /**
+     * The data used to update Applications.
+     */
+    data: XOR<ApplicationsUpdateManyMutationInput, ApplicationsUncheckedUpdateManyInput>
+    /**
+     * Filter which Applications to update
+     */
+    where?: ApplicationsWhereInput
+    /**
+     * Limit how many Applications to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ApplicationsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Applications upsert
+   */
+  export type ApplicationsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Applications
+     */
+    select?: ApplicationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Applications
+     */
+    omit?: ApplicationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ApplicationsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Applications to update in case it exists.
+     */
+    where: ApplicationsWhereUniqueInput
+    /**
+     * In case the Applications found by the `where` argument doesn't exist, create a new Applications with this data.
+     */
+    create: XOR<ApplicationsCreateInput, ApplicationsUncheckedCreateInput>
+    /**
+     * In case the Applications was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ApplicationsUpdateInput, ApplicationsUncheckedUpdateInput>
+  }
+
+  /**
+   * Applications delete
+   */
+  export type ApplicationsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Applications
+     */
+    select?: ApplicationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Applications
+     */
+    omit?: ApplicationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ApplicationsInclude<ExtArgs> | null
+    /**
+     * Filter which Applications to delete.
+     */
+    where: ApplicationsWhereUniqueInput
+  }
+
+  /**
+   * Applications deleteMany
+   */
+  export type ApplicationsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Applications to delete
+     */
+    where?: ApplicationsWhereInput
+    /**
+     * Limit how many Applications to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Applications.category
+   */
+  export type Applications$categoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SeniorCategory
+     */
+    select?: SeniorCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SeniorCategory
+     */
+    omit?: SeniorCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SeniorCategoryInclude<ExtArgs> | null
+    where?: SeniorCategoryWhereInput
+  }
+
+  /**
+   * Applications without action
+   */
+  export type ApplicationsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Applications
+     */
+    select?: ApplicationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Applications
+     */
+    omit?: ApplicationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ApplicationsInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -7031,6 +13225,62 @@ export namespace Prisma {
   };
 
   export type RemarksScalarFieldEnum = (typeof RemarksScalarFieldEnum)[keyof typeof RemarksScalarFieldEnum]
+
+
+  export const SeniorCategoryScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type SeniorCategoryScalarFieldEnum = (typeof SeniorCategoryScalarFieldEnum)[keyof typeof SeniorCategoryScalarFieldEnum]
+
+
+  export const StatusScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type StatusScalarFieldEnum = (typeof StatusScalarFieldEnum)[keyof typeof StatusScalarFieldEnum]
+
+
+  export const BenefitsScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    description: 'description',
+    tag: 'tag',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type BenefitsScalarFieldEnum = (typeof BenefitsScalarFieldEnum)[keyof typeof BenefitsScalarFieldEnum]
+
+
+  export const BenefitRequirementsScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    benefit_id: 'benefit_id',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type BenefitRequirementsScalarFieldEnum = (typeof BenefitRequirementsScalarFieldEnum)[keyof typeof BenefitRequirementsScalarFieldEnum]
+
+
+  export const ApplicationsScalarFieldEnum: {
+    id: 'id',
+    benefit_id: 'benefit_id',
+    senior_id: 'senior_id',
+    status_id: 'status_id',
+    category_id: 'category_id',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ApplicationsScalarFieldEnum = (typeof ApplicationsScalarFieldEnum)[keyof typeof ApplicationsScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -7275,6 +13525,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Senior"> | Date | string
     remarks?: XOR<RemarksScalarRelationFilter, RemarksWhereInput>
     documents?: RegistrationDocumentListRelationFilter
+    Applications?: ApplicationsListRelationFilter
   }
 
   export type SeniorOrderByWithRelationInput = {
@@ -7294,6 +13545,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     remarks?: RemarksOrderByWithRelationInput
     documents?: RegistrationDocumentOrderByRelationAggregateInput
+    Applications?: ApplicationsOrderByRelationAggregateInput
   }
 
   export type SeniorWhereUniqueInput = Prisma.AtLeast<{
@@ -7316,6 +13568,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Senior"> | Date | string
     remarks?: XOR<RemarksScalarRelationFilter, RemarksWhereInput>
     documents?: RegistrationDocumentListRelationFilter
+    Applications?: ApplicationsListRelationFilter
   }, "id">
 
   export type SeniorOrderByWithAggregationInput = {
@@ -7479,6 +13732,308 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Remarks"> | Date | string
   }
 
+  export type SeniorCategoryWhereInput = {
+    AND?: SeniorCategoryWhereInput | SeniorCategoryWhereInput[]
+    OR?: SeniorCategoryWhereInput[]
+    NOT?: SeniorCategoryWhereInput | SeniorCategoryWhereInput[]
+    id?: IntFilter<"SeniorCategory"> | number
+    name?: StringFilter<"SeniorCategory"> | string
+    createdAt?: DateTimeFilter<"SeniorCategory"> | Date | string
+    updatedAt?: DateTimeFilter<"SeniorCategory"> | Date | string
+    applications?: ApplicationsListRelationFilter
+  }
+
+  export type SeniorCategoryOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    applications?: ApplicationsOrderByRelationAggregateInput
+  }
+
+  export type SeniorCategoryWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    name?: string
+    AND?: SeniorCategoryWhereInput | SeniorCategoryWhereInput[]
+    OR?: SeniorCategoryWhereInput[]
+    NOT?: SeniorCategoryWhereInput | SeniorCategoryWhereInput[]
+    createdAt?: DateTimeFilter<"SeniorCategory"> | Date | string
+    updatedAt?: DateTimeFilter<"SeniorCategory"> | Date | string
+    applications?: ApplicationsListRelationFilter
+  }, "id" | "name">
+
+  export type SeniorCategoryOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: SeniorCategoryCountOrderByAggregateInput
+    _avg?: SeniorCategoryAvgOrderByAggregateInput
+    _max?: SeniorCategoryMaxOrderByAggregateInput
+    _min?: SeniorCategoryMinOrderByAggregateInput
+    _sum?: SeniorCategorySumOrderByAggregateInput
+  }
+
+  export type SeniorCategoryScalarWhereWithAggregatesInput = {
+    AND?: SeniorCategoryScalarWhereWithAggregatesInput | SeniorCategoryScalarWhereWithAggregatesInput[]
+    OR?: SeniorCategoryScalarWhereWithAggregatesInput[]
+    NOT?: SeniorCategoryScalarWhereWithAggregatesInput | SeniorCategoryScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"SeniorCategory"> | number
+    name?: StringWithAggregatesFilter<"SeniorCategory"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"SeniorCategory"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"SeniorCategory"> | Date | string
+  }
+
+  export type StatusWhereInput = {
+    AND?: StatusWhereInput | StatusWhereInput[]
+    OR?: StatusWhereInput[]
+    NOT?: StatusWhereInput | StatusWhereInput[]
+    id?: IntFilter<"Status"> | number
+    name?: StringFilter<"Status"> | string
+    createdAt?: DateTimeFilter<"Status"> | Date | string
+    updatedAt?: DateTimeFilter<"Status"> | Date | string
+    applications?: ApplicationsListRelationFilter
+  }
+
+  export type StatusOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    applications?: ApplicationsOrderByRelationAggregateInput
+  }
+
+  export type StatusWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    name?: string
+    AND?: StatusWhereInput | StatusWhereInput[]
+    OR?: StatusWhereInput[]
+    NOT?: StatusWhereInput | StatusWhereInput[]
+    createdAt?: DateTimeFilter<"Status"> | Date | string
+    updatedAt?: DateTimeFilter<"Status"> | Date | string
+    applications?: ApplicationsListRelationFilter
+  }, "id" | "name">
+
+  export type StatusOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: StatusCountOrderByAggregateInput
+    _avg?: StatusAvgOrderByAggregateInput
+    _max?: StatusMaxOrderByAggregateInput
+    _min?: StatusMinOrderByAggregateInput
+    _sum?: StatusSumOrderByAggregateInput
+  }
+
+  export type StatusScalarWhereWithAggregatesInput = {
+    AND?: StatusScalarWhereWithAggregatesInput | StatusScalarWhereWithAggregatesInput[]
+    OR?: StatusScalarWhereWithAggregatesInput[]
+    NOT?: StatusScalarWhereWithAggregatesInput | StatusScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Status"> | number
+    name?: StringWithAggregatesFilter<"Status"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Status"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Status"> | Date | string
+  }
+
+  export type BenefitsWhereInput = {
+    AND?: BenefitsWhereInput | BenefitsWhereInput[]
+    OR?: BenefitsWhereInput[]
+    NOT?: BenefitsWhereInput | BenefitsWhereInput[]
+    id?: IntFilter<"Benefits"> | number
+    name?: StringFilter<"Benefits"> | string
+    description?: StringFilter<"Benefits"> | string
+    tag?: StringFilter<"Benefits"> | string
+    createdAt?: DateTimeFilter<"Benefits"> | Date | string
+    updatedAt?: DateTimeFilter<"Benefits"> | Date | string
+    applications?: ApplicationsListRelationFilter
+    benefit_requirements?: BenefitRequirementsListRelationFilter
+  }
+
+  export type BenefitsOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    tag?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    applications?: ApplicationsOrderByRelationAggregateInput
+    benefit_requirements?: BenefitRequirementsOrderByRelationAggregateInput
+  }
+
+  export type BenefitsWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: BenefitsWhereInput | BenefitsWhereInput[]
+    OR?: BenefitsWhereInput[]
+    NOT?: BenefitsWhereInput | BenefitsWhereInput[]
+    name?: StringFilter<"Benefits"> | string
+    description?: StringFilter<"Benefits"> | string
+    tag?: StringFilter<"Benefits"> | string
+    createdAt?: DateTimeFilter<"Benefits"> | Date | string
+    updatedAt?: DateTimeFilter<"Benefits"> | Date | string
+    applications?: ApplicationsListRelationFilter
+    benefit_requirements?: BenefitRequirementsListRelationFilter
+  }, "id">
+
+  export type BenefitsOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    tag?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: BenefitsCountOrderByAggregateInput
+    _avg?: BenefitsAvgOrderByAggregateInput
+    _max?: BenefitsMaxOrderByAggregateInput
+    _min?: BenefitsMinOrderByAggregateInput
+    _sum?: BenefitsSumOrderByAggregateInput
+  }
+
+  export type BenefitsScalarWhereWithAggregatesInput = {
+    AND?: BenefitsScalarWhereWithAggregatesInput | BenefitsScalarWhereWithAggregatesInput[]
+    OR?: BenefitsScalarWhereWithAggregatesInput[]
+    NOT?: BenefitsScalarWhereWithAggregatesInput | BenefitsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Benefits"> | number
+    name?: StringWithAggregatesFilter<"Benefits"> | string
+    description?: StringWithAggregatesFilter<"Benefits"> | string
+    tag?: StringWithAggregatesFilter<"Benefits"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Benefits"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Benefits"> | Date | string
+  }
+
+  export type BenefitRequirementsWhereInput = {
+    AND?: BenefitRequirementsWhereInput | BenefitRequirementsWhereInput[]
+    OR?: BenefitRequirementsWhereInput[]
+    NOT?: BenefitRequirementsWhereInput | BenefitRequirementsWhereInput[]
+    id?: IntFilter<"BenefitRequirements"> | number
+    name?: StringFilter<"BenefitRequirements"> | string
+    benefit_id?: IntFilter<"BenefitRequirements"> | number
+    createdAt?: DateTimeFilter<"BenefitRequirements"> | Date | string
+    updatedAt?: DateTimeFilter<"BenefitRequirements"> | Date | string
+    benefit?: XOR<BenefitsScalarRelationFilter, BenefitsWhereInput>
+  }
+
+  export type BenefitRequirementsOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    benefit_id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    benefit?: BenefitsOrderByWithRelationInput
+  }
+
+  export type BenefitRequirementsWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: BenefitRequirementsWhereInput | BenefitRequirementsWhereInput[]
+    OR?: BenefitRequirementsWhereInput[]
+    NOT?: BenefitRequirementsWhereInput | BenefitRequirementsWhereInput[]
+    name?: StringFilter<"BenefitRequirements"> | string
+    benefit_id?: IntFilter<"BenefitRequirements"> | number
+    createdAt?: DateTimeFilter<"BenefitRequirements"> | Date | string
+    updatedAt?: DateTimeFilter<"BenefitRequirements"> | Date | string
+    benefit?: XOR<BenefitsScalarRelationFilter, BenefitsWhereInput>
+  }, "id">
+
+  export type BenefitRequirementsOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    benefit_id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: BenefitRequirementsCountOrderByAggregateInput
+    _avg?: BenefitRequirementsAvgOrderByAggregateInput
+    _max?: BenefitRequirementsMaxOrderByAggregateInput
+    _min?: BenefitRequirementsMinOrderByAggregateInput
+    _sum?: BenefitRequirementsSumOrderByAggregateInput
+  }
+
+  export type BenefitRequirementsScalarWhereWithAggregatesInput = {
+    AND?: BenefitRequirementsScalarWhereWithAggregatesInput | BenefitRequirementsScalarWhereWithAggregatesInput[]
+    OR?: BenefitRequirementsScalarWhereWithAggregatesInput[]
+    NOT?: BenefitRequirementsScalarWhereWithAggregatesInput | BenefitRequirementsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"BenefitRequirements"> | number
+    name?: StringWithAggregatesFilter<"BenefitRequirements"> | string
+    benefit_id?: IntWithAggregatesFilter<"BenefitRequirements"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"BenefitRequirements"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"BenefitRequirements"> | Date | string
+  }
+
+  export type ApplicationsWhereInput = {
+    AND?: ApplicationsWhereInput | ApplicationsWhereInput[]
+    OR?: ApplicationsWhereInput[]
+    NOT?: ApplicationsWhereInput | ApplicationsWhereInput[]
+    id?: IntFilter<"Applications"> | number
+    benefit_id?: IntFilter<"Applications"> | number
+    senior_id?: IntFilter<"Applications"> | number
+    status_id?: IntFilter<"Applications"> | number
+    category_id?: IntNullableFilter<"Applications"> | number | null
+    createdAt?: DateTimeFilter<"Applications"> | Date | string
+    updatedAt?: DateTimeFilter<"Applications"> | Date | string
+    senior?: XOR<SeniorScalarRelationFilter, SeniorWhereInput>
+    benefit?: XOR<BenefitsScalarRelationFilter, BenefitsWhereInput>
+    status?: XOR<StatusScalarRelationFilter, StatusWhereInput>
+    category?: XOR<SeniorCategoryNullableScalarRelationFilter, SeniorCategoryWhereInput> | null
+  }
+
+  export type ApplicationsOrderByWithRelationInput = {
+    id?: SortOrder
+    benefit_id?: SortOrder
+    senior_id?: SortOrder
+    status_id?: SortOrder
+    category_id?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    senior?: SeniorOrderByWithRelationInput
+    benefit?: BenefitsOrderByWithRelationInput
+    status?: StatusOrderByWithRelationInput
+    category?: SeniorCategoryOrderByWithRelationInput
+  }
+
+  export type ApplicationsWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ApplicationsWhereInput | ApplicationsWhereInput[]
+    OR?: ApplicationsWhereInput[]
+    NOT?: ApplicationsWhereInput | ApplicationsWhereInput[]
+    benefit_id?: IntFilter<"Applications"> | number
+    senior_id?: IntFilter<"Applications"> | number
+    status_id?: IntFilter<"Applications"> | number
+    category_id?: IntNullableFilter<"Applications"> | number | null
+    createdAt?: DateTimeFilter<"Applications"> | Date | string
+    updatedAt?: DateTimeFilter<"Applications"> | Date | string
+    senior?: XOR<SeniorScalarRelationFilter, SeniorWhereInput>
+    benefit?: XOR<BenefitsScalarRelationFilter, BenefitsWhereInput>
+    status?: XOR<StatusScalarRelationFilter, StatusWhereInput>
+    category?: XOR<SeniorCategoryNullableScalarRelationFilter, SeniorCategoryWhereInput> | null
+  }, "id">
+
+  export type ApplicationsOrderByWithAggregationInput = {
+    id?: SortOrder
+    benefit_id?: SortOrder
+    senior_id?: SortOrder
+    status_id?: SortOrder
+    category_id?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ApplicationsCountOrderByAggregateInput
+    _avg?: ApplicationsAvgOrderByAggregateInput
+    _max?: ApplicationsMaxOrderByAggregateInput
+    _min?: ApplicationsMinOrderByAggregateInput
+    _sum?: ApplicationsSumOrderByAggregateInput
+  }
+
+  export type ApplicationsScalarWhereWithAggregatesInput = {
+    AND?: ApplicationsScalarWhereWithAggregatesInput | ApplicationsScalarWhereWithAggregatesInput[]
+    OR?: ApplicationsScalarWhereWithAggregatesInput[]
+    NOT?: ApplicationsScalarWhereWithAggregatesInput | ApplicationsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Applications"> | number
+    benefit_id?: IntWithAggregatesFilter<"Applications"> | number
+    senior_id?: IntWithAggregatesFilter<"Applications"> | number
+    status_id?: IntWithAggregatesFilter<"Applications"> | number
+    category_id?: IntNullableWithAggregatesFilter<"Applications"> | number | null
+    createdAt?: DateTimeWithAggregatesFilter<"Applications"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Applications"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     name?: string | null
@@ -7623,6 +14178,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     remarks?: RemarksCreateNestedOneWithoutSeniorsInput
     documents?: RegistrationDocumentCreateNestedManyWithoutSeniorInput
+    Applications?: ApplicationsCreateNestedManyWithoutSeniorInput
   }
 
   export type SeniorUncheckedCreateInput = {
@@ -7641,6 +14197,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     documents?: RegistrationDocumentUncheckedCreateNestedManyWithoutSeniorInput
+    Applications?: ApplicationsUncheckedCreateNestedManyWithoutSeniorInput
   }
 
   export type SeniorUpdateInput = {
@@ -7658,6 +14215,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     remarks?: RemarksUpdateOneRequiredWithoutSeniorsNestedInput
     documents?: RegistrationDocumentUpdateManyWithoutSeniorNestedInput
+    Applications?: ApplicationsUpdateManyWithoutSeniorNestedInput
   }
 
   export type SeniorUncheckedUpdateInput = {
@@ -7676,6 +14234,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     documents?: RegistrationDocumentUncheckedUpdateManyWithoutSeniorNestedInput
+    Applications?: ApplicationsUncheckedUpdateManyWithoutSeniorNestedInput
   }
 
   export type SeniorCreateManyInput = {
@@ -7839,6 +14398,289 @@ export namespace Prisma {
   export type RemarksUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SeniorCategoryCreateInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    applications?: ApplicationsCreateNestedManyWithoutCategoryInput
+  }
+
+  export type SeniorCategoryUncheckedCreateInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    applications?: ApplicationsUncheckedCreateNestedManyWithoutCategoryInput
+  }
+
+  export type SeniorCategoryUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    applications?: ApplicationsUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type SeniorCategoryUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    applications?: ApplicationsUncheckedUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type SeniorCategoryCreateManyInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SeniorCategoryUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SeniorCategoryUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StatusCreateInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    applications?: ApplicationsCreateNestedManyWithoutStatusInput
+  }
+
+  export type StatusUncheckedCreateInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    applications?: ApplicationsUncheckedCreateNestedManyWithoutStatusInput
+  }
+
+  export type StatusUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    applications?: ApplicationsUpdateManyWithoutStatusNestedInput
+  }
+
+  export type StatusUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    applications?: ApplicationsUncheckedUpdateManyWithoutStatusNestedInput
+  }
+
+  export type StatusCreateManyInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StatusUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StatusUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BenefitsCreateInput = {
+    name: string
+    description: string
+    tag: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    applications?: ApplicationsCreateNestedManyWithoutBenefitInput
+    benefit_requirements?: BenefitRequirementsCreateNestedManyWithoutBenefitInput
+  }
+
+  export type BenefitsUncheckedCreateInput = {
+    id?: number
+    name: string
+    description: string
+    tag: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    applications?: ApplicationsUncheckedCreateNestedManyWithoutBenefitInput
+    benefit_requirements?: BenefitRequirementsUncheckedCreateNestedManyWithoutBenefitInput
+  }
+
+  export type BenefitsUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    tag?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    applications?: ApplicationsUpdateManyWithoutBenefitNestedInput
+    benefit_requirements?: BenefitRequirementsUpdateManyWithoutBenefitNestedInput
+  }
+
+  export type BenefitsUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    tag?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    applications?: ApplicationsUncheckedUpdateManyWithoutBenefitNestedInput
+    benefit_requirements?: BenefitRequirementsUncheckedUpdateManyWithoutBenefitNestedInput
+  }
+
+  export type BenefitsCreateManyInput = {
+    id?: number
+    name: string
+    description: string
+    tag: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BenefitsUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    tag?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BenefitsUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    tag?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BenefitRequirementsCreateInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    benefit: BenefitsCreateNestedOneWithoutBenefit_requirementsInput
+  }
+
+  export type BenefitRequirementsUncheckedCreateInput = {
+    id?: number
+    name: string
+    benefit_id: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BenefitRequirementsUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    benefit?: BenefitsUpdateOneRequiredWithoutBenefit_requirementsNestedInput
+  }
+
+  export type BenefitRequirementsUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    benefit_id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BenefitRequirementsCreateManyInput = {
+    id?: number
+    name: string
+    benefit_id: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BenefitRequirementsUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BenefitRequirementsUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    benefit_id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ApplicationsCreateInput = {
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    senior: SeniorCreateNestedOneWithoutApplicationsInput
+    benefit: BenefitsCreateNestedOneWithoutApplicationsInput
+    status: StatusCreateNestedOneWithoutApplicationsInput
+    category?: SeniorCategoryCreateNestedOneWithoutApplicationsInput
+  }
+
+  export type ApplicationsUncheckedCreateInput = {
+    id?: number
+    benefit_id: number
+    senior_id: number
+    status_id: number
+    category_id?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ApplicationsUpdateInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    senior?: SeniorUpdateOneRequiredWithoutApplicationsNestedInput
+    benefit?: BenefitsUpdateOneRequiredWithoutApplicationsNestedInput
+    status?: StatusUpdateOneRequiredWithoutApplicationsNestedInput
+    category?: SeniorCategoryUpdateOneWithoutApplicationsNestedInput
+  }
+
+  export type ApplicationsUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    benefit_id?: IntFieldUpdateOperationsInput | number
+    senior_id?: IntFieldUpdateOperationsInput | number
+    status_id?: IntFieldUpdateOperationsInput | number
+    category_id?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ApplicationsCreateManyInput = {
+    id?: number
+    benefit_id: number
+    senior_id: number
+    status_id: number
+    category_id?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ApplicationsUpdateManyMutationInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ApplicationsUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    benefit_id?: IntFieldUpdateOperationsInput | number
+    senior_id?: IntFieldUpdateOperationsInput | number
+    status_id?: IntFieldUpdateOperationsInput | number
+    category_id?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8037,7 +14879,17 @@ export namespace Prisma {
     none?: RegistrationDocumentWhereInput
   }
 
+  export type ApplicationsListRelationFilter = {
+    every?: ApplicationsWhereInput
+    some?: ApplicationsWhereInput
+    none?: ApplicationsWhereInput
+  }
+
   export type RegistrationDocumentOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ApplicationsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -8212,6 +15064,231 @@ export namespace Prisma {
     id?: SortOrder
   }
 
+  export type SeniorCategoryCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SeniorCategoryAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type SeniorCategoryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SeniorCategoryMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SeniorCategorySumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type StatusCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StatusAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type StatusMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StatusMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StatusSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type BenefitRequirementsListRelationFilter = {
+    every?: BenefitRequirementsWhereInput
+    some?: BenefitRequirementsWhereInput
+    none?: BenefitRequirementsWhereInput
+  }
+
+  export type BenefitRequirementsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type BenefitsCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    tag?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BenefitsAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type BenefitsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    tag?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BenefitsMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    tag?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BenefitsSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type BenefitsScalarRelationFilter = {
+    is?: BenefitsWhereInput
+    isNot?: BenefitsWhereInput
+  }
+
+  export type BenefitRequirementsCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    benefit_id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BenefitRequirementsAvgOrderByAggregateInput = {
+    id?: SortOrder
+    benefit_id?: SortOrder
+  }
+
+  export type BenefitRequirementsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    benefit_id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BenefitRequirementsMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    benefit_id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BenefitRequirementsSumOrderByAggregateInput = {
+    id?: SortOrder
+    benefit_id?: SortOrder
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type StatusScalarRelationFilter = {
+    is?: StatusWhereInput
+    isNot?: StatusWhereInput
+  }
+
+  export type SeniorCategoryNullableScalarRelationFilter = {
+    is?: SeniorCategoryWhereInput | null
+    isNot?: SeniorCategoryWhereInput | null
+  }
+
+  export type ApplicationsCountOrderByAggregateInput = {
+    id?: SortOrder
+    benefit_id?: SortOrder
+    senior_id?: SortOrder
+    status_id?: SortOrder
+    category_id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ApplicationsAvgOrderByAggregateInput = {
+    id?: SortOrder
+    benefit_id?: SortOrder
+    senior_id?: SortOrder
+    status_id?: SortOrder
+    category_id?: SortOrder
+  }
+
+  export type ApplicationsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    benefit_id?: SortOrder
+    senior_id?: SortOrder
+    status_id?: SortOrder
+    category_id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ApplicationsMinOrderByAggregateInput = {
+    id?: SortOrder
+    benefit_id?: SortOrder
+    senior_id?: SortOrder
+    status_id?: SortOrder
+    category_id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ApplicationsSumOrderByAggregateInput = {
+    id?: SortOrder
+    benefit_id?: SortOrder
+    senior_id?: SortOrder
+    status_id?: SortOrder
+    category_id?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
   export type SessionCreateNestedManyWithoutUserInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
@@ -8293,11 +15370,25 @@ export namespace Prisma {
     connect?: RegistrationDocumentWhereUniqueInput | RegistrationDocumentWhereUniqueInput[]
   }
 
+  export type ApplicationsCreateNestedManyWithoutSeniorInput = {
+    create?: XOR<ApplicationsCreateWithoutSeniorInput, ApplicationsUncheckedCreateWithoutSeniorInput> | ApplicationsCreateWithoutSeniorInput[] | ApplicationsUncheckedCreateWithoutSeniorInput[]
+    connectOrCreate?: ApplicationsCreateOrConnectWithoutSeniorInput | ApplicationsCreateOrConnectWithoutSeniorInput[]
+    createMany?: ApplicationsCreateManySeniorInputEnvelope
+    connect?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+  }
+
   export type RegistrationDocumentUncheckedCreateNestedManyWithoutSeniorInput = {
     create?: XOR<RegistrationDocumentCreateWithoutSeniorInput, RegistrationDocumentUncheckedCreateWithoutSeniorInput> | RegistrationDocumentCreateWithoutSeniorInput[] | RegistrationDocumentUncheckedCreateWithoutSeniorInput[]
     connectOrCreate?: RegistrationDocumentCreateOrConnectWithoutSeniorInput | RegistrationDocumentCreateOrConnectWithoutSeniorInput[]
     createMany?: RegistrationDocumentCreateManySeniorInputEnvelope
     connect?: RegistrationDocumentWhereUniqueInput | RegistrationDocumentWhereUniqueInput[]
+  }
+
+  export type ApplicationsUncheckedCreateNestedManyWithoutSeniorInput = {
+    create?: XOR<ApplicationsCreateWithoutSeniorInput, ApplicationsUncheckedCreateWithoutSeniorInput> | ApplicationsCreateWithoutSeniorInput[] | ApplicationsUncheckedCreateWithoutSeniorInput[]
+    connectOrCreate?: ApplicationsCreateOrConnectWithoutSeniorInput | ApplicationsCreateOrConnectWithoutSeniorInput[]
+    createMany?: ApplicationsCreateManySeniorInputEnvelope
+    connect?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
   }
 
   export type EnumGenderFieldUpdateOperationsInput = {
@@ -8326,6 +15417,20 @@ export namespace Prisma {
     deleteMany?: RegistrationDocumentScalarWhereInput | RegistrationDocumentScalarWhereInput[]
   }
 
+  export type ApplicationsUpdateManyWithoutSeniorNestedInput = {
+    create?: XOR<ApplicationsCreateWithoutSeniorInput, ApplicationsUncheckedCreateWithoutSeniorInput> | ApplicationsCreateWithoutSeniorInput[] | ApplicationsUncheckedCreateWithoutSeniorInput[]
+    connectOrCreate?: ApplicationsCreateOrConnectWithoutSeniorInput | ApplicationsCreateOrConnectWithoutSeniorInput[]
+    upsert?: ApplicationsUpsertWithWhereUniqueWithoutSeniorInput | ApplicationsUpsertWithWhereUniqueWithoutSeniorInput[]
+    createMany?: ApplicationsCreateManySeniorInputEnvelope
+    set?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    disconnect?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    delete?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    connect?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    update?: ApplicationsUpdateWithWhereUniqueWithoutSeniorInput | ApplicationsUpdateWithWhereUniqueWithoutSeniorInput[]
+    updateMany?: ApplicationsUpdateManyWithWhereWithoutSeniorInput | ApplicationsUpdateManyWithWhereWithoutSeniorInput[]
+    deleteMany?: ApplicationsScalarWhereInput | ApplicationsScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -8346,6 +15451,20 @@ export namespace Prisma {
     update?: RegistrationDocumentUpdateWithWhereUniqueWithoutSeniorInput | RegistrationDocumentUpdateWithWhereUniqueWithoutSeniorInput[]
     updateMany?: RegistrationDocumentUpdateManyWithWhereWithoutSeniorInput | RegistrationDocumentUpdateManyWithWhereWithoutSeniorInput[]
     deleteMany?: RegistrationDocumentScalarWhereInput | RegistrationDocumentScalarWhereInput[]
+  }
+
+  export type ApplicationsUncheckedUpdateManyWithoutSeniorNestedInput = {
+    create?: XOR<ApplicationsCreateWithoutSeniorInput, ApplicationsUncheckedCreateWithoutSeniorInput> | ApplicationsCreateWithoutSeniorInput[] | ApplicationsUncheckedCreateWithoutSeniorInput[]
+    connectOrCreate?: ApplicationsCreateOrConnectWithoutSeniorInput | ApplicationsCreateOrConnectWithoutSeniorInput[]
+    upsert?: ApplicationsUpsertWithWhereUniqueWithoutSeniorInput | ApplicationsUpsertWithWhereUniqueWithoutSeniorInput[]
+    createMany?: ApplicationsCreateManySeniorInputEnvelope
+    set?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    disconnect?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    delete?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    connect?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    update?: ApplicationsUpdateWithWhereUniqueWithoutSeniorInput | ApplicationsUpdateWithWhereUniqueWithoutSeniorInput[]
+    updateMany?: ApplicationsUpdateManyWithWhereWithoutSeniorInput | ApplicationsUpdateManyWithWhereWithoutSeniorInput[]
+    deleteMany?: ApplicationsScalarWhereInput | ApplicationsScalarWhereInput[]
   }
 
   export type SeniorCreateNestedOneWithoutDocumentsInput = {
@@ -8402,6 +15521,254 @@ export namespace Prisma {
     update?: SeniorUpdateWithWhereUniqueWithoutRemarksInput | SeniorUpdateWithWhereUniqueWithoutRemarksInput[]
     updateMany?: SeniorUpdateManyWithWhereWithoutRemarksInput | SeniorUpdateManyWithWhereWithoutRemarksInput[]
     deleteMany?: SeniorScalarWhereInput | SeniorScalarWhereInput[]
+  }
+
+  export type ApplicationsCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<ApplicationsCreateWithoutCategoryInput, ApplicationsUncheckedCreateWithoutCategoryInput> | ApplicationsCreateWithoutCategoryInput[] | ApplicationsUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: ApplicationsCreateOrConnectWithoutCategoryInput | ApplicationsCreateOrConnectWithoutCategoryInput[]
+    createMany?: ApplicationsCreateManyCategoryInputEnvelope
+    connect?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+  }
+
+  export type ApplicationsUncheckedCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<ApplicationsCreateWithoutCategoryInput, ApplicationsUncheckedCreateWithoutCategoryInput> | ApplicationsCreateWithoutCategoryInput[] | ApplicationsUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: ApplicationsCreateOrConnectWithoutCategoryInput | ApplicationsCreateOrConnectWithoutCategoryInput[]
+    createMany?: ApplicationsCreateManyCategoryInputEnvelope
+    connect?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+  }
+
+  export type ApplicationsUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<ApplicationsCreateWithoutCategoryInput, ApplicationsUncheckedCreateWithoutCategoryInput> | ApplicationsCreateWithoutCategoryInput[] | ApplicationsUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: ApplicationsCreateOrConnectWithoutCategoryInput | ApplicationsCreateOrConnectWithoutCategoryInput[]
+    upsert?: ApplicationsUpsertWithWhereUniqueWithoutCategoryInput | ApplicationsUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: ApplicationsCreateManyCategoryInputEnvelope
+    set?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    disconnect?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    delete?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    connect?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    update?: ApplicationsUpdateWithWhereUniqueWithoutCategoryInput | ApplicationsUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: ApplicationsUpdateManyWithWhereWithoutCategoryInput | ApplicationsUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: ApplicationsScalarWhereInput | ApplicationsScalarWhereInput[]
+  }
+
+  export type ApplicationsUncheckedUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<ApplicationsCreateWithoutCategoryInput, ApplicationsUncheckedCreateWithoutCategoryInput> | ApplicationsCreateWithoutCategoryInput[] | ApplicationsUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: ApplicationsCreateOrConnectWithoutCategoryInput | ApplicationsCreateOrConnectWithoutCategoryInput[]
+    upsert?: ApplicationsUpsertWithWhereUniqueWithoutCategoryInput | ApplicationsUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: ApplicationsCreateManyCategoryInputEnvelope
+    set?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    disconnect?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    delete?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    connect?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    update?: ApplicationsUpdateWithWhereUniqueWithoutCategoryInput | ApplicationsUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: ApplicationsUpdateManyWithWhereWithoutCategoryInput | ApplicationsUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: ApplicationsScalarWhereInput | ApplicationsScalarWhereInput[]
+  }
+
+  export type ApplicationsCreateNestedManyWithoutStatusInput = {
+    create?: XOR<ApplicationsCreateWithoutStatusInput, ApplicationsUncheckedCreateWithoutStatusInput> | ApplicationsCreateWithoutStatusInput[] | ApplicationsUncheckedCreateWithoutStatusInput[]
+    connectOrCreate?: ApplicationsCreateOrConnectWithoutStatusInput | ApplicationsCreateOrConnectWithoutStatusInput[]
+    createMany?: ApplicationsCreateManyStatusInputEnvelope
+    connect?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+  }
+
+  export type ApplicationsUncheckedCreateNestedManyWithoutStatusInput = {
+    create?: XOR<ApplicationsCreateWithoutStatusInput, ApplicationsUncheckedCreateWithoutStatusInput> | ApplicationsCreateWithoutStatusInput[] | ApplicationsUncheckedCreateWithoutStatusInput[]
+    connectOrCreate?: ApplicationsCreateOrConnectWithoutStatusInput | ApplicationsCreateOrConnectWithoutStatusInput[]
+    createMany?: ApplicationsCreateManyStatusInputEnvelope
+    connect?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+  }
+
+  export type ApplicationsUpdateManyWithoutStatusNestedInput = {
+    create?: XOR<ApplicationsCreateWithoutStatusInput, ApplicationsUncheckedCreateWithoutStatusInput> | ApplicationsCreateWithoutStatusInput[] | ApplicationsUncheckedCreateWithoutStatusInput[]
+    connectOrCreate?: ApplicationsCreateOrConnectWithoutStatusInput | ApplicationsCreateOrConnectWithoutStatusInput[]
+    upsert?: ApplicationsUpsertWithWhereUniqueWithoutStatusInput | ApplicationsUpsertWithWhereUniqueWithoutStatusInput[]
+    createMany?: ApplicationsCreateManyStatusInputEnvelope
+    set?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    disconnect?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    delete?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    connect?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    update?: ApplicationsUpdateWithWhereUniqueWithoutStatusInput | ApplicationsUpdateWithWhereUniqueWithoutStatusInput[]
+    updateMany?: ApplicationsUpdateManyWithWhereWithoutStatusInput | ApplicationsUpdateManyWithWhereWithoutStatusInput[]
+    deleteMany?: ApplicationsScalarWhereInput | ApplicationsScalarWhereInput[]
+  }
+
+  export type ApplicationsUncheckedUpdateManyWithoutStatusNestedInput = {
+    create?: XOR<ApplicationsCreateWithoutStatusInput, ApplicationsUncheckedCreateWithoutStatusInput> | ApplicationsCreateWithoutStatusInput[] | ApplicationsUncheckedCreateWithoutStatusInput[]
+    connectOrCreate?: ApplicationsCreateOrConnectWithoutStatusInput | ApplicationsCreateOrConnectWithoutStatusInput[]
+    upsert?: ApplicationsUpsertWithWhereUniqueWithoutStatusInput | ApplicationsUpsertWithWhereUniqueWithoutStatusInput[]
+    createMany?: ApplicationsCreateManyStatusInputEnvelope
+    set?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    disconnect?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    delete?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    connect?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    update?: ApplicationsUpdateWithWhereUniqueWithoutStatusInput | ApplicationsUpdateWithWhereUniqueWithoutStatusInput[]
+    updateMany?: ApplicationsUpdateManyWithWhereWithoutStatusInput | ApplicationsUpdateManyWithWhereWithoutStatusInput[]
+    deleteMany?: ApplicationsScalarWhereInput | ApplicationsScalarWhereInput[]
+  }
+
+  export type ApplicationsCreateNestedManyWithoutBenefitInput = {
+    create?: XOR<ApplicationsCreateWithoutBenefitInput, ApplicationsUncheckedCreateWithoutBenefitInput> | ApplicationsCreateWithoutBenefitInput[] | ApplicationsUncheckedCreateWithoutBenefitInput[]
+    connectOrCreate?: ApplicationsCreateOrConnectWithoutBenefitInput | ApplicationsCreateOrConnectWithoutBenefitInput[]
+    createMany?: ApplicationsCreateManyBenefitInputEnvelope
+    connect?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+  }
+
+  export type BenefitRequirementsCreateNestedManyWithoutBenefitInput = {
+    create?: XOR<BenefitRequirementsCreateWithoutBenefitInput, BenefitRequirementsUncheckedCreateWithoutBenefitInput> | BenefitRequirementsCreateWithoutBenefitInput[] | BenefitRequirementsUncheckedCreateWithoutBenefitInput[]
+    connectOrCreate?: BenefitRequirementsCreateOrConnectWithoutBenefitInput | BenefitRequirementsCreateOrConnectWithoutBenefitInput[]
+    createMany?: BenefitRequirementsCreateManyBenefitInputEnvelope
+    connect?: BenefitRequirementsWhereUniqueInput | BenefitRequirementsWhereUniqueInput[]
+  }
+
+  export type ApplicationsUncheckedCreateNestedManyWithoutBenefitInput = {
+    create?: XOR<ApplicationsCreateWithoutBenefitInput, ApplicationsUncheckedCreateWithoutBenefitInput> | ApplicationsCreateWithoutBenefitInput[] | ApplicationsUncheckedCreateWithoutBenefitInput[]
+    connectOrCreate?: ApplicationsCreateOrConnectWithoutBenefitInput | ApplicationsCreateOrConnectWithoutBenefitInput[]
+    createMany?: ApplicationsCreateManyBenefitInputEnvelope
+    connect?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+  }
+
+  export type BenefitRequirementsUncheckedCreateNestedManyWithoutBenefitInput = {
+    create?: XOR<BenefitRequirementsCreateWithoutBenefitInput, BenefitRequirementsUncheckedCreateWithoutBenefitInput> | BenefitRequirementsCreateWithoutBenefitInput[] | BenefitRequirementsUncheckedCreateWithoutBenefitInput[]
+    connectOrCreate?: BenefitRequirementsCreateOrConnectWithoutBenefitInput | BenefitRequirementsCreateOrConnectWithoutBenefitInput[]
+    createMany?: BenefitRequirementsCreateManyBenefitInputEnvelope
+    connect?: BenefitRequirementsWhereUniqueInput | BenefitRequirementsWhereUniqueInput[]
+  }
+
+  export type ApplicationsUpdateManyWithoutBenefitNestedInput = {
+    create?: XOR<ApplicationsCreateWithoutBenefitInput, ApplicationsUncheckedCreateWithoutBenefitInput> | ApplicationsCreateWithoutBenefitInput[] | ApplicationsUncheckedCreateWithoutBenefitInput[]
+    connectOrCreate?: ApplicationsCreateOrConnectWithoutBenefitInput | ApplicationsCreateOrConnectWithoutBenefitInput[]
+    upsert?: ApplicationsUpsertWithWhereUniqueWithoutBenefitInput | ApplicationsUpsertWithWhereUniqueWithoutBenefitInput[]
+    createMany?: ApplicationsCreateManyBenefitInputEnvelope
+    set?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    disconnect?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    delete?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    connect?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    update?: ApplicationsUpdateWithWhereUniqueWithoutBenefitInput | ApplicationsUpdateWithWhereUniqueWithoutBenefitInput[]
+    updateMany?: ApplicationsUpdateManyWithWhereWithoutBenefitInput | ApplicationsUpdateManyWithWhereWithoutBenefitInput[]
+    deleteMany?: ApplicationsScalarWhereInput | ApplicationsScalarWhereInput[]
+  }
+
+  export type BenefitRequirementsUpdateManyWithoutBenefitNestedInput = {
+    create?: XOR<BenefitRequirementsCreateWithoutBenefitInput, BenefitRequirementsUncheckedCreateWithoutBenefitInput> | BenefitRequirementsCreateWithoutBenefitInput[] | BenefitRequirementsUncheckedCreateWithoutBenefitInput[]
+    connectOrCreate?: BenefitRequirementsCreateOrConnectWithoutBenefitInput | BenefitRequirementsCreateOrConnectWithoutBenefitInput[]
+    upsert?: BenefitRequirementsUpsertWithWhereUniqueWithoutBenefitInput | BenefitRequirementsUpsertWithWhereUniqueWithoutBenefitInput[]
+    createMany?: BenefitRequirementsCreateManyBenefitInputEnvelope
+    set?: BenefitRequirementsWhereUniqueInput | BenefitRequirementsWhereUniqueInput[]
+    disconnect?: BenefitRequirementsWhereUniqueInput | BenefitRequirementsWhereUniqueInput[]
+    delete?: BenefitRequirementsWhereUniqueInput | BenefitRequirementsWhereUniqueInput[]
+    connect?: BenefitRequirementsWhereUniqueInput | BenefitRequirementsWhereUniqueInput[]
+    update?: BenefitRequirementsUpdateWithWhereUniqueWithoutBenefitInput | BenefitRequirementsUpdateWithWhereUniqueWithoutBenefitInput[]
+    updateMany?: BenefitRequirementsUpdateManyWithWhereWithoutBenefitInput | BenefitRequirementsUpdateManyWithWhereWithoutBenefitInput[]
+    deleteMany?: BenefitRequirementsScalarWhereInput | BenefitRequirementsScalarWhereInput[]
+  }
+
+  export type ApplicationsUncheckedUpdateManyWithoutBenefitNestedInput = {
+    create?: XOR<ApplicationsCreateWithoutBenefitInput, ApplicationsUncheckedCreateWithoutBenefitInput> | ApplicationsCreateWithoutBenefitInput[] | ApplicationsUncheckedCreateWithoutBenefitInput[]
+    connectOrCreate?: ApplicationsCreateOrConnectWithoutBenefitInput | ApplicationsCreateOrConnectWithoutBenefitInput[]
+    upsert?: ApplicationsUpsertWithWhereUniqueWithoutBenefitInput | ApplicationsUpsertWithWhereUniqueWithoutBenefitInput[]
+    createMany?: ApplicationsCreateManyBenefitInputEnvelope
+    set?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    disconnect?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    delete?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    connect?: ApplicationsWhereUniqueInput | ApplicationsWhereUniqueInput[]
+    update?: ApplicationsUpdateWithWhereUniqueWithoutBenefitInput | ApplicationsUpdateWithWhereUniqueWithoutBenefitInput[]
+    updateMany?: ApplicationsUpdateManyWithWhereWithoutBenefitInput | ApplicationsUpdateManyWithWhereWithoutBenefitInput[]
+    deleteMany?: ApplicationsScalarWhereInput | ApplicationsScalarWhereInput[]
+  }
+
+  export type BenefitRequirementsUncheckedUpdateManyWithoutBenefitNestedInput = {
+    create?: XOR<BenefitRequirementsCreateWithoutBenefitInput, BenefitRequirementsUncheckedCreateWithoutBenefitInput> | BenefitRequirementsCreateWithoutBenefitInput[] | BenefitRequirementsUncheckedCreateWithoutBenefitInput[]
+    connectOrCreate?: BenefitRequirementsCreateOrConnectWithoutBenefitInput | BenefitRequirementsCreateOrConnectWithoutBenefitInput[]
+    upsert?: BenefitRequirementsUpsertWithWhereUniqueWithoutBenefitInput | BenefitRequirementsUpsertWithWhereUniqueWithoutBenefitInput[]
+    createMany?: BenefitRequirementsCreateManyBenefitInputEnvelope
+    set?: BenefitRequirementsWhereUniqueInput | BenefitRequirementsWhereUniqueInput[]
+    disconnect?: BenefitRequirementsWhereUniqueInput | BenefitRequirementsWhereUniqueInput[]
+    delete?: BenefitRequirementsWhereUniqueInput | BenefitRequirementsWhereUniqueInput[]
+    connect?: BenefitRequirementsWhereUniqueInput | BenefitRequirementsWhereUniqueInput[]
+    update?: BenefitRequirementsUpdateWithWhereUniqueWithoutBenefitInput | BenefitRequirementsUpdateWithWhereUniqueWithoutBenefitInput[]
+    updateMany?: BenefitRequirementsUpdateManyWithWhereWithoutBenefitInput | BenefitRequirementsUpdateManyWithWhereWithoutBenefitInput[]
+    deleteMany?: BenefitRequirementsScalarWhereInput | BenefitRequirementsScalarWhereInput[]
+  }
+
+  export type BenefitsCreateNestedOneWithoutBenefit_requirementsInput = {
+    create?: XOR<BenefitsCreateWithoutBenefit_requirementsInput, BenefitsUncheckedCreateWithoutBenefit_requirementsInput>
+    connectOrCreate?: BenefitsCreateOrConnectWithoutBenefit_requirementsInput
+    connect?: BenefitsWhereUniqueInput
+  }
+
+  export type BenefitsUpdateOneRequiredWithoutBenefit_requirementsNestedInput = {
+    create?: XOR<BenefitsCreateWithoutBenefit_requirementsInput, BenefitsUncheckedCreateWithoutBenefit_requirementsInput>
+    connectOrCreate?: BenefitsCreateOrConnectWithoutBenefit_requirementsInput
+    upsert?: BenefitsUpsertWithoutBenefit_requirementsInput
+    connect?: BenefitsWhereUniqueInput
+    update?: XOR<XOR<BenefitsUpdateToOneWithWhereWithoutBenefit_requirementsInput, BenefitsUpdateWithoutBenefit_requirementsInput>, BenefitsUncheckedUpdateWithoutBenefit_requirementsInput>
+  }
+
+  export type SeniorCreateNestedOneWithoutApplicationsInput = {
+    create?: XOR<SeniorCreateWithoutApplicationsInput, SeniorUncheckedCreateWithoutApplicationsInput>
+    connectOrCreate?: SeniorCreateOrConnectWithoutApplicationsInput
+    connect?: SeniorWhereUniqueInput
+  }
+
+  export type BenefitsCreateNestedOneWithoutApplicationsInput = {
+    create?: XOR<BenefitsCreateWithoutApplicationsInput, BenefitsUncheckedCreateWithoutApplicationsInput>
+    connectOrCreate?: BenefitsCreateOrConnectWithoutApplicationsInput
+    connect?: BenefitsWhereUniqueInput
+  }
+
+  export type StatusCreateNestedOneWithoutApplicationsInput = {
+    create?: XOR<StatusCreateWithoutApplicationsInput, StatusUncheckedCreateWithoutApplicationsInput>
+    connectOrCreate?: StatusCreateOrConnectWithoutApplicationsInput
+    connect?: StatusWhereUniqueInput
+  }
+
+  export type SeniorCategoryCreateNestedOneWithoutApplicationsInput = {
+    create?: XOR<SeniorCategoryCreateWithoutApplicationsInput, SeniorCategoryUncheckedCreateWithoutApplicationsInput>
+    connectOrCreate?: SeniorCategoryCreateOrConnectWithoutApplicationsInput
+    connect?: SeniorCategoryWhereUniqueInput
+  }
+
+  export type SeniorUpdateOneRequiredWithoutApplicationsNestedInput = {
+    create?: XOR<SeniorCreateWithoutApplicationsInput, SeniorUncheckedCreateWithoutApplicationsInput>
+    connectOrCreate?: SeniorCreateOrConnectWithoutApplicationsInput
+    upsert?: SeniorUpsertWithoutApplicationsInput
+    connect?: SeniorWhereUniqueInput
+    update?: XOR<XOR<SeniorUpdateToOneWithWhereWithoutApplicationsInput, SeniorUpdateWithoutApplicationsInput>, SeniorUncheckedUpdateWithoutApplicationsInput>
+  }
+
+  export type BenefitsUpdateOneRequiredWithoutApplicationsNestedInput = {
+    create?: XOR<BenefitsCreateWithoutApplicationsInput, BenefitsUncheckedCreateWithoutApplicationsInput>
+    connectOrCreate?: BenefitsCreateOrConnectWithoutApplicationsInput
+    upsert?: BenefitsUpsertWithoutApplicationsInput
+    connect?: BenefitsWhereUniqueInput
+    update?: XOR<XOR<BenefitsUpdateToOneWithWhereWithoutApplicationsInput, BenefitsUpdateWithoutApplicationsInput>, BenefitsUncheckedUpdateWithoutApplicationsInput>
+  }
+
+  export type StatusUpdateOneRequiredWithoutApplicationsNestedInput = {
+    create?: XOR<StatusCreateWithoutApplicationsInput, StatusUncheckedCreateWithoutApplicationsInput>
+    connectOrCreate?: StatusCreateOrConnectWithoutApplicationsInput
+    upsert?: StatusUpsertWithoutApplicationsInput
+    connect?: StatusWhereUniqueInput
+    update?: XOR<XOR<StatusUpdateToOneWithWhereWithoutApplicationsInput, StatusUpdateWithoutApplicationsInput>, StatusUncheckedUpdateWithoutApplicationsInput>
+  }
+
+  export type SeniorCategoryUpdateOneWithoutApplicationsNestedInput = {
+    create?: XOR<SeniorCategoryCreateWithoutApplicationsInput, SeniorCategoryUncheckedCreateWithoutApplicationsInput>
+    connectOrCreate?: SeniorCategoryCreateOrConnectWithoutApplicationsInput
+    upsert?: SeniorCategoryUpsertWithoutApplicationsInput
+    disconnect?: SeniorCategoryWhereInput | boolean
+    delete?: SeniorCategoryWhereInput | boolean
+    connect?: SeniorCategoryWhereUniqueInput
+    update?: XOR<XOR<SeniorCategoryUpdateToOneWithWhereWithoutApplicationsInput, SeniorCategoryUpdateWithoutApplicationsInput>, SeniorCategoryUncheckedUpdateWithoutApplicationsInput>
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -8557,6 +15924,33 @@ export namespace Prisma {
     _max?: NestedEnumGenderFilter<$PrismaModel>
   }
 
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type SessionCreateWithoutUserInput = {
     sessionToken: string
     expires: Date | string
@@ -8709,6 +16103,33 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ApplicationsCreateWithoutSeniorInput = {
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    benefit: BenefitsCreateNestedOneWithoutApplicationsInput
+    status: StatusCreateNestedOneWithoutApplicationsInput
+    category?: SeniorCategoryCreateNestedOneWithoutApplicationsInput
+  }
+
+  export type ApplicationsUncheckedCreateWithoutSeniorInput = {
+    id?: number
+    benefit_id: number
+    status_id: number
+    category_id?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ApplicationsCreateOrConnectWithoutSeniorInput = {
+    where: ApplicationsWhereUniqueInput
+    create: XOR<ApplicationsCreateWithoutSeniorInput, ApplicationsUncheckedCreateWithoutSeniorInput>
+  }
+
+  export type ApplicationsCreateManySeniorInputEnvelope = {
+    data: ApplicationsCreateManySeniorInput | ApplicationsCreateManySeniorInput[]
+    skipDuplicates?: boolean
+  }
+
   export type RemarksUpsertWithoutSeniorsInput = {
     update: XOR<RemarksUpdateWithoutSeniorsInput, RemarksUncheckedUpdateWithoutSeniorsInput>
     create: XOR<RemarksCreateWithoutSeniorsInput, RemarksUncheckedCreateWithoutSeniorsInput>
@@ -8762,6 +16183,35 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"RegistrationDocument"> | Date | string
   }
 
+  export type ApplicationsUpsertWithWhereUniqueWithoutSeniorInput = {
+    where: ApplicationsWhereUniqueInput
+    update: XOR<ApplicationsUpdateWithoutSeniorInput, ApplicationsUncheckedUpdateWithoutSeniorInput>
+    create: XOR<ApplicationsCreateWithoutSeniorInput, ApplicationsUncheckedCreateWithoutSeniorInput>
+  }
+
+  export type ApplicationsUpdateWithWhereUniqueWithoutSeniorInput = {
+    where: ApplicationsWhereUniqueInput
+    data: XOR<ApplicationsUpdateWithoutSeniorInput, ApplicationsUncheckedUpdateWithoutSeniorInput>
+  }
+
+  export type ApplicationsUpdateManyWithWhereWithoutSeniorInput = {
+    where: ApplicationsScalarWhereInput
+    data: XOR<ApplicationsUpdateManyMutationInput, ApplicationsUncheckedUpdateManyWithoutSeniorInput>
+  }
+
+  export type ApplicationsScalarWhereInput = {
+    AND?: ApplicationsScalarWhereInput | ApplicationsScalarWhereInput[]
+    OR?: ApplicationsScalarWhereInput[]
+    NOT?: ApplicationsScalarWhereInput | ApplicationsScalarWhereInput[]
+    id?: IntFilter<"Applications"> | number
+    benefit_id?: IntFilter<"Applications"> | number
+    senior_id?: IntFilter<"Applications"> | number
+    status_id?: IntFilter<"Applications"> | number
+    category_id?: IntNullableFilter<"Applications"> | number | null
+    createdAt?: DateTimeFilter<"Applications"> | Date | string
+    updatedAt?: DateTimeFilter<"Applications"> | Date | string
+  }
+
   export type SeniorCreateWithoutDocumentsInput = {
     lastname: string
     firstname: string
@@ -8776,6 +16226,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     remarks?: RemarksCreateNestedOneWithoutSeniorsInput
+    Applications?: ApplicationsCreateNestedManyWithoutSeniorInput
   }
 
   export type SeniorUncheckedCreateWithoutDocumentsInput = {
@@ -8793,6 +16244,7 @@ export namespace Prisma {
     remarks_id?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    Applications?: ApplicationsUncheckedCreateNestedManyWithoutSeniorInput
   }
 
   export type SeniorCreateOrConnectWithoutDocumentsInput = {
@@ -8825,6 +16277,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     remarks?: RemarksUpdateOneRequiredWithoutSeniorsNestedInput
+    Applications?: ApplicationsUpdateManyWithoutSeniorNestedInput
   }
 
   export type SeniorUncheckedUpdateWithoutDocumentsInput = {
@@ -8842,6 +16295,7 @@ export namespace Prisma {
     remarks_id?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Applications?: ApplicationsUncheckedUpdateManyWithoutSeniorNestedInput
   }
 
   export type SeniorCreateWithoutRemarksInput = {
@@ -8858,6 +16312,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     documents?: RegistrationDocumentCreateNestedManyWithoutSeniorInput
+    Applications?: ApplicationsCreateNestedManyWithoutSeniorInput
   }
 
   export type SeniorUncheckedCreateWithoutRemarksInput = {
@@ -8875,6 +16330,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     documents?: RegistrationDocumentUncheckedCreateNestedManyWithoutSeniorInput
+    Applications?: ApplicationsUncheckedCreateNestedManyWithoutSeniorInput
   }
 
   export type SeniorCreateOrConnectWithoutRemarksInput = {
@@ -8923,6 +16379,463 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Senior"> | Date | string
   }
 
+  export type ApplicationsCreateWithoutCategoryInput = {
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    senior: SeniorCreateNestedOneWithoutApplicationsInput
+    benefit: BenefitsCreateNestedOneWithoutApplicationsInput
+    status: StatusCreateNestedOneWithoutApplicationsInput
+  }
+
+  export type ApplicationsUncheckedCreateWithoutCategoryInput = {
+    id?: number
+    benefit_id: number
+    senior_id: number
+    status_id: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ApplicationsCreateOrConnectWithoutCategoryInput = {
+    where: ApplicationsWhereUniqueInput
+    create: XOR<ApplicationsCreateWithoutCategoryInput, ApplicationsUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type ApplicationsCreateManyCategoryInputEnvelope = {
+    data: ApplicationsCreateManyCategoryInput | ApplicationsCreateManyCategoryInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ApplicationsUpsertWithWhereUniqueWithoutCategoryInput = {
+    where: ApplicationsWhereUniqueInput
+    update: XOR<ApplicationsUpdateWithoutCategoryInput, ApplicationsUncheckedUpdateWithoutCategoryInput>
+    create: XOR<ApplicationsCreateWithoutCategoryInput, ApplicationsUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type ApplicationsUpdateWithWhereUniqueWithoutCategoryInput = {
+    where: ApplicationsWhereUniqueInput
+    data: XOR<ApplicationsUpdateWithoutCategoryInput, ApplicationsUncheckedUpdateWithoutCategoryInput>
+  }
+
+  export type ApplicationsUpdateManyWithWhereWithoutCategoryInput = {
+    where: ApplicationsScalarWhereInput
+    data: XOR<ApplicationsUpdateManyMutationInput, ApplicationsUncheckedUpdateManyWithoutCategoryInput>
+  }
+
+  export type ApplicationsCreateWithoutStatusInput = {
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    senior: SeniorCreateNestedOneWithoutApplicationsInput
+    benefit: BenefitsCreateNestedOneWithoutApplicationsInput
+    category?: SeniorCategoryCreateNestedOneWithoutApplicationsInput
+  }
+
+  export type ApplicationsUncheckedCreateWithoutStatusInput = {
+    id?: number
+    benefit_id: number
+    senior_id: number
+    category_id?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ApplicationsCreateOrConnectWithoutStatusInput = {
+    where: ApplicationsWhereUniqueInput
+    create: XOR<ApplicationsCreateWithoutStatusInput, ApplicationsUncheckedCreateWithoutStatusInput>
+  }
+
+  export type ApplicationsCreateManyStatusInputEnvelope = {
+    data: ApplicationsCreateManyStatusInput | ApplicationsCreateManyStatusInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ApplicationsUpsertWithWhereUniqueWithoutStatusInput = {
+    where: ApplicationsWhereUniqueInput
+    update: XOR<ApplicationsUpdateWithoutStatusInput, ApplicationsUncheckedUpdateWithoutStatusInput>
+    create: XOR<ApplicationsCreateWithoutStatusInput, ApplicationsUncheckedCreateWithoutStatusInput>
+  }
+
+  export type ApplicationsUpdateWithWhereUniqueWithoutStatusInput = {
+    where: ApplicationsWhereUniqueInput
+    data: XOR<ApplicationsUpdateWithoutStatusInput, ApplicationsUncheckedUpdateWithoutStatusInput>
+  }
+
+  export type ApplicationsUpdateManyWithWhereWithoutStatusInput = {
+    where: ApplicationsScalarWhereInput
+    data: XOR<ApplicationsUpdateManyMutationInput, ApplicationsUncheckedUpdateManyWithoutStatusInput>
+  }
+
+  export type ApplicationsCreateWithoutBenefitInput = {
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    senior: SeniorCreateNestedOneWithoutApplicationsInput
+    status: StatusCreateNestedOneWithoutApplicationsInput
+    category?: SeniorCategoryCreateNestedOneWithoutApplicationsInput
+  }
+
+  export type ApplicationsUncheckedCreateWithoutBenefitInput = {
+    id?: number
+    senior_id: number
+    status_id: number
+    category_id?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ApplicationsCreateOrConnectWithoutBenefitInput = {
+    where: ApplicationsWhereUniqueInput
+    create: XOR<ApplicationsCreateWithoutBenefitInput, ApplicationsUncheckedCreateWithoutBenefitInput>
+  }
+
+  export type ApplicationsCreateManyBenefitInputEnvelope = {
+    data: ApplicationsCreateManyBenefitInput | ApplicationsCreateManyBenefitInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type BenefitRequirementsCreateWithoutBenefitInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BenefitRequirementsUncheckedCreateWithoutBenefitInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BenefitRequirementsCreateOrConnectWithoutBenefitInput = {
+    where: BenefitRequirementsWhereUniqueInput
+    create: XOR<BenefitRequirementsCreateWithoutBenefitInput, BenefitRequirementsUncheckedCreateWithoutBenefitInput>
+  }
+
+  export type BenefitRequirementsCreateManyBenefitInputEnvelope = {
+    data: BenefitRequirementsCreateManyBenefitInput | BenefitRequirementsCreateManyBenefitInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ApplicationsUpsertWithWhereUniqueWithoutBenefitInput = {
+    where: ApplicationsWhereUniqueInput
+    update: XOR<ApplicationsUpdateWithoutBenefitInput, ApplicationsUncheckedUpdateWithoutBenefitInput>
+    create: XOR<ApplicationsCreateWithoutBenefitInput, ApplicationsUncheckedCreateWithoutBenefitInput>
+  }
+
+  export type ApplicationsUpdateWithWhereUniqueWithoutBenefitInput = {
+    where: ApplicationsWhereUniqueInput
+    data: XOR<ApplicationsUpdateWithoutBenefitInput, ApplicationsUncheckedUpdateWithoutBenefitInput>
+  }
+
+  export type ApplicationsUpdateManyWithWhereWithoutBenefitInput = {
+    where: ApplicationsScalarWhereInput
+    data: XOR<ApplicationsUpdateManyMutationInput, ApplicationsUncheckedUpdateManyWithoutBenefitInput>
+  }
+
+  export type BenefitRequirementsUpsertWithWhereUniqueWithoutBenefitInput = {
+    where: BenefitRequirementsWhereUniqueInput
+    update: XOR<BenefitRequirementsUpdateWithoutBenefitInput, BenefitRequirementsUncheckedUpdateWithoutBenefitInput>
+    create: XOR<BenefitRequirementsCreateWithoutBenefitInput, BenefitRequirementsUncheckedCreateWithoutBenefitInput>
+  }
+
+  export type BenefitRequirementsUpdateWithWhereUniqueWithoutBenefitInput = {
+    where: BenefitRequirementsWhereUniqueInput
+    data: XOR<BenefitRequirementsUpdateWithoutBenefitInput, BenefitRequirementsUncheckedUpdateWithoutBenefitInput>
+  }
+
+  export type BenefitRequirementsUpdateManyWithWhereWithoutBenefitInput = {
+    where: BenefitRequirementsScalarWhereInput
+    data: XOR<BenefitRequirementsUpdateManyMutationInput, BenefitRequirementsUncheckedUpdateManyWithoutBenefitInput>
+  }
+
+  export type BenefitRequirementsScalarWhereInput = {
+    AND?: BenefitRequirementsScalarWhereInput | BenefitRequirementsScalarWhereInput[]
+    OR?: BenefitRequirementsScalarWhereInput[]
+    NOT?: BenefitRequirementsScalarWhereInput | BenefitRequirementsScalarWhereInput[]
+    id?: IntFilter<"BenefitRequirements"> | number
+    name?: StringFilter<"BenefitRequirements"> | string
+    benefit_id?: IntFilter<"BenefitRequirements"> | number
+    createdAt?: DateTimeFilter<"BenefitRequirements"> | Date | string
+    updatedAt?: DateTimeFilter<"BenefitRequirements"> | Date | string
+  }
+
+  export type BenefitsCreateWithoutBenefit_requirementsInput = {
+    name: string
+    description: string
+    tag: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    applications?: ApplicationsCreateNestedManyWithoutBenefitInput
+  }
+
+  export type BenefitsUncheckedCreateWithoutBenefit_requirementsInput = {
+    id?: number
+    name: string
+    description: string
+    tag: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    applications?: ApplicationsUncheckedCreateNestedManyWithoutBenefitInput
+  }
+
+  export type BenefitsCreateOrConnectWithoutBenefit_requirementsInput = {
+    where: BenefitsWhereUniqueInput
+    create: XOR<BenefitsCreateWithoutBenefit_requirementsInput, BenefitsUncheckedCreateWithoutBenefit_requirementsInput>
+  }
+
+  export type BenefitsUpsertWithoutBenefit_requirementsInput = {
+    update: XOR<BenefitsUpdateWithoutBenefit_requirementsInput, BenefitsUncheckedUpdateWithoutBenefit_requirementsInput>
+    create: XOR<BenefitsCreateWithoutBenefit_requirementsInput, BenefitsUncheckedCreateWithoutBenefit_requirementsInput>
+    where?: BenefitsWhereInput
+  }
+
+  export type BenefitsUpdateToOneWithWhereWithoutBenefit_requirementsInput = {
+    where?: BenefitsWhereInput
+    data: XOR<BenefitsUpdateWithoutBenefit_requirementsInput, BenefitsUncheckedUpdateWithoutBenefit_requirementsInput>
+  }
+
+  export type BenefitsUpdateWithoutBenefit_requirementsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    tag?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    applications?: ApplicationsUpdateManyWithoutBenefitNestedInput
+  }
+
+  export type BenefitsUncheckedUpdateWithoutBenefit_requirementsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    tag?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    applications?: ApplicationsUncheckedUpdateManyWithoutBenefitNestedInput
+  }
+
+  export type SeniorCreateWithoutApplicationsInput = {
+    lastname: string
+    firstname: string
+    middlename?: string | null
+    email?: string | null
+    barangay: string
+    purok: string
+    gender: $Enums.Gender
+    birthdate: Date | string
+    age: string
+    contact_no: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    remarks?: RemarksCreateNestedOneWithoutSeniorsInput
+    documents?: RegistrationDocumentCreateNestedManyWithoutSeniorInput
+  }
+
+  export type SeniorUncheckedCreateWithoutApplicationsInput = {
+    id?: number
+    lastname: string
+    firstname: string
+    middlename?: string | null
+    email?: string | null
+    barangay: string
+    purok: string
+    gender: $Enums.Gender
+    birthdate: Date | string
+    age: string
+    contact_no: string
+    remarks_id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    documents?: RegistrationDocumentUncheckedCreateNestedManyWithoutSeniorInput
+  }
+
+  export type SeniorCreateOrConnectWithoutApplicationsInput = {
+    where: SeniorWhereUniqueInput
+    create: XOR<SeniorCreateWithoutApplicationsInput, SeniorUncheckedCreateWithoutApplicationsInput>
+  }
+
+  export type BenefitsCreateWithoutApplicationsInput = {
+    name: string
+    description: string
+    tag: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    benefit_requirements?: BenefitRequirementsCreateNestedManyWithoutBenefitInput
+  }
+
+  export type BenefitsUncheckedCreateWithoutApplicationsInput = {
+    id?: number
+    name: string
+    description: string
+    tag: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    benefit_requirements?: BenefitRequirementsUncheckedCreateNestedManyWithoutBenefitInput
+  }
+
+  export type BenefitsCreateOrConnectWithoutApplicationsInput = {
+    where: BenefitsWhereUniqueInput
+    create: XOR<BenefitsCreateWithoutApplicationsInput, BenefitsUncheckedCreateWithoutApplicationsInput>
+  }
+
+  export type StatusCreateWithoutApplicationsInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StatusUncheckedCreateWithoutApplicationsInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type StatusCreateOrConnectWithoutApplicationsInput = {
+    where: StatusWhereUniqueInput
+    create: XOR<StatusCreateWithoutApplicationsInput, StatusUncheckedCreateWithoutApplicationsInput>
+  }
+
+  export type SeniorCategoryCreateWithoutApplicationsInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SeniorCategoryUncheckedCreateWithoutApplicationsInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SeniorCategoryCreateOrConnectWithoutApplicationsInput = {
+    where: SeniorCategoryWhereUniqueInput
+    create: XOR<SeniorCategoryCreateWithoutApplicationsInput, SeniorCategoryUncheckedCreateWithoutApplicationsInput>
+  }
+
+  export type SeniorUpsertWithoutApplicationsInput = {
+    update: XOR<SeniorUpdateWithoutApplicationsInput, SeniorUncheckedUpdateWithoutApplicationsInput>
+    create: XOR<SeniorCreateWithoutApplicationsInput, SeniorUncheckedCreateWithoutApplicationsInput>
+    where?: SeniorWhereInput
+  }
+
+  export type SeniorUpdateToOneWithWhereWithoutApplicationsInput = {
+    where?: SeniorWhereInput
+    data: XOR<SeniorUpdateWithoutApplicationsInput, SeniorUncheckedUpdateWithoutApplicationsInput>
+  }
+
+  export type SeniorUpdateWithoutApplicationsInput = {
+    lastname?: StringFieldUpdateOperationsInput | string
+    firstname?: StringFieldUpdateOperationsInput | string
+    middlename?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    barangay?: StringFieldUpdateOperationsInput | string
+    purok?: StringFieldUpdateOperationsInput | string
+    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    age?: StringFieldUpdateOperationsInput | string
+    contact_no?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    remarks?: RemarksUpdateOneRequiredWithoutSeniorsNestedInput
+    documents?: RegistrationDocumentUpdateManyWithoutSeniorNestedInput
+  }
+
+  export type SeniorUncheckedUpdateWithoutApplicationsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    lastname?: StringFieldUpdateOperationsInput | string
+    firstname?: StringFieldUpdateOperationsInput | string
+    middlename?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    barangay?: StringFieldUpdateOperationsInput | string
+    purok?: StringFieldUpdateOperationsInput | string
+    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    age?: StringFieldUpdateOperationsInput | string
+    contact_no?: StringFieldUpdateOperationsInput | string
+    remarks_id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    documents?: RegistrationDocumentUncheckedUpdateManyWithoutSeniorNestedInput
+  }
+
+  export type BenefitsUpsertWithoutApplicationsInput = {
+    update: XOR<BenefitsUpdateWithoutApplicationsInput, BenefitsUncheckedUpdateWithoutApplicationsInput>
+    create: XOR<BenefitsCreateWithoutApplicationsInput, BenefitsUncheckedCreateWithoutApplicationsInput>
+    where?: BenefitsWhereInput
+  }
+
+  export type BenefitsUpdateToOneWithWhereWithoutApplicationsInput = {
+    where?: BenefitsWhereInput
+    data: XOR<BenefitsUpdateWithoutApplicationsInput, BenefitsUncheckedUpdateWithoutApplicationsInput>
+  }
+
+  export type BenefitsUpdateWithoutApplicationsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    tag?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    benefit_requirements?: BenefitRequirementsUpdateManyWithoutBenefitNestedInput
+  }
+
+  export type BenefitsUncheckedUpdateWithoutApplicationsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    tag?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    benefit_requirements?: BenefitRequirementsUncheckedUpdateManyWithoutBenefitNestedInput
+  }
+
+  export type StatusUpsertWithoutApplicationsInput = {
+    update: XOR<StatusUpdateWithoutApplicationsInput, StatusUncheckedUpdateWithoutApplicationsInput>
+    create: XOR<StatusCreateWithoutApplicationsInput, StatusUncheckedCreateWithoutApplicationsInput>
+    where?: StatusWhereInput
+  }
+
+  export type StatusUpdateToOneWithWhereWithoutApplicationsInput = {
+    where?: StatusWhereInput
+    data: XOR<StatusUpdateWithoutApplicationsInput, StatusUncheckedUpdateWithoutApplicationsInput>
+  }
+
+  export type StatusUpdateWithoutApplicationsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StatusUncheckedUpdateWithoutApplicationsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SeniorCategoryUpsertWithoutApplicationsInput = {
+    update: XOR<SeniorCategoryUpdateWithoutApplicationsInput, SeniorCategoryUncheckedUpdateWithoutApplicationsInput>
+    create: XOR<SeniorCategoryCreateWithoutApplicationsInput, SeniorCategoryUncheckedCreateWithoutApplicationsInput>
+    where?: SeniorCategoryWhereInput
+  }
+
+  export type SeniorCategoryUpdateToOneWithWhereWithoutApplicationsInput = {
+    where?: SeniorCategoryWhereInput
+    data: XOR<SeniorCategoryUpdateWithoutApplicationsInput, SeniorCategoryUncheckedUpdateWithoutApplicationsInput>
+  }
+
+  export type SeniorCategoryUpdateWithoutApplicationsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SeniorCategoryUncheckedUpdateWithoutApplicationsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type SessionCreateManyUserInput = {
     sessionToken: string
     expires: Date | string
@@ -8960,6 +16873,15 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type ApplicationsCreateManySeniorInput = {
+    id?: number
+    benefit_id: number
+    status_id: number
+    category_id?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type RegistrationDocumentUpdateWithoutSeniorInput = {
     tag?: StringFieldUpdateOperationsInput | string
     path?: StringFieldUpdateOperationsInput | string
@@ -8982,6 +16904,32 @@ export namespace Prisma {
     tag?: StringFieldUpdateOperationsInput | string
     path?: StringFieldUpdateOperationsInput | string
     file_name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ApplicationsUpdateWithoutSeniorInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    benefit?: BenefitsUpdateOneRequiredWithoutApplicationsNestedInput
+    status?: StatusUpdateOneRequiredWithoutApplicationsNestedInput
+    category?: SeniorCategoryUpdateOneWithoutApplicationsNestedInput
+  }
+
+  export type ApplicationsUncheckedUpdateWithoutSeniorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    benefit_id?: IntFieldUpdateOperationsInput | number
+    status_id?: IntFieldUpdateOperationsInput | number
+    category_id?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ApplicationsUncheckedUpdateManyWithoutSeniorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    benefit_id?: IntFieldUpdateOperationsInput | number
+    status_id?: IntFieldUpdateOperationsInput | number
+    category_id?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9016,6 +16964,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     documents?: RegistrationDocumentUpdateManyWithoutSeniorNestedInput
+    Applications?: ApplicationsUpdateManyWithoutSeniorNestedInput
   }
 
   export type SeniorUncheckedUpdateWithoutRemarksInput = {
@@ -9033,6 +16982,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     documents?: RegistrationDocumentUncheckedUpdateManyWithoutSeniorNestedInput
+    Applications?: ApplicationsUncheckedUpdateManyWithoutSeniorNestedInput
   }
 
   export type SeniorUncheckedUpdateManyWithoutRemarksInput = {
@@ -9047,6 +16997,138 @@ export namespace Prisma {
     birthdate?: DateTimeFieldUpdateOperationsInput | Date | string
     age?: StringFieldUpdateOperationsInput | string
     contact_no?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ApplicationsCreateManyCategoryInput = {
+    id?: number
+    benefit_id: number
+    senior_id: number
+    status_id: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ApplicationsUpdateWithoutCategoryInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    senior?: SeniorUpdateOneRequiredWithoutApplicationsNestedInput
+    benefit?: BenefitsUpdateOneRequiredWithoutApplicationsNestedInput
+    status?: StatusUpdateOneRequiredWithoutApplicationsNestedInput
+  }
+
+  export type ApplicationsUncheckedUpdateWithoutCategoryInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    benefit_id?: IntFieldUpdateOperationsInput | number
+    senior_id?: IntFieldUpdateOperationsInput | number
+    status_id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ApplicationsUncheckedUpdateManyWithoutCategoryInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    benefit_id?: IntFieldUpdateOperationsInput | number
+    senior_id?: IntFieldUpdateOperationsInput | number
+    status_id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ApplicationsCreateManyStatusInput = {
+    id?: number
+    benefit_id: number
+    senior_id: number
+    category_id?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ApplicationsUpdateWithoutStatusInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    senior?: SeniorUpdateOneRequiredWithoutApplicationsNestedInput
+    benefit?: BenefitsUpdateOneRequiredWithoutApplicationsNestedInput
+    category?: SeniorCategoryUpdateOneWithoutApplicationsNestedInput
+  }
+
+  export type ApplicationsUncheckedUpdateWithoutStatusInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    benefit_id?: IntFieldUpdateOperationsInput | number
+    senior_id?: IntFieldUpdateOperationsInput | number
+    category_id?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ApplicationsUncheckedUpdateManyWithoutStatusInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    benefit_id?: IntFieldUpdateOperationsInput | number
+    senior_id?: IntFieldUpdateOperationsInput | number
+    category_id?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ApplicationsCreateManyBenefitInput = {
+    id?: number
+    senior_id: number
+    status_id: number
+    category_id?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BenefitRequirementsCreateManyBenefitInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ApplicationsUpdateWithoutBenefitInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    senior?: SeniorUpdateOneRequiredWithoutApplicationsNestedInput
+    status?: StatusUpdateOneRequiredWithoutApplicationsNestedInput
+    category?: SeniorCategoryUpdateOneWithoutApplicationsNestedInput
+  }
+
+  export type ApplicationsUncheckedUpdateWithoutBenefitInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    senior_id?: IntFieldUpdateOperationsInput | number
+    status_id?: IntFieldUpdateOperationsInput | number
+    category_id?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ApplicationsUncheckedUpdateManyWithoutBenefitInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    senior_id?: IntFieldUpdateOperationsInput | number
+    status_id?: IntFieldUpdateOperationsInput | number
+    category_id?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BenefitRequirementsUpdateWithoutBenefitInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BenefitRequirementsUncheckedUpdateWithoutBenefitInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BenefitRequirementsUncheckedUpdateManyWithoutBenefitInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

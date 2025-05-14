@@ -35,6 +35,8 @@ const chartConfig = {
 } satisfies ChartConfig
 
 const LineChartComponent = <T extends Record<string, unknown>>({
+    title,
+    description,
     chartData,
     chartConfig,
     xAxisKey,
@@ -42,8 +44,8 @@ const LineChartComponent = <T extends Record<string, unknown>>({
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Line Chart - Linear</CardTitle>
-                <CardDescription>January - June 2024</CardDescription>
+                <CardTitle>{title}</CardTitle>
+                <CardDescription>{description}</CardDescription>
             </CardHeader>
             <CardContent>
                 <ChartContainer config={chartConfig} className="h-full w-full">

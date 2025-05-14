@@ -4,6 +4,7 @@ import './globals.css'
 import { SessionProvider } from 'next-auth/react'
 import { QueryClient } from '@tanstack/react-query'
 import ReactQueryProvider from '@/components/providers/ReactQueryProvider'
+import { Toaster } from '@/components/ui/sonner'
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -35,6 +36,7 @@ export default function RootLayout({
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
                 <SessionProvider refetchInterval={5 * 60} refetchOnWindowFocus={true}>
                     <ReactQueryProvider>{children}</ReactQueryProvider>
+                    <Toaster position='top-right' />
                 </SessionProvider>
             </body>
         </html>

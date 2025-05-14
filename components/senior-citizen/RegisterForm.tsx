@@ -7,7 +7,7 @@ import { z } from 'zod'
 import { Input } from '../ui/input'
 import { RegistrationDocumentTag } from '@/types/seniors'
 import { AlertDialogComponent } from '../alert-component'
-import { SeniorsFormData, seniorsFormSchema } from '@/features/seniors/seniors.schema'
+import { SeniorsFormData, seniorsFormSchema } from '@/schema/seniors/seniors.schema'
 import { apiService } from '@/lib/axios'
 import { useMutation } from '@tanstack/react-query'
 import { cn } from '@/lib/utils'
@@ -64,6 +64,7 @@ const RegisterFormComponents = () => {
         fileData[tag as keyof FileData] = file
     }
 
+    // ADD SENIOR MUTATION
     const mutation = useMutation({
         mutationFn: async (formData: FormData) => {
             return await apiService.post('/api/seniors', formData)
@@ -77,6 +78,7 @@ const RegisterFormComponents = () => {
         },
     })
 
+    // HANDLE SUBMIT OF NEW SENIOR
     const onSubmit = async (data: SeniorsFormData) => {
         const apiFormData = new FormData()
         console.log('form data submitted: ', data)
