@@ -35,10 +35,10 @@ async function handleRequest<T>(promise: Promise<AxiosResponse<T>>): Promise<T> 
 
             // IF AUTHENTICATED ERROR HAPPENS POP UP A MODAL SAYS YOU ARE LOGGED OUT DUE TO INACTIVITY
             
-            // if (status === 401 || status === 404) {
-            //     console.warn('Redirecting due to auth/404 error')
-            //     window.location.href = '/'
-            // }
+            if (status === 401 || status === 404) {
+                console.warn('Redirecting due to auth/404 error')
+                window.location.href = '/'
+            }
 
             // You might want to log the full error object in a non-production environment
             console.error('API Error (Axios):', error)

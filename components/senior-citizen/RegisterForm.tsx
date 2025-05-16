@@ -11,6 +11,7 @@ import { SeniorsFormData, seniorsFormSchema } from '@/schema/seniors/seniors.sch
 import { apiService } from '@/lib/axios'
 import { useMutation } from '@tanstack/react-query'
 import { cn } from '@/lib/utils'
+import { toast } from 'sonner'
 
 type FileData = {
     birth_certificate: File | null
@@ -19,7 +20,11 @@ type FileData = {
     membership_certificate: File | null
 }
 
-const RegisterFormComponents = () => {
+const RegisterFormComponents = ({
+    setShowRegistrationModal
+}: {
+    setShowRegistrationModal: React.Dispatch<React.SetStateAction<boolean>>
+}) => {
     // FILE DATA UPLOAD STATE
     const [fileData, setFileData] = useState<FileData>({
         birth_certificate: null,
@@ -72,9 +77,11 @@ const RegisterFormComponents = () => {
         onSuccess: (data) => {
             console.log('Success:', data)
             reset() // optionally reset form
+            setShowRegistrationModal(false)
         },
         onError: (error) => {
             console.error('Error submitting form:', error)
+            toast.error("Error in registering senior, please try again")
         },
     })
 

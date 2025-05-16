@@ -52,7 +52,7 @@ const AddBenefitForm = ({
             setTimeout(() => {
                 setIsAddBenefitModalOpen(false)
                 reset()
-            }, 1500)
+            }, 1000)
         },
 
         onError: (error) => {

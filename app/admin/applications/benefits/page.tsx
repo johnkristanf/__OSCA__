@@ -275,7 +275,7 @@ const BenefitsPage = () => {
                                                             className="text-gray-800"
                                                         >
                                                             {senior.firstname}
-                                                            {senior.middlename}
+                                                            {senior.middlename} {''}
                                                             {senior.lastname}
                                                         </label>
                                                     </li>

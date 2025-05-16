@@ -67,3 +67,14 @@ export type Seniors = {
     createdAt: string // or Date
     updatedAt: string // or Date
 }
+
+
+export type Categories = {
+    id: number,
+    name: string
+}
+
+export type Status = {
+    id: number,
+    name: string
+}

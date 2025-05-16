@@ -70,14 +70,16 @@ const ApplicantPage = () => {
             const respData = await apiService.get<BenefitApplicationData[]>(
                 '/api/benefits/application'
             )
-            console.log('respData /benefits/application: ', respData)
+
             return respData
         },
     })
 
+    console.log("BenefitApplicationData: ", benefitApplicationQuery.data);
+    
+
     // SELECTED BENEFIT FILTER STATE
     const [selected, setSelected] = useState(benefits[2])
-    console.log('selected: ', selected)
 
     return (
         <div className="container mx-auto border-1 border-gray-400 p-5 rounded-md mt-8">

@@ -22,3 +22,15 @@ export type BenefitApplicationData = {
         name: string
     } | null
 }
+
+
+export type UpdateCategoryData = {
+    application_id: number,
+    category_id: number
+}
+
+
+export type UpdateStatusData = {
+    application_id: number,
+    status_id: number
+}

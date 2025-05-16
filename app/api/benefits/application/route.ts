@@ -40,17 +40,26 @@ export async function GET() {
                 },
                 benefit: {
                     select: {
+                        id: true,
                         name: true,
+                        benefit_requirements: {
+                            select: {
+                                id: true,
+                                name: true,
+                            },
+                        },
                     },
                 },
 
                 status: {
                     select: {
+                        id: true,
                         name: true,
                     },
                 },
                 category: {
                     select: {
+                        id: true,
                         name: true,
                     },
                 },
@@ -61,7 +70,6 @@ export async function GET() {
         })
 
         return NextResponse.json(applications, { status: 200 })
-
     } catch (error: any) {
         console.error('[GET /api/applications]', error)
         return NextResponse.json({ msg: error.message, code: 500 }, { status: 500 })

@@ -14,7 +14,6 @@ import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/s
 
 import { usePathname } from 'next/navigation'
 import { formatSegment } from '@/utils/segment'
-import { SessionProvider } from 'next-auth/react'
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname()

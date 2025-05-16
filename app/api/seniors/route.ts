@@ -51,36 +51,46 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
                 if (file && file instanceof File) {
                     console.log(`${tag}: ${file.name}`)
 
-                    const arrayBuffer = await file.arrayBuffer()
-                    const buffer = Buffer.from(arrayBuffer)
-                    const cloudinaryFolderPath = `registration/documents/${senior.id}`
+                    try {
+                        const arrayBuffer = await file.arrayBuffer()
+                        const buffer = Buffer.from(arrayBuffer)
+                        const cloudinaryFolderPath = `registration/documents/${senior.id}`
 
-                    const uploadResult = await new Promise((resolve, reject) => {
-                        const stream = cloudinary.uploader.upload_stream(
-                            {
-                                folder: cloudinaryFolderPath,
-                                public_id: file.name,
-                            },
+                        const uploadResult = await new Promise((resolve, reject) => {
+                            const stream = cloudinary.uploader.upload_stream(
+                                {
+                                    folder: cloudinaryFolderPath,
+                                    public_id: file.name,
+                                },
+                                (error, result) => {
+                                    if (error) {
+                                        console.error(
+                                            `🟥 Cloudinary upload error for ${tag}:`,
+                                            error
+                                        )
+                                        reject(error)
+                                    } else {
+                                        resolve(result)
+                                    }
+                                }
+                            )
+                            stream.end(buffer)
+                        })
 
-                            (error, result) => {
-                                if (error) reject(error)
-                                else resolve(result)
-                            }
-                        )
-
-                        stream.end(buffer)
-                    })
-
-                    console.log(`Uploaded ${tag}:`, uploadResult)
-
-                    await prisma.registrationDocument.create({
-                        data: {
-                            tag: tag,
-                            path: cloudinaryFolderPath,
-                            seniors_id: senior.id,
-                            file_name: file.name,
-                        },
-                    })
+                        if (uploadResult) {
+                            await prisma.registrationDocument.create({
+                                data: {
+                                    tag,
+                                    path: cloudinaryFolderPath,
+                                    seniors_id: senior.id,
+                                    file_name: file.name,
+                                },
+                            })
+                        }
+                    } catch (err) {
+                        console.error(`Error processing file "${tag}":`, err)
+                        // Optional: continue instead of failing the whole request
+                    }
                 }
             }
         }
@@ -89,10 +99,24 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
             { success: true, message: 'Senior Registered Successfully' },
             { status: 201 }
         )
-    } catch (error) {
-        console.error('POST /api/senior error:', error)
+    } catch (error: any) {
+        // High-level catch
+        const isECONNRESET = error.code === 'ECONNRESET'
+
+        console.error('❌ POST /api/senior unhandled error:', {
+            message: error.message,
+            code: error.code,
+            stack: error.stack,
+        })
+
         return NextResponse.json(
-            { success: false, message: 'Something went wrong', error: String(error) },
+            {
+                success: false,
+                message: isECONNRESET
+                    ? 'Connection reset by client or upstream service'
+                    : 'Internal Server Error',
+                error: error.message,
+            },
             { status: 500 }
         )
     }
@@ -150,7 +174,6 @@ export async function GET(request: Request): Promise<NextResponse> {
 
         const seniors = await prisma.senior.findMany(queryOptions)
         return NextResponse.json(seniors)
-        
     } catch (error) {
         console.error('GET /api/senior error:', error)
         return NextResponse.json(

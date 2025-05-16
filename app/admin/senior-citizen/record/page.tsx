@@ -20,8 +20,13 @@ import RegisterFormComponents from '@/components/senior-citizen/RegisterForm'
 import { useQuery } from '@tanstack/react-query'
 import { apiService } from '@/lib/axios'
 import { Seniors } from '@/types/seniors'
+import { useState } from 'react'
 
 const RecordPage = () => {
+    // STATE FOR HANDLING MODAL
+    const [showRegistrationModal, setShowRegistrationModal] = useState<boolean>(false)
+
+    // FETCHING SENIORS QUERY
     const seniorQuery = useQuery({
         queryKey: ['seniors'],
         queryFn: async () => {
@@ -43,7 +48,7 @@ const RecordPage = () => {
             </div>
 
             <div className="flex justify-end gap-2 mt-8 mb-3">
-                <Dialog>
+                <Dialog open={showRegistrationModal} onOpenChange={setShowRegistrationModal}>
                     {/* DIALOG TRIGGER */}
                     <DialogTrigger className="bg-green-600 flex items-center gap-1 !text-white hover:cursor-pointer hover:bg-green-700 px-2 rounded-md">
                         <FontAwesomeIcon icon={faCirclePlus} className="size-3" />
@@ -51,7 +56,11 @@ const RecordPage = () => {
                     </DialogTrigger>
 
                     {/* DIALOG CONTENT */}
-                    <DialogContent className='!max-w-3xl'>
+                    <DialogContent
+                        onEscapeKeyDown={(e) => e.preventDefault()} // Prevent ESC key
+                        onPointerDownOutside={(e) => e.preventDefault()} // Prevent click outside
+                        className="!max-w-3xl"
+                    >
                         <DialogHeader>
                             <DialogTitle>Register New Senior</DialogTitle>
                             <DialogDescription>
@@ -60,7 +69,9 @@ const RecordPage = () => {
                         </DialogHeader>
 
                         {/* REGISTER SENIOR CITIZEN FORM */}
-                        <RegisterFormComponents />
+                        <RegisterFormComponents
+                            setShowRegistrationModal={setShowRegistrationModal}
+                        />
                     </DialogContent>
                 </Dialog>
 
