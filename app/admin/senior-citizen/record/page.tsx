@@ -50,7 +50,7 @@ const RecordPage = () => {
             <div className="flex justify-end gap-2 mt-8 mb-3">
                 <Dialog open={showRegistrationModal} onOpenChange={setShowRegistrationModal}>
                     {/* DIALOG TRIGGER */}
-                    <DialogTrigger className="bg-green-600 flex items-center gap-1 !text-white hover:cursor-pointer hover:bg-green-700 px-2 rounded-md">
+                    <DialogTrigger className="bg-green-600 flex items-center gap-1 !text-white hover:cursor-pointer hover:bg-green-700 px-2 py-1.5 rounded-md">
                         <FontAwesomeIcon icon={faCirclePlus} className="size-3" />
                         Register New
                     </DialogTrigger>
@@ -74,12 +74,6 @@ const RecordPage = () => {
                         />
                     </DialogContent>
                 </Dialog>
-
-                <Input
-                    type="search"
-                    className="w-56 border-1 border-gray-400"
-                    placeholder="Search Senior Citizen..."
-                />
             </div>
 
             {/* SENIORS TABLE */}

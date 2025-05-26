@@ -7,6 +7,19 @@ export function formatDocumentTagName(str: string): string {
         .join(' ') // Join with spaces
 }
 
+export function formatDateOnly(dateInput: Date | string): string {
+  const date = typeof dateInput === 'string' ? new Date(dateInput) : dateInput
+
+  const options: Intl.DateTimeFormatOptions = {
+    month: '2-digit',
+    day: '2-digit',
+    year: 'numeric',
+  }
+
+  return date.toLocaleDateString('en-US', options)
+}
+
+
 export function formatDateTime(dateInput: Date | string): string {
     const date = typeof dateInput === 'string' ? new Date(dateInput) : dateInput
 

@@ -16,6 +16,8 @@ export interface SeniorsFormDataType {
     barangay: string
     purok: string
     contactNumber: string
+    emergencyNumber: string
+    pwd: boolean
 }
 
 export interface RegistrationDocumentType {
@@ -52,17 +54,22 @@ export type Remarks = {
 }
 
 export type Seniors = {
+    senior: any
+    documents: boolean
+    
     id: number
     firstname: string
     middlename: string
     lastname: string
     email: string
     contact_no: string
+    emergency_no: string
     birthdate: string // You can also use Date if it's parsed
     age: string // Consider making this `number` if it's numeric
     gender: string
     barangay: string
     purok: string
+    pwd: boolean
     remarks: Remarks
     createdAt: string // or Date
     updatedAt: string // or Date

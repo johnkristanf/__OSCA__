@@ -1,5 +1,3 @@
-// app/api/auth/[...nextauth]/route.ts
-
 import NextAuth from 'next-auth'
 import prisma from '@/prisma/prisma'
 
@@ -35,6 +33,7 @@ const { handlers } = NextAuth({
                             name: user.name,
                             username: user.username,
                             email: user.email,
+                            role: user.role, // <--- INCLUDE THE ROLE HERE
                         }
                     }
 
@@ -50,32 +49,28 @@ const { handlers } = NextAuth({
     callbacks: {
         async jwt({ token, user }) {
             // First time JWT is created (on login)
-
             if (user) {
                 token.id = user.id
                 token.name = user.name
                 token.username = user.username
                 token.email = user.email
+                token.role = (user as any).role; 
             }
 
             console.log('Final Token:', token)
 
-            return {
-                ...token,
-                id: token.id,
-                name: token.name,
-                username: token.username,
-                email: token.email,
-            }
+            return token; // Return the modified token
         },
 
         async session({ session, token }) {
             // Attach data from token to session
-
-            session.user.id = token.id
-            session.user.name = token.name
-            session.user.username = token.username
-            session.user.email = token.email
+            if (session.user) { // Ensure session.user exists
+                session.user.id = token.id as string;
+                session.user.name = token.name;
+                session.user.username = token.username;
+                session.user.email = token.email;
+                (session.user as any).role = token.role; 
+            }
 
             console.log('Final Session Data:', session)
 

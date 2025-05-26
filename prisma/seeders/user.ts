@@ -14,9 +14,14 @@ export async function seedAdmin() {
         const admin = await prisma.user.create({
             data: {
                 name: 'Administrator',
+                firstName: 'Admin',
+                lastName: 'User',
+                contactNo: '09123456789',
+                bday: new Date('1990-01-01'),
                 username: 'admin@admin',
                 email: 'admin@gmail.com',
                 password: hashedPassword,
+                role: 'ADMIN',
             },
         })
 
