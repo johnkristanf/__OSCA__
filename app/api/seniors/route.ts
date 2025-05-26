@@ -20,6 +20,8 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
             barangay: formData.get('barangay') as string,
             purok: formData.get('purok') as string,
             contactNumber: formData.get('contactNumber') as string,
+            emergencyNumber: formData.get('emergencyNumber') as string,
+            pwd: formData.get('pwd') === 'true',
         }
 
         const senior = await prisma.senior.create({
@@ -34,6 +36,8 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
                 barangay: seniorData.barangay || '',
                 purok: seniorData.purok || '',
                 contact_no: seniorData.contactNumber || '',
+                emergency_no: seniorData.emergencyNumber || '',
+                pwd: seniorData.pwd ?? false,
             },
         })
 
@@ -82,6 +86,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
                                 data: {
                                     tag,
                                     path: cloudinaryFolderPath,
+                                    imageUrl: (uploadResult as any).secure_url, // Store the public URL
                                     seniors_id: senior.id,
                                     file_name: file.name,
                                 },
@@ -134,6 +139,7 @@ export async function GET(request: Request): Promise<NextResponse> {
                         name: true,
                     },
                 },
+                documents: true, // Include documents to get public_id for deletion
             },
         }
 
@@ -180,5 +186,97 @@ export async function GET(request: Request): Promise<NextResponse> {
             { success: false, message: 'Failed to fetch seniors', error: String(error) },
             { status: 500 }
         )
+    }
+}
+
+export async function PUT(request: NextRequest): Promise<NextResponse> {
+    try {
+        const body = await request.json()
+        const { id, ...updateData } = body
+
+        const updatedSenior = await prisma.senior.update({
+            where: { id: Number(id) },
+            data: {
+                email: updateData.email,
+                contact_no: updateData.contact_no,
+                emergency_no: updateData.emergency_no,
+                barangay: updateData.barangay,
+                purok: updateData.purok,
+            },
+        })
+
+        return NextResponse.json({ success: true, data: updatedSenior })
+    } catch (error: any) {
+        console.error('❌ PUT /api/seniors error:', error)
+        return NextResponse.json(
+            { success: false, message: 'Failed to update senior.', error: error.message },
+            { status: 500 }
+        )
+    }
+}
+
+
+export async function DELETE(request: NextRequest): Promise<NextResponse> {
+    try {
+        const { searchParams } = new URL(request.url);
+        const id = searchParams.get('id');
+
+        if (!id) {
+            return NextResponse.json(
+                { success: false, message: 'Senior ID is required for deletion.' },
+                { status: 400 }
+            );
+        }
+
+        // First, find all documents associated with the senior
+        const documentsToDelete = await prisma.registrationDocument.findMany({
+            where: {
+                seniors_id: parseInt(id),
+            },
+            select: {
+                public_id: true,
+            }
+        });
+
+        // Delete documents from Cloudinary
+        const publicIdsToDelete = documentsToDelete
+            .map(doc => doc.public_id)
+            .filter((id): id is string => typeof id === 'string' && !!id);
+        if (publicIdsToDelete.length > 0) {
+            console.log('Deleting from Cloudinary:', publicIdsToDelete);
+            await cloudinary.api.delete_resources(publicIdsToDelete);
+            // Optionally delete the folder itself if it's empty after deleting resources
+            // await cloudinary.api.delete_folder(`registration/documents/${id}`);
+        }
+
+        // Then, delete the documents from your database
+        await prisma.registrationDocument.deleteMany({
+            where: {
+                seniors_id: parseInt(id),
+            },
+        });
+
+        // Finally, delete the senior record
+        await prisma.senior.delete({
+            where: {
+                id: parseInt(id),
+            },
+        });
+
+        return NextResponse.json(
+            { success: true, message: `Senior with ID ${id} deleted successfully.` },
+            { status: 200 }
+        );
+
+    } catch (error: any) {
+        console.error('❌ DELETE /api/seniors unhandled error:', {
+            message: error.message,
+            stack: error.stack,
+        });
+
+        return NextResponse.json(
+            { success: false, message: 'Failed to delete senior.', error: error.message },
+            { status: 500 }
+        );
     }
 }

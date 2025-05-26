@@ -75,3 +75,25 @@ export async function GET() {
         return NextResponse.json({ msg: error.message, code: 500 }, { status: 500 })
     }
 }
+
+export async function DELETE(request: NextRequest) {
+    try {
+        const url = new URL(request.url)
+        const applicationId = url.searchParams.get('application_id')
+
+        if (!applicationId) {
+            return NextResponse.json({ msg: 'Application ID is required', code: 400 }, { status: 400 })
+        }
+
+        await prisma.applications.delete({
+            where: {
+                id: parseInt(applicationId),
+            },
+        })
+
+        return NextResponse.json({ msg: 'Application deleted successfully', code: 200 }, { status: 200 })
+    } catch (error: any) {
+        console.error('[DELETE /api/benefits/application]', error)
+        return NextResponse.json({ msg: 'Error deleting application', code: 500 }, { status: 500 })
+    }
+}
