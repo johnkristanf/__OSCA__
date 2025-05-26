@@ -15,17 +15,28 @@ datasource db {
 }
 
 model User {
-  id       String    @id @default(cuid())
-  name     String?
-  username String    @unique
-  email    String    @unique
-  password String
-  sessions Session[]
+  id         String    @id @default(cuid())
+  name       String?
+  firstName  String
+  lastName   String
+  middleName String?
+  contactNo  String
+  bday       DateTime
+  username   String    @unique
+  email      String    @unique
+  password   String
+  role       Role      @default(USER)
+  sessions   Session[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@map("user")
+}
+
+enum Role {
+  USER
+  ADMIN
 }
 
 model Session {
@@ -42,19 +53,21 @@ model Session {
 
 // SENIOR TABLE SCHEMA
 model Senior {
-  id         Int      @id @default(autoincrement())
-  lastname   String
-  firstname  String
-  middlename String? // nullable
-  email      String? // nullable
-  barangay   String
-  purok      String
-  gender     Gender
-  birthdate  DateTime
-  age        String
-  contact_no String
-  remarks_id Int      @default(1)
-  remarks    Remarks  @relation(fields: [remarks_id], references: [id], onDelete: NoAction)
+  id           Int      @id @default(autoincrement())
+  lastname     String
+  firstname    String
+  middlename   String? // nullable
+  email        String? // nullable
+  barangay     String
+  purok        String
+  gender       Gender
+  birthdate    DateTime
+  age          String
+  contact_no   String
+  emergency_no String
+  pwd          Boolean  @default(false)
+  remarks_id   Int      @default(1)
+  remarks      Remarks  @relation(fields: [remarks_id], references: [id], onDelete: NoAction)
 
   documents    RegistrationDocument[] // ONE SENIOR COULD HAVE MANY REGISTRATION DOCUMENTS
   Applications Applications[] // ONE SENIOR COULD HAVE MANY APPLICATIONS
@@ -70,6 +83,8 @@ model RegistrationDocument {
   id         Int      @id @default(autoincrement())
   tag        String
   path       String
+  public_id  String?
+  imageUrl   String?
   file_name  String
   seniors_id Int
   senior     Senior   @relation(fields: [seniors_id], references: [id], onDelete: Cascade)
