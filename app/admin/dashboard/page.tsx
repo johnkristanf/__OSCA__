@@ -3,6 +3,7 @@
 import { BarChartComponent } from '@/components/bar-chart'
 import LineChartComponent from '@/components/line-chart'
 import { ChartConfig } from '@/components/ui/chart'
+import { DashboardCountsCard } from '@/components/dashboard-counts-card'; // Import the new component
 
 const monthlyRegisteredChartData = [
     { month: 'January', seniors: 186 },
@@ -29,24 +30,28 @@ const chartConfig = {
 
 const DashboardPage = () => {
     return (
-        <div className="grid auto-rows-min gap-4 md:grid-cols-2 mt-8">
-            <BarChartComponent
-                title="Monthly Registered Senior"
-                description="Count of registered senior by month"
-                chartData={monthlyRegisteredChartData}
-                chartConfig={chartConfig}
-                xAxisKey="month"
-            />
+        <>
+            <div className="grid auto-rows-min gap-4 md:grid-cols-2 mt-8">
+                {/* Senior Counts Section - now a component */}
+                <DashboardCountsCard /> 
 
+                <BarChartComponent
+                    title="Monthly Registered Senior"
+                    description="Count of registered senior by month"
+                    chartData={monthlyRegisteredChartData}
+                    chartConfig={chartConfig}
+                    xAxisKey="month"
+                />
 
-            <LineChartComponent
-                title="Yearly Registered Senior"
-                description="Count of registered senior by year"
-                chartData={yearlyRegisteredChartData}
-                chartConfig={chartConfig}
-                xAxisKey="year"
-            />
-        </div>
+                <LineChartComponent
+                    title="Yearly Registered Senior"
+                    description="Count of registered senior by year"
+                    chartData={yearlyRegisteredChartData}
+                    chartConfig={chartConfig}
+                    xAxisKey="year"
+                />
+            </div>
+        </>
     )
 }
 
