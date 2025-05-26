@@ -12,9 +12,12 @@ import {
     DialogTitle,
     DialogTrigger,
 } from '@/components/ui/dialog'
+import { Pencil, Trash, FileText } from 'lucide-react'
+import { Button } from '@/components/ui/button' // Assuming you have a Button component
+
 import { useFetchCategoryAndStatus } from '@/hooks/use-fetch-category-status'
 import { ListBoxComponent } from '@/components/listbox-component'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Categories, Status } from '@/types/seniors'
 import PrimaryButton from '@/components/ui/primary-button'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
@@ -22,8 +25,6 @@ import { UpdateCategoryData, UpdateStatusData } from '@/types/application'
 import { PUTApiResponse } from '@/types/api'
 import { apiService } from '@/lib/axios'
 import { toast } from 'sonner'
-import { cn } from '@/lib/utils'
-import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
 
 // THIS IS FOR APPLICANTS DATA TABLE COLUMN
@@ -31,6 +32,8 @@ export const applicantsColumn: ColumnDef<any>[] = [
     {
         accessorKey: 'fullname',
         header: 'Full Name',
+        // Use accessorFn to create a derived value for filtering and sorting
+        accessorFn: (row) => [row.senior.firstname, row.senior.middlename, row.senior.lastname].filter(Boolean).join(' '),
         cell: ({ row }) => {
             const first = row.original.senior.firstname || ''
             const middle = row.original.senior.middlename || ''
@@ -38,15 +41,7 @@ export const applicantsColumn: ColumnDef<any>[] = [
             const fullName = [first, middle, last].filter(Boolean).join(' ')
             return <div>{fullName}</div>
         },
-    },
-
-    {
-        accessorKey: 'email',
-        header: 'Email',
-        cell: ({ row }) => {
-            const email = row.original.senior.email || ''
-            return <div>{email}</div>
-        },
+        filterFn: 'includesString', // Use a simple string inclusion filter
     },
 
     {
@@ -56,11 +51,14 @@ export const applicantsColumn: ColumnDef<any>[] = [
             const benefit = row.original.benefit.name || ''
             return <div>{benefit}</div>
         },
+        // If filtering by benefit name, use accessorFn
+        accessorFn: (row) => row.benefit.name,
+        filterFn: 'equals',
     },
 
     {
         accessorKey: 'senior_category',
-        header: 'Senior Category',
+        header: 'Category',
         cell: ({ row }) => {
             const category = row.original.category
             const categoryName = category ? category.name : 'N/A'
@@ -83,6 +81,9 @@ export const applicantsColumn: ColumnDef<any>[] = [
                 </div>
             )
         },
+        // If filtering by category name, use accessorFn
+        accessorFn: (row) => row.category?.name || 'N/A',
+        filterFn: 'equals',
     },
 
     {
@@ -109,6 +110,9 @@ export const applicantsColumn: ColumnDef<any>[] = [
                 </div>
             )
         },
+        // If filtering by status name, use accessorFn
+        accessorFn: (row) => row.status.name,
+        filterFn: 'equals',
     },
 
     {
@@ -117,65 +121,48 @@ export const applicantsColumn: ColumnDef<any>[] = [
         cell: ({ row }) => {
             return formatDateTime(row.getValue('createdAt'))
         },
+        filterFn: (row, columnId, filterValue) => {
+            const date = formatDateTime(row.getValue(columnId));
+            return date.includes(filterValue as string);
+        },
     },
-    // {
-    //     accessorKey: 'updatedAt',
-    //     header: 'Updated At',
-    //     cell: ({ row }) => {
-    //         return formatDateTime(row.getValue('updatedAt'))
-    //     },
-    // },
-
     {
         accessorKey: 'actions',
         header: 'Actions',
         cell: ({ row }) => {
-            // APPLICATION DATA
             const applicant = row.original
-
-            // QUERY CLIENT FOR APPLICATION INVALIDATION AFTER UPDATE
             const queryClient = useQueryClient()
-
-            // HOOK FOR FETCHING CATEGORY AND STATUS
             const { categories, status, isCategoryLoading, isStatusLoading } =
                 useFetchCategoryAndStatus()
 
-            // DIALOG STATE HOLDER
             const [showUpdateDialog, setShowUpdateDialog] = useState<boolean>(false)
             const [showRequirementsDialog, setShowRequirementsDialog] = useState<boolean>(false)
+            const [showDeleteDialog, setShowDeleteDialog] = useState<boolean>(false)
 
-            // CATEGORY NULL CATCHER
             const fallbackCategory: Categories = {
                 id: -1,
                 name: 'Select Category',
             }
 
-            // SELECTED LISTBOX VALUE CATEGORY HOLDER
             const [selectedCategories, setSelectedCategories] = useState<Categories>(
                 applicant.category ?? fallbackCategory
             )
-
-            // SELECTED LISTBOX VALUE STATUS HOLDER
             const [selectedStatus, setSelectedStatus] = useState<Status>(applicant.status)
 
-            // MUTATION FOR UPDATING SENIOR CATEGORY
             const categoryMutation = useMutation({
                 mutationFn: async (data: UpdateCategoryData) => {
                     return await apiService.put<PUTApiResponse>('/api/seniors/category', data)
                 },
                 onSuccess: (resp) => {
-                    console.log('Success:', resp)
                     toast.success(resp.msg)
                     queryClient.invalidateQueries({ queryKey: ['applications'] })
                 },
-
                 onError: (error) => {
                     toast.error('Error in Updating Category, please try again!')
                     console.error('Error updating category:', error)
                 },
             })
 
-            // MUTATION FOR UPDATING APPLICATION STATUS
             const statusMutation = useMutation({
                 mutationFn: async (data: UpdateStatusData) => {
                     return await apiService.put<PUTApiResponse>(
@@ -184,54 +171,67 @@ export const applicantsColumn: ColumnDef<any>[] = [
                     )
                 },
                 onSuccess: (resp) => {
-                    console.log('Success:', resp)
                     toast.success(resp.msg)
                     queryClient.invalidateQueries({ queryKey: ['applications'] })
-
                     setTimeout(() => {
                         setShowUpdateDialog(false)
                     }, 1000)
                 },
-
                 onError: (error) => {
                     toast.error('Error in Updating Status, please try again!')
                     console.error('Error updating status:', error)
                 },
             })
 
-            // UPDATE SUBMIT HANDLER
+            const deleteMutation = useMutation({
+                mutationFn: async (applicationId: number) => {
+                    return await apiService.delete(
+                        `/api/benefits/application?application_id=${applicationId}`
+                    )
+                },
+                onSuccess: () => {
+                    toast.success('Application deleted successfully!')
+                    queryClient.invalidateQueries({ queryKey: ['applications'] })
+                    setShowDeleteDialog(false)
+                },
+                onError: (error) => {
+                    toast.error('Error deleting application, please try again!')
+                    console.error('Error deleting application:', error)
+                },
+            })
+
             const onUpdateApplication = () => {
-                // DEFAULT CATEGORY AND STATUS CATCHER
                 if (selectedCategories.id === -1) {
-                    toast.warning('Atleast select category to proceed')
+                    toast.warning('At least select a category to proceed')
                     return
                 }
 
-                // UPDATE SENIOR CATEGORY DATA
                 const updateCategoryData: UpdateCategoryData = {
                     application_id: applicant.id,
                     category_id: selectedCategories.id,
                 }
 
-                // UPDATE APPLICATION STATUS DATA
                 const updateStatusData: UpdateStatusData = {
                     application_id: applicant.id,
                     status_id: selectedStatus.id,
                 }
 
-                console.log('updateCategoryData: ', updateCategoryData)
-                console.log('updateStatusData: ', updateStatusData)
-
                 categoryMutation.mutate(updateCategoryData)
                 statusMutation.mutate(updateStatusData)
             }
 
+            const onDeleteApplication = () => {
+                deleteMutation.mutate(applicant.id)
+            }
+
             return (
-                <div className="flex gap-4 text-sm">
-                    {/* DIALOG FOR REQUIREMENTS NEEDED FOR THE BENEFIT APPLICATION */}
+                <div className="flex gap-2">
+                    {/* Requirements Dialog Trigger */}
                     <Dialog open={showRequirementsDialog} onOpenChange={setShowRequirementsDialog}>
-                        <DialogTrigger className="text-green-600 hover:underline hover:cursor-pointer">
-                            Requirements
+                        <DialogTrigger asChild>
+                            <Button variant="ghost" size="icon">
+                                <FileText className="w-4 h-4" />
+                            </Button>
                         </DialogTrigger>
                         <DialogContent
                             onKeyDown={(e) => e.preventDefault()}
@@ -244,33 +244,25 @@ export const applicantsColumn: ColumnDef<any>[] = [
                                     application
                                 </DialogDescription>
                             </DialogHeader>
-
-                            {applicant.benefit.benefit_requirements &&
-                                applicant.benefit.benefit_requirements.map((requirement) => (
-                                    <div className="col-span-full">
-                                        <label className="block text-sm/6 text-gray-900 mb-3">
-                                            {requirement.name}
-                                        </label>
-                                        <div className="space-y-2">
-                                            <Input
-                                                type="file"
-                                                // onChange={(e) =>
-                                                //     handleFileChange(
-                                                //         e,
-                                                //         RegistrationDocumentTag.BIRTH_CERTIFICATE
-                                                //     )
-                                                // }
-                                            />
-                                        </div>
+                            {applicant.benefit.benefit_requirements?.map((requirement: any) => (
+                                <div className="col-span-full" key={requirement.id}>
+                                    <label className="block text-sm/6 text-gray-900 mb-3">
+                                        {requirement.name}
+                                    </label>
+                                    <div className="space-y-2">
+                                        <Input type="file" />
                                     </div>
-                                ))}
+                                </div>
+                            ))}
                         </DialogContent>
                     </Dialog>
 
-                    {/* DIALOG FOR UPDATING CATEGORY AND STATUS APPLICATION */}
+                    {/* Update Dialog Trigger */}
                     <Dialog open={showUpdateDialog} onOpenChange={setShowUpdateDialog}>
-                        <DialogTrigger className="text-blue-600 hover:underline hover:cursor-pointer">
-                            Update
+                        <DialogTrigger asChild>
+                            <Button variant="ghost" size="icon">
+                                <Pencil className="w-4 h-4" />
+                            </Button>
                         </DialogTrigger>
                         <DialogContent
                             onKeyDown={(e) => e.preventDefault()}
@@ -279,14 +271,12 @@ export const applicantsColumn: ColumnDef<any>[] = [
                             <DialogHeader>
                                 <DialogTitle>Update Senior Application</DialogTitle>
                                 <DialogDescription>
-                                    Categorized and Update Status senior application based on
+                                    Categorize and update status of senior application based on
                                     eligibility
                                 </DialogDescription>
                             </DialogHeader>
-
                             <div className="flex flex-col">
                                 <h1>Senior Category</h1>
-
                                 {isCategoryLoading ? (
                                     <h1>Loading Categories...</h1>
                                 ) : (
@@ -300,10 +290,8 @@ export const applicantsColumn: ColumnDef<any>[] = [
                                     />
                                 )}
                             </div>
-
                             <div className="flex flex-col">
                                 <h1>Status</h1>
-
                                 {isStatusLoading ? (
                                     <h1>Loading Status...</h1>
                                 ) : (
@@ -317,8 +305,6 @@ export const applicantsColumn: ColumnDef<any>[] = [
                                     />
                                 )}
                             </div>
-
-                            {/* DIALOG FOOTER */}
                             <DialogFooter>
                                 <PrimaryButton
                                     className={
@@ -339,12 +325,49 @@ export const applicantsColumn: ColumnDef<any>[] = [
                         </DialogContent>
                     </Dialog>
 
-                    <button
-                        onClick={() => console.log('Delete', applicant)}
-                        className="text-red-600 hover:underline hover:cursor-pointer"
-                    >
-                        Delete
-                    </button>
+                    {/* Delete Dialog Trigger */}
+                    <Dialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
+                        <DialogTrigger asChild>
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                className="text-red-600 hover:text-red-700"
+                            >
+                                <Trash className="w-4 h-4" />
+                            </Button>
+                        </DialogTrigger>
+                        <DialogContent
+                            onKeyDown={(e) => e.preventDefault()}
+                            onFocusOutside={(e) => e.preventDefault()}
+                        >
+                            <DialogHeader>
+                                <DialogTitle>Delete Senior Application</DialogTitle>
+                                <DialogDescription>
+                                    Are you sure you want to delete this application? This action
+                                    cannot be undone.
+                                </DialogDescription>
+                            </DialogHeader>
+                            <DialogFooter>
+                                <PrimaryButton
+                                    onClick={() => setShowDeleteDialog(false)}
+                                    className="!bg-gray-400 text-white"
+                                >
+                                    Cancel
+                                </PrimaryButton>
+                                <PrimaryButton
+                                    onClick={onDeleteApplication}
+                                    className={
+                                        deleteMutation.isPending
+                                            ? '!bg-red-300 text-white'
+                                            : '!bg-red-600 text-white'
+                                    }
+                                    disabled={deleteMutation.isPending}
+                                >
+                                    {deleteMutation.isPending ? 'Deleting...' : 'Delete'}
+                                </PrimaryButton>
+                            </DialogFooter>
+                        </DialogContent>
+                    </Dialog>
                 </div>
             )
         },
