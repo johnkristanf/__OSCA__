@@ -274,7 +274,7 @@ const BenefitsPage = () => {
                                                             htmlFor={`senior-${senior.id}`}
                                                             className="text-gray-800"
                                                         >
-                                                            {senior.firstname}
+                                                            {senior.firstname} {''}
                                                             {senior.middlename} {''}
                                                             {senior.lastname}
                                                         </label>
