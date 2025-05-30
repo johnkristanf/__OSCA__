@@ -15,6 +15,7 @@ import { format } from 'date-fns'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { CalendarIcon, Upload, User, MapPin, Phone, FileText, Loader2 } from 'lucide-react'
+import { SELECT_OPTIONS } from '@/constants/select-options'
 
 // shadcn/ui components
 import { Button } from '@/components/ui/button'
@@ -47,27 +48,6 @@ type FileData = {
     membership_certificate: File | null
 }
 
-// Form section configuration for better maintainability
-const FORM_SECTIONS = {
-    personal: {
-        title: 'Personal Information',
-        description: 'Basic personal details and contact information',
-        icon: User,
-        fields: ['firstName', 'middleName', 'lastName', 'email', 'age', 'birthDate', 'gender'],
-    },
-    contact: {
-        title: 'Contact & Address',
-        description: 'Phone numbers and address information',
-        icon: MapPin,
-        fields: ['contactNumber', 'emergencyNumber', 'barangay', 'purok'],
-    },
-    documents: {
-        title: 'Registration Documents',
-        description: 'Upload required documents for registration',
-        icon: FileText,
-        fields: [],
-    },
-}
 
 // Document upload configuration
 const DOCUMENT_TYPES = [
@@ -92,24 +72,6 @@ const DOCUMENT_TYPES = [
         tag: RegistrationDocumentTag.MEMBERSHIP_CERTIFICATE,
     },
 ]
-
-// Select options configuration
-const SELECT_OPTIONS = {
-    gender: [
-        { value: 'female', label: 'Female' },
-        { value: 'male', label: 'Male' },
-    ],
-    barangay: [
-        { value: 'Gredu', label: 'Gredu' },
-        { value: 'Cagangohan', label: 'Cagangohan' },
-        { value: 'J.P Larurel', label: 'J.P Larurel' },
-    ],
-    purok: [
-        { value: 'Cacao', label: 'Cacao' },
-        { value: 'Santol', label: 'Santol' },
-        { value: 'Mansanas', label: 'Mansanas' },
-    ],
-}
 
 const RegisterFormComponents = ({
     setShowRegistrationModal,
@@ -272,7 +234,7 @@ const RegisterFormComponents = ({
 
                                 {/* Email and Age Row */}
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <FormField
+                                    {/* <FormField
                                         control={form.control}
                                         name="email"
                                         render={({ field }) => (
@@ -288,7 +250,7 @@ const RegisterFormComponents = ({
                                                 <FormMessage />
                                             </FormItem>
                                         )}
-                                    />
+                                    /> */}
                                     <FormField
                                         control={form.control}
                                         name="age"
@@ -308,10 +270,7 @@ const RegisterFormComponents = ({
                                             </FormItem>
                                         )}
                                     />
-                                </div>
-
                                 {/* Birth Date and Gender Row */}
-                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                     <FormField
                                         control={form.control}
                                         name="birthDate"
@@ -512,27 +471,14 @@ const RegisterFormComponents = ({
                                         name="purok"
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel>Purok</FormLabel>
-                                                <Select
-                                                    onValueChange={field.onChange}
-                                                    value={field.value}
-                                                >
-                                                    <FormControl>
-                                                        <SelectTrigger>
-                                                            <SelectValue placeholder="Select purok" />
-                                                        </SelectTrigger>
-                                                    </FormControl>
-                                                    <SelectContent>
-                                                        {SELECT_OPTIONS.purok.map((option) => (
-                                                            <SelectItem
-                                                                key={option.value}
-                                                                value={option.value}
-                                                            >
-                                                                {option.label}
-                                                            </SelectItem>
-                                                        ))}
-                                                    </SelectContent>
-                                                </Select>
+                                                <FormLabel>Lot / Block / Street / Purok</FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        type="address"
+                                                        placeholder="Enter purok"
+                                                        {...field}
+                                                    />
+                                                </FormControl>
                                                 <FormMessage />
                                             </FormItem>
                                         )}

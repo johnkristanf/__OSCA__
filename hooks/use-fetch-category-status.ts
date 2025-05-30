@@ -25,4 +25,6 @@ export const useFetchCategoryAndStatus = () => {
         isCategoryLoading: categoryQuery.isLoading,
         isStatusLoading: statusQuery.isLoading
     }
+
 }
+

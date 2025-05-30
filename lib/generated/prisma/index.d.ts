@@ -375,8 +375,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.7.0
-   * Query Engine version: 3cff47a7f5d65c3ea74883f1d736e41d68ce91ed
+   * Prisma Client JS version: 6.8.2
+   * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
    */
   export type PrismaVersion = {
     client: string
@@ -1913,6 +1913,37 @@ export namespace Prisma {
    */
   export type BenefitsCountOutputTypeCountBenefit_requirementsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: BenefitRequirementsWhereInput
+  }
+
+
+  /**
+   * Count Type BenefitRequirementsCountOutputType
+   */
+
+  export type BenefitRequirementsCountOutputType = {
+    registrationDocuments: number
+  }
+
+  export type BenefitRequirementsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    registrationDocuments?: boolean | BenefitRequirementsCountOutputTypeCountRegistrationDocumentsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * BenefitRequirementsCountOutputType without action
+   */
+  export type BenefitRequirementsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BenefitRequirementsCountOutputType
+     */
+    select?: BenefitRequirementsCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * BenefitRequirementsCountOutputType without action
+   */
+  export type BenefitRequirementsCountOutputTypeCountRegistrationDocumentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RegistrationDocumentWhereInput
   }
 
 
@@ -4189,6 +4220,8 @@ export namespace Prisma {
     emergency_no: string | null
     pwd: boolean | null
     remarks_id: number | null
+    deletedAt: Date | null
+    releasedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -4208,6 +4241,8 @@ export namespace Prisma {
     emergency_no: string | null
     pwd: boolean | null
     remarks_id: number | null
+    deletedAt: Date | null
+    releasedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -4227,6 +4262,8 @@ export namespace Prisma {
     emergency_no: number
     pwd: number
     remarks_id: number
+    deletedAt: number
+    releasedAt: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -4258,6 +4295,8 @@ export namespace Prisma {
     emergency_no?: true
     pwd?: true
     remarks_id?: true
+    deletedAt?: true
+    releasedAt?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -4277,6 +4316,8 @@ export namespace Prisma {
     emergency_no?: true
     pwd?: true
     remarks_id?: true
+    deletedAt?: true
+    releasedAt?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -4296,6 +4337,8 @@ export namespace Prisma {
     emergency_no?: true
     pwd?: true
     remarks_id?: true
+    deletedAt?: true
+    releasedAt?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -4402,6 +4445,8 @@ export namespace Prisma {
     emergency_no: string
     pwd: boolean
     remarks_id: number
+    deletedAt: Date | null
+    releasedAt: Date | null
     createdAt: Date
     updatedAt: Date
     _count: SeniorCountAggregateOutputType | null
@@ -4440,6 +4485,8 @@ export namespace Prisma {
     emergency_no?: boolean
     pwd?: boolean
     remarks_id?: boolean
+    deletedAt?: boolean
+    releasedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     remarks?: boolean | RemarksDefaultArgs<ExtArgs>
@@ -4463,6 +4510,8 @@ export namespace Prisma {
     emergency_no?: boolean
     pwd?: boolean
     remarks_id?: boolean
+    deletedAt?: boolean
+    releasedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     remarks?: boolean | RemarksDefaultArgs<ExtArgs>
@@ -4483,6 +4532,8 @@ export namespace Prisma {
     emergency_no?: boolean
     pwd?: boolean
     remarks_id?: boolean
+    deletedAt?: boolean
+    releasedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     remarks?: boolean | RemarksDefaultArgs<ExtArgs>
@@ -4503,11 +4554,13 @@ export namespace Prisma {
     emergency_no?: boolean
     pwd?: boolean
     remarks_id?: boolean
+    deletedAt?: boolean
+    releasedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type SeniorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "lastname" | "firstname" | "middlename" | "email" | "barangay" | "purok" | "gender" | "birthdate" | "age" | "contact_no" | "emergency_no" | "pwd" | "remarks_id" | "createdAt" | "updatedAt", ExtArgs["result"]["senior"]>
+  export type SeniorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "lastname" | "firstname" | "middlename" | "email" | "barangay" | "purok" | "gender" | "birthdate" | "age" | "contact_no" | "emergency_no" | "pwd" | "remarks_id" | "deletedAt" | "releasedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["senior"]>
   export type SeniorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     remarks?: boolean | RemarksDefaultArgs<ExtArgs>
     documents?: boolean | Senior$documentsArgs<ExtArgs>
@@ -4543,6 +4596,8 @@ export namespace Prisma {
       emergency_no: string
       pwd: boolean
       remarks_id: number
+      deletedAt: Date | null
+      releasedAt: Date | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["senior"]>
@@ -4985,6 +5040,8 @@ export namespace Prisma {
     readonly emergency_no: FieldRef<"Senior", 'String'>
     readonly pwd: FieldRef<"Senior", 'Boolean'>
     readonly remarks_id: FieldRef<"Senior", 'Int'>
+    readonly deletedAt: FieldRef<"Senior", 'DateTime'>
+    readonly releasedAt: FieldRef<"Senior", 'DateTime'>
     readonly createdAt: FieldRef<"Senior", 'DateTime'>
     readonly updatedAt: FieldRef<"Senior", 'DateTime'>
   }
@@ -5464,11 +5521,13 @@ export namespace Prisma {
   export type RegistrationDocumentAvgAggregateOutputType = {
     id: number | null
     seniors_id: number | null
+    benefit_requirement_id: number | null
   }
 
   export type RegistrationDocumentSumAggregateOutputType = {
     id: number | null
     seniors_id: number | null
+    benefit_requirement_id: number | null
   }
 
   export type RegistrationDocumentMinAggregateOutputType = {
@@ -5481,6 +5540,7 @@ export namespace Prisma {
     seniors_id: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    benefit_requirement_id: number | null
   }
 
   export type RegistrationDocumentMaxAggregateOutputType = {
@@ -5493,6 +5553,7 @@ export namespace Prisma {
     seniors_id: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    benefit_requirement_id: number | null
   }
 
   export type RegistrationDocumentCountAggregateOutputType = {
@@ -5505,6 +5566,7 @@ export namespace Prisma {
     seniors_id: number
     createdAt: number
     updatedAt: number
+    benefit_requirement_id: number
     _all: number
   }
 
@@ -5512,11 +5574,13 @@ export namespace Prisma {
   export type RegistrationDocumentAvgAggregateInputType = {
     id?: true
     seniors_id?: true
+    benefit_requirement_id?: true
   }
 
   export type RegistrationDocumentSumAggregateInputType = {
     id?: true
     seniors_id?: true
+    benefit_requirement_id?: true
   }
 
   export type RegistrationDocumentMinAggregateInputType = {
@@ -5529,6 +5593,7 @@ export namespace Prisma {
     seniors_id?: true
     createdAt?: true
     updatedAt?: true
+    benefit_requirement_id?: true
   }
 
   export type RegistrationDocumentMaxAggregateInputType = {
@@ -5541,6 +5606,7 @@ export namespace Prisma {
     seniors_id?: true
     createdAt?: true
     updatedAt?: true
+    benefit_requirement_id?: true
   }
 
   export type RegistrationDocumentCountAggregateInputType = {
@@ -5553,6 +5619,7 @@ export namespace Prisma {
     seniors_id?: true
     createdAt?: true
     updatedAt?: true
+    benefit_requirement_id?: true
     _all?: true
   }
 
@@ -5652,6 +5719,7 @@ export namespace Prisma {
     seniors_id: number
     createdAt: Date
     updatedAt: Date
+    benefit_requirement_id: number | null
     _count: RegistrationDocumentCountAggregateOutputType | null
     _avg: RegistrationDocumentAvgAggregateOutputType | null
     _sum: RegistrationDocumentSumAggregateOutputType | null
@@ -5683,7 +5751,9 @@ export namespace Prisma {
     seniors_id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    benefit_requirement_id?: boolean
     senior?: boolean | SeniorDefaultArgs<ExtArgs>
+    benefitRequirement?: boolean | RegistrationDocument$benefitRequirementArgs<ExtArgs>
   }, ExtArgs["result"]["registrationDocument"]>
 
   export type RegistrationDocumentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5696,7 +5766,9 @@ export namespace Prisma {
     seniors_id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    benefit_requirement_id?: boolean
     senior?: boolean | SeniorDefaultArgs<ExtArgs>
+    benefitRequirement?: boolean | RegistrationDocument$benefitRequirementArgs<ExtArgs>
   }, ExtArgs["result"]["registrationDocument"]>
 
   export type RegistrationDocumentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5709,7 +5781,9 @@ export namespace Prisma {
     seniors_id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    benefit_requirement_id?: boolean
     senior?: boolean | SeniorDefaultArgs<ExtArgs>
+    benefitRequirement?: boolean | RegistrationDocument$benefitRequirementArgs<ExtArgs>
   }, ExtArgs["result"]["registrationDocument"]>
 
   export type RegistrationDocumentSelectScalar = {
@@ -5722,23 +5796,28 @@ export namespace Prisma {
     seniors_id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    benefit_requirement_id?: boolean
   }
 
-  export type RegistrationDocumentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tag" | "path" | "public_id" | "imageUrl" | "file_name" | "seniors_id" | "createdAt" | "updatedAt", ExtArgs["result"]["registrationDocument"]>
+  export type RegistrationDocumentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tag" | "path" | "public_id" | "imageUrl" | "file_name" | "seniors_id" | "createdAt" | "updatedAt" | "benefit_requirement_id", ExtArgs["result"]["registrationDocument"]>
   export type RegistrationDocumentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     senior?: boolean | SeniorDefaultArgs<ExtArgs>
+    benefitRequirement?: boolean | RegistrationDocument$benefitRequirementArgs<ExtArgs>
   }
   export type RegistrationDocumentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     senior?: boolean | SeniorDefaultArgs<ExtArgs>
+    benefitRequirement?: boolean | RegistrationDocument$benefitRequirementArgs<ExtArgs>
   }
   export type RegistrationDocumentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     senior?: boolean | SeniorDefaultArgs<ExtArgs>
+    benefitRequirement?: boolean | RegistrationDocument$benefitRequirementArgs<ExtArgs>
   }
 
   export type $RegistrationDocumentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "RegistrationDocument"
     objects: {
       senior: Prisma.$SeniorPayload<ExtArgs>
+      benefitRequirement: Prisma.$BenefitRequirementsPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -5750,6 +5829,7 @@ export namespace Prisma {
       seniors_id: number
       createdAt: Date
       updatedAt: Date
+      benefit_requirement_id: number | null
     }, ExtArgs["result"]["registrationDocument"]>
     composites: {}
   }
@@ -6145,6 +6225,7 @@ export namespace Prisma {
   export interface Prisma__RegistrationDocumentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     senior<T extends SeniorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SeniorDefaultArgs<ExtArgs>>): Prisma__SeniorClient<$Result.GetResult<Prisma.$SeniorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    benefitRequirement<T extends RegistrationDocument$benefitRequirementArgs<ExtArgs> = {}>(args?: Subset<T, RegistrationDocument$benefitRequirementArgs<ExtArgs>>): Prisma__BenefitRequirementsClient<$Result.GetResult<Prisma.$BenefitRequirementsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6183,6 +6264,7 @@ export namespace Prisma {
     readonly seniors_id: FieldRef<"RegistrationDocument", 'Int'>
     readonly createdAt: FieldRef<"RegistrationDocument", 'DateTime'>
     readonly updatedAt: FieldRef<"RegistrationDocument", 'DateTime'>
+    readonly benefit_requirement_id: FieldRef<"RegistrationDocument", 'Int'>
   }
     
 
@@ -6576,6 +6658,25 @@ export namespace Prisma {
      * Limit how many RegistrationDocuments to delete.
      */
     limit?: number
+  }
+
+  /**
+   * RegistrationDocument.benefitRequirement
+   */
+  export type RegistrationDocument$benefitRequirementArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BenefitRequirements
+     */
+    select?: BenefitRequirementsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BenefitRequirements
+     */
+    omit?: BenefitRequirementsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BenefitRequirementsInclude<ExtArgs> | null
+    where?: BenefitRequirementsWhereInput
   }
 
   /**
@@ -11029,18 +11130,18 @@ export namespace Prisma {
 
   export type BenefitRequirementsAvgAggregateOutputType = {
     id: number | null
-    benefit_id: number | null
+    benefitsId: number | null
   }
 
   export type BenefitRequirementsSumAggregateOutputType = {
     id: number | null
-    benefit_id: number | null
+    benefitsId: number | null
   }
 
   export type BenefitRequirementsMinAggregateOutputType = {
     id: number | null
     name: string | null
-    benefit_id: number | null
+    benefitsId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -11048,7 +11149,7 @@ export namespace Prisma {
   export type BenefitRequirementsMaxAggregateOutputType = {
     id: number | null
     name: string | null
-    benefit_id: number | null
+    benefitsId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -11056,7 +11157,7 @@ export namespace Prisma {
   export type BenefitRequirementsCountAggregateOutputType = {
     id: number
     name: number
-    benefit_id: number
+    benefitsId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -11065,18 +11166,18 @@ export namespace Prisma {
 
   export type BenefitRequirementsAvgAggregateInputType = {
     id?: true
-    benefit_id?: true
+    benefitsId?: true
   }
 
   export type BenefitRequirementsSumAggregateInputType = {
     id?: true
-    benefit_id?: true
+    benefitsId?: true
   }
 
   export type BenefitRequirementsMinAggregateInputType = {
     id?: true
     name?: true
-    benefit_id?: true
+    benefitsId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -11084,7 +11185,7 @@ export namespace Prisma {
   export type BenefitRequirementsMaxAggregateInputType = {
     id?: true
     name?: true
-    benefit_id?: true
+    benefitsId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -11092,7 +11193,7 @@ export namespace Prisma {
   export type BenefitRequirementsCountAggregateInputType = {
     id?: true
     name?: true
-    benefit_id?: true
+    benefitsId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -11187,7 +11288,7 @@ export namespace Prisma {
   export type BenefitRequirementsGroupByOutputType = {
     id: number
     name: string
-    benefit_id: number
+    benefitsId: number
     createdAt: Date
     updatedAt: Date
     _count: BenefitRequirementsCountAggregateOutputType | null
@@ -11214,16 +11315,18 @@ export namespace Prisma {
   export type BenefitRequirementsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    benefit_id?: boolean
+    benefitsId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     benefit?: boolean | BenefitsDefaultArgs<ExtArgs>
+    registrationDocuments?: boolean | BenefitRequirements$registrationDocumentsArgs<ExtArgs>
+    _count?: boolean | BenefitRequirementsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["benefitRequirements"]>
 
   export type BenefitRequirementsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    benefit_id?: boolean
+    benefitsId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     benefit?: boolean | BenefitsDefaultArgs<ExtArgs>
@@ -11232,7 +11335,7 @@ export namespace Prisma {
   export type BenefitRequirementsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    benefit_id?: boolean
+    benefitsId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     benefit?: boolean | BenefitsDefaultArgs<ExtArgs>
@@ -11241,14 +11344,16 @@ export namespace Prisma {
   export type BenefitRequirementsSelectScalar = {
     id?: boolean
     name?: boolean
-    benefit_id?: boolean
+    benefitsId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type BenefitRequirementsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "benefit_id" | "createdAt" | "updatedAt", ExtArgs["result"]["benefitRequirements"]>
+  export type BenefitRequirementsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "benefitsId" | "createdAt" | "updatedAt", ExtArgs["result"]["benefitRequirements"]>
   export type BenefitRequirementsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     benefit?: boolean | BenefitsDefaultArgs<ExtArgs>
+    registrationDocuments?: boolean | BenefitRequirements$registrationDocumentsArgs<ExtArgs>
+    _count?: boolean | BenefitRequirementsCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type BenefitRequirementsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     benefit?: boolean | BenefitsDefaultArgs<ExtArgs>
@@ -11261,11 +11366,12 @@ export namespace Prisma {
     name: "BenefitRequirements"
     objects: {
       benefit: Prisma.$BenefitsPayload<ExtArgs>
+      registrationDocuments: Prisma.$RegistrationDocumentPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
-      benefit_id: number
+      benefitsId: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["benefitRequirements"]>
@@ -11663,6 +11769,7 @@ export namespace Prisma {
   export interface Prisma__BenefitRequirementsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     benefit<T extends BenefitsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BenefitsDefaultArgs<ExtArgs>>): Prisma__BenefitsClient<$Result.GetResult<Prisma.$BenefitsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    registrationDocuments<T extends BenefitRequirements$registrationDocumentsArgs<ExtArgs> = {}>(args?: Subset<T, BenefitRequirements$registrationDocumentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RegistrationDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11694,7 +11801,7 @@ export namespace Prisma {
   interface BenefitRequirementsFieldRefs {
     readonly id: FieldRef<"BenefitRequirements", 'Int'>
     readonly name: FieldRef<"BenefitRequirements", 'String'>
-    readonly benefit_id: FieldRef<"BenefitRequirements", 'Int'>
+    readonly benefitsId: FieldRef<"BenefitRequirements", 'Int'>
     readonly createdAt: FieldRef<"BenefitRequirements", 'DateTime'>
     readonly updatedAt: FieldRef<"BenefitRequirements", 'DateTime'>
   }
@@ -12090,6 +12197,30 @@ export namespace Prisma {
      * Limit how many BenefitRequirements to delete.
      */
     limit?: number
+  }
+
+  /**
+   * BenefitRequirements.registrationDocuments
+   */
+  export type BenefitRequirements$registrationDocumentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RegistrationDocument
+     */
+    select?: RegistrationDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RegistrationDocument
+     */
+    omit?: RegistrationDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RegistrationDocumentInclude<ExtArgs> | null
+    where?: RegistrationDocumentWhereInput
+    orderBy?: RegistrationDocumentOrderByWithRelationInput | RegistrationDocumentOrderByWithRelationInput[]
+    cursor?: RegistrationDocumentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RegistrationDocumentScalarFieldEnum | RegistrationDocumentScalarFieldEnum[]
   }
 
   /**
@@ -13347,6 +13478,8 @@ export namespace Prisma {
     emergency_no: 'emergency_no',
     pwd: 'pwd',
     remarks_id: 'remarks_id',
+    deletedAt: 'deletedAt',
+    releasedAt: 'releasedAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -13363,7 +13496,8 @@ export namespace Prisma {
     file_name: 'file_name',
     seniors_id: 'seniors_id',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    benefit_requirement_id: 'benefit_requirement_id'
   };
 
   export type RegistrationDocumentScalarFieldEnum = (typeof RegistrationDocumentScalarFieldEnum)[keyof typeof RegistrationDocumentScalarFieldEnum]
@@ -13414,7 +13548,7 @@ export namespace Prisma {
   export const BenefitRequirementsScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    benefit_id: 'benefit_id',
+    benefitsId: 'benefitsId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -13726,6 +13860,8 @@ export namespace Prisma {
     emergency_no?: StringFilter<"Senior"> | string
     pwd?: BoolFilter<"Senior"> | boolean
     remarks_id?: IntFilter<"Senior"> | number
+    deletedAt?: DateTimeNullableFilter<"Senior"> | Date | string | null
+    releasedAt?: DateTimeNullableFilter<"Senior"> | Date | string | null
     createdAt?: DateTimeFilter<"Senior"> | Date | string
     updatedAt?: DateTimeFilter<"Senior"> | Date | string
     remarks?: XOR<RemarksScalarRelationFilter, RemarksWhereInput>
@@ -13748,6 +13884,8 @@ export namespace Prisma {
     emergency_no?: SortOrder
     pwd?: SortOrder
     remarks_id?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    releasedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     remarks?: RemarksOrderByWithRelationInput
@@ -13773,6 +13911,8 @@ export namespace Prisma {
     emergency_no?: StringFilter<"Senior"> | string
     pwd?: BoolFilter<"Senior"> | boolean
     remarks_id?: IntFilter<"Senior"> | number
+    deletedAt?: DateTimeNullableFilter<"Senior"> | Date | string | null
+    releasedAt?: DateTimeNullableFilter<"Senior"> | Date | string | null
     createdAt?: DateTimeFilter<"Senior"> | Date | string
     updatedAt?: DateTimeFilter<"Senior"> | Date | string
     remarks?: XOR<RemarksScalarRelationFilter, RemarksWhereInput>
@@ -13795,6 +13935,8 @@ export namespace Prisma {
     emergency_no?: SortOrder
     pwd?: SortOrder
     remarks_id?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    releasedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: SeniorCountOrderByAggregateInput
@@ -13822,6 +13964,8 @@ export namespace Prisma {
     emergency_no?: StringWithAggregatesFilter<"Senior"> | string
     pwd?: BoolWithAggregatesFilter<"Senior"> | boolean
     remarks_id?: IntWithAggregatesFilter<"Senior"> | number
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"Senior"> | Date | string | null
+    releasedAt?: DateTimeNullableWithAggregatesFilter<"Senior"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Senior"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Senior"> | Date | string
   }
@@ -13839,7 +13983,9 @@ export namespace Prisma {
     seniors_id?: IntFilter<"RegistrationDocument"> | number
     createdAt?: DateTimeFilter<"RegistrationDocument"> | Date | string
     updatedAt?: DateTimeFilter<"RegistrationDocument"> | Date | string
+    benefit_requirement_id?: IntNullableFilter<"RegistrationDocument"> | number | null
     senior?: XOR<SeniorScalarRelationFilter, SeniorWhereInput>
+    benefitRequirement?: XOR<BenefitRequirementsNullableScalarRelationFilter, BenefitRequirementsWhereInput> | null
   }
 
   export type RegistrationDocumentOrderByWithRelationInput = {
@@ -13852,7 +13998,9 @@ export namespace Prisma {
     seniors_id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    benefit_requirement_id?: SortOrderInput | SortOrder
     senior?: SeniorOrderByWithRelationInput
+    benefitRequirement?: BenefitRequirementsOrderByWithRelationInput
   }
 
   export type RegistrationDocumentWhereUniqueInput = Prisma.AtLeast<{
@@ -13868,7 +14016,9 @@ export namespace Prisma {
     seniors_id?: IntFilter<"RegistrationDocument"> | number
     createdAt?: DateTimeFilter<"RegistrationDocument"> | Date | string
     updatedAt?: DateTimeFilter<"RegistrationDocument"> | Date | string
+    benefit_requirement_id?: IntNullableFilter<"RegistrationDocument"> | number | null
     senior?: XOR<SeniorScalarRelationFilter, SeniorWhereInput>
+    benefitRequirement?: XOR<BenefitRequirementsNullableScalarRelationFilter, BenefitRequirementsWhereInput> | null
   }, "id">
 
   export type RegistrationDocumentOrderByWithAggregationInput = {
@@ -13881,6 +14031,7 @@ export namespace Prisma {
     seniors_id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    benefit_requirement_id?: SortOrderInput | SortOrder
     _count?: RegistrationDocumentCountOrderByAggregateInput
     _avg?: RegistrationDocumentAvgOrderByAggregateInput
     _max?: RegistrationDocumentMaxOrderByAggregateInput
@@ -13901,6 +14052,7 @@ export namespace Prisma {
     seniors_id?: IntWithAggregatesFilter<"RegistrationDocument"> | number
     createdAt?: DateTimeWithAggregatesFilter<"RegistrationDocument"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"RegistrationDocument"> | Date | string
+    benefit_requirement_id?: IntNullableWithAggregatesFilter<"RegistrationDocument"> | number | null
   }
 
   export type RemarksWhereInput = {
@@ -14130,19 +14282,21 @@ export namespace Prisma {
     NOT?: BenefitRequirementsWhereInput | BenefitRequirementsWhereInput[]
     id?: IntFilter<"BenefitRequirements"> | number
     name?: StringFilter<"BenefitRequirements"> | string
-    benefit_id?: IntFilter<"BenefitRequirements"> | number
+    benefitsId?: IntFilter<"BenefitRequirements"> | number
     createdAt?: DateTimeFilter<"BenefitRequirements"> | Date | string
     updatedAt?: DateTimeFilter<"BenefitRequirements"> | Date | string
     benefit?: XOR<BenefitsScalarRelationFilter, BenefitsWhereInput>
+    registrationDocuments?: RegistrationDocumentListRelationFilter
   }
 
   export type BenefitRequirementsOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    benefit_id?: SortOrder
+    benefitsId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     benefit?: BenefitsOrderByWithRelationInput
+    registrationDocuments?: RegistrationDocumentOrderByRelationAggregateInput
   }
 
   export type BenefitRequirementsWhereUniqueInput = Prisma.AtLeast<{
@@ -14151,16 +14305,17 @@ export namespace Prisma {
     OR?: BenefitRequirementsWhereInput[]
     NOT?: BenefitRequirementsWhereInput | BenefitRequirementsWhereInput[]
     name?: StringFilter<"BenefitRequirements"> | string
-    benefit_id?: IntFilter<"BenefitRequirements"> | number
+    benefitsId?: IntFilter<"BenefitRequirements"> | number
     createdAt?: DateTimeFilter<"BenefitRequirements"> | Date | string
     updatedAt?: DateTimeFilter<"BenefitRequirements"> | Date | string
     benefit?: XOR<BenefitsScalarRelationFilter, BenefitsWhereInput>
+    registrationDocuments?: RegistrationDocumentListRelationFilter
   }, "id">
 
   export type BenefitRequirementsOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    benefit_id?: SortOrder
+    benefitsId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: BenefitRequirementsCountOrderByAggregateInput
@@ -14176,7 +14331,7 @@ export namespace Prisma {
     NOT?: BenefitRequirementsScalarWhereWithAggregatesInput | BenefitRequirementsScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"BenefitRequirements"> | number
     name?: StringWithAggregatesFilter<"BenefitRequirements"> | string
-    benefit_id?: IntWithAggregatesFilter<"BenefitRequirements"> | number
+    benefitsId?: IntWithAggregatesFilter<"BenefitRequirements"> | number
     createdAt?: DateTimeWithAggregatesFilter<"BenefitRequirements"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"BenefitRequirements"> | Date | string
   }
@@ -14441,6 +14596,8 @@ export namespace Prisma {
     contact_no: string
     emergency_no: string
     pwd?: boolean
+    deletedAt?: Date | string | null
+    releasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     remarks?: RemarksCreateNestedOneWithoutSeniorsInput
@@ -14463,6 +14620,8 @@ export namespace Prisma {
     emergency_no: string
     pwd?: boolean
     remarks_id?: number
+    deletedAt?: Date | string | null
+    releasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     documents?: RegistrationDocumentUncheckedCreateNestedManyWithoutSeniorInput
@@ -14482,6 +14641,8 @@ export namespace Prisma {
     contact_no?: StringFieldUpdateOperationsInput | string
     emergency_no?: StringFieldUpdateOperationsInput | string
     pwd?: BoolFieldUpdateOperationsInput | boolean
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    releasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     remarks?: RemarksUpdateOneRequiredWithoutSeniorsNestedInput
@@ -14504,6 +14665,8 @@ export namespace Prisma {
     emergency_no?: StringFieldUpdateOperationsInput | string
     pwd?: BoolFieldUpdateOperationsInput | boolean
     remarks_id?: IntFieldUpdateOperationsInput | number
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    releasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     documents?: RegistrationDocumentUncheckedUpdateManyWithoutSeniorNestedInput
@@ -14525,6 +14688,8 @@ export namespace Prisma {
     emergency_no: string
     pwd?: boolean
     remarks_id?: number
+    deletedAt?: Date | string | null
+    releasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -14542,6 +14707,8 @@ export namespace Prisma {
     contact_no?: StringFieldUpdateOperationsInput | string
     emergency_no?: StringFieldUpdateOperationsInput | string
     pwd?: BoolFieldUpdateOperationsInput | boolean
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    releasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -14561,6 +14728,8 @@ export namespace Prisma {
     emergency_no?: StringFieldUpdateOperationsInput | string
     pwd?: BoolFieldUpdateOperationsInput | boolean
     remarks_id?: IntFieldUpdateOperationsInput | number
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    releasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -14574,6 +14743,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     senior: SeniorCreateNestedOneWithoutDocumentsInput
+    benefitRequirement?: BenefitRequirementsCreateNestedOneWithoutRegistrationDocumentsInput
   }
 
   export type RegistrationDocumentUncheckedCreateInput = {
@@ -14586,6 +14756,7 @@ export namespace Prisma {
     seniors_id: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    benefit_requirement_id?: number | null
   }
 
   export type RegistrationDocumentUpdateInput = {
@@ -14597,6 +14768,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     senior?: SeniorUpdateOneRequiredWithoutDocumentsNestedInput
+    benefitRequirement?: BenefitRequirementsUpdateOneWithoutRegistrationDocumentsNestedInput
   }
 
   export type RegistrationDocumentUncheckedUpdateInput = {
@@ -14609,6 +14781,7 @@ export namespace Prisma {
     seniors_id?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    benefit_requirement_id?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type RegistrationDocumentCreateManyInput = {
@@ -14621,6 +14794,7 @@ export namespace Prisma {
     seniors_id: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    benefit_requirement_id?: number | null
   }
 
   export type RegistrationDocumentUpdateManyMutationInput = {
@@ -14643,6 +14817,7 @@ export namespace Prisma {
     seniors_id?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    benefit_requirement_id?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type RemarksCreateInput = {
@@ -14868,14 +15043,16 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     benefit: BenefitsCreateNestedOneWithoutBenefit_requirementsInput
+    registrationDocuments?: RegistrationDocumentCreateNestedManyWithoutBenefitRequirementInput
   }
 
   export type BenefitRequirementsUncheckedCreateInput = {
     id?: number
     name: string
-    benefit_id: number
+    benefitsId: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    registrationDocuments?: RegistrationDocumentUncheckedCreateNestedManyWithoutBenefitRequirementInput
   }
 
   export type BenefitRequirementsUpdateInput = {
@@ -14883,20 +15060,22 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     benefit?: BenefitsUpdateOneRequiredWithoutBenefit_requirementsNestedInput
+    registrationDocuments?: RegistrationDocumentUpdateManyWithoutBenefitRequirementNestedInput
   }
 
   export type BenefitRequirementsUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    benefit_id?: IntFieldUpdateOperationsInput | number
+    benefitsId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    registrationDocuments?: RegistrationDocumentUncheckedUpdateManyWithoutBenefitRequirementNestedInput
   }
 
   export type BenefitRequirementsCreateManyInput = {
     id?: number
     name: string
-    benefit_id: number
+    benefitsId: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -14910,7 +15089,7 @@ export namespace Prisma {
   export type BenefitRequirementsUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    benefit_id?: IntFieldUpdateOperationsInput | number
+    benefitsId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15201,6 +15380,17 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type RemarksScalarRelationFilter = {
     is?: RemarksWhereInput
     isNot?: RemarksWhereInput
@@ -15241,6 +15431,8 @@ export namespace Prisma {
     emergency_no?: SortOrder
     pwd?: SortOrder
     remarks_id?: SortOrder
+    deletedAt?: SortOrder
+    releasedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -15265,6 +15457,8 @@ export namespace Prisma {
     emergency_no?: SortOrder
     pwd?: SortOrder
     remarks_id?: SortOrder
+    deletedAt?: SortOrder
+    releasedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -15284,6 +15478,8 @@ export namespace Prisma {
     emergency_no?: SortOrder
     pwd?: SortOrder
     remarks_id?: SortOrder
+    deletedAt?: SortOrder
+    releasedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -15327,9 +15523,39 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type SeniorScalarRelationFilter = {
     is?: SeniorWhereInput
     isNot?: SeniorWhereInput
+  }
+
+  export type BenefitRequirementsNullableScalarRelationFilter = {
+    is?: BenefitRequirementsWhereInput | null
+    isNot?: BenefitRequirementsWhereInput | null
   }
 
   export type RegistrationDocumentCountOrderByAggregateInput = {
@@ -15342,11 +15568,13 @@ export namespace Prisma {
     seniors_id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    benefit_requirement_id?: SortOrder
   }
 
   export type RegistrationDocumentAvgOrderByAggregateInput = {
     id?: SortOrder
     seniors_id?: SortOrder
+    benefit_requirement_id?: SortOrder
   }
 
   export type RegistrationDocumentMaxOrderByAggregateInput = {
@@ -15359,6 +15587,7 @@ export namespace Prisma {
     seniors_id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    benefit_requirement_id?: SortOrder
   }
 
   export type RegistrationDocumentMinOrderByAggregateInput = {
@@ -15371,11 +15600,29 @@ export namespace Prisma {
     seniors_id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    benefit_requirement_id?: SortOrder
   }
 
   export type RegistrationDocumentSumOrderByAggregateInput = {
     id?: SortOrder
     seniors_id?: SortOrder
+    benefit_requirement_id?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type SeniorListRelationFilter = {
@@ -15528,20 +15775,20 @@ export namespace Prisma {
   export type BenefitRequirementsCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    benefit_id?: SortOrder
+    benefitsId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type BenefitRequirementsAvgOrderByAggregateInput = {
     id?: SortOrder
-    benefit_id?: SortOrder
+    benefitsId?: SortOrder
   }
 
   export type BenefitRequirementsMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    benefit_id?: SortOrder
+    benefitsId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -15549,25 +15796,14 @@ export namespace Prisma {
   export type BenefitRequirementsMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    benefit_id?: SortOrder
+    benefitsId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type BenefitRequirementsSumOrderByAggregateInput = {
     id?: SortOrder
-    benefit_id?: SortOrder
-  }
-
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+    benefitsId?: SortOrder
   }
 
   export type StatusScalarRelationFilter = {
@@ -15624,22 +15860,6 @@ export namespace Prisma {
     senior_id?: SortOrder
     status_id?: SortOrder
     category_id?: SortOrder
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type SessionCreateNestedManyWithoutUserInput = {
@@ -15756,6 +15976,10 @@ export namespace Prisma {
     set?: boolean
   }
 
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
   export type RemarksUpdateOneRequiredWithoutSeniorsNestedInput = {
     create?: XOR<RemarksCreateWithoutSeniorsInput, RemarksUncheckedCreateWithoutSeniorsInput>
     connectOrCreate?: RemarksCreateOrConnectWithoutSeniorsInput
@@ -15834,12 +16058,36 @@ export namespace Prisma {
     connect?: SeniorWhereUniqueInput
   }
 
+  export type BenefitRequirementsCreateNestedOneWithoutRegistrationDocumentsInput = {
+    create?: XOR<BenefitRequirementsCreateWithoutRegistrationDocumentsInput, BenefitRequirementsUncheckedCreateWithoutRegistrationDocumentsInput>
+    connectOrCreate?: BenefitRequirementsCreateOrConnectWithoutRegistrationDocumentsInput
+    connect?: BenefitRequirementsWhereUniqueInput
+  }
+
   export type SeniorUpdateOneRequiredWithoutDocumentsNestedInput = {
     create?: XOR<SeniorCreateWithoutDocumentsInput, SeniorUncheckedCreateWithoutDocumentsInput>
     connectOrCreate?: SeniorCreateOrConnectWithoutDocumentsInput
     upsert?: SeniorUpsertWithoutDocumentsInput
     connect?: SeniorWhereUniqueInput
     update?: XOR<XOR<SeniorUpdateToOneWithWhereWithoutDocumentsInput, SeniorUpdateWithoutDocumentsInput>, SeniorUncheckedUpdateWithoutDocumentsInput>
+  }
+
+  export type BenefitRequirementsUpdateOneWithoutRegistrationDocumentsNestedInput = {
+    create?: XOR<BenefitRequirementsCreateWithoutRegistrationDocumentsInput, BenefitRequirementsUncheckedCreateWithoutRegistrationDocumentsInput>
+    connectOrCreate?: BenefitRequirementsCreateOrConnectWithoutRegistrationDocumentsInput
+    upsert?: BenefitRequirementsUpsertWithoutRegistrationDocumentsInput
+    disconnect?: BenefitRequirementsWhereInput | boolean
+    delete?: BenefitRequirementsWhereInput | boolean
+    connect?: BenefitRequirementsWhereUniqueInput
+    update?: XOR<XOR<BenefitRequirementsUpdateToOneWithWhereWithoutRegistrationDocumentsInput, BenefitRequirementsUpdateWithoutRegistrationDocumentsInput>, BenefitRequirementsUncheckedUpdateWithoutRegistrationDocumentsInput>
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type SeniorCreateNestedManyWithoutRemarksInput = {
@@ -16058,12 +16306,54 @@ export namespace Prisma {
     connect?: BenefitsWhereUniqueInput
   }
 
+  export type RegistrationDocumentCreateNestedManyWithoutBenefitRequirementInput = {
+    create?: XOR<RegistrationDocumentCreateWithoutBenefitRequirementInput, RegistrationDocumentUncheckedCreateWithoutBenefitRequirementInput> | RegistrationDocumentCreateWithoutBenefitRequirementInput[] | RegistrationDocumentUncheckedCreateWithoutBenefitRequirementInput[]
+    connectOrCreate?: RegistrationDocumentCreateOrConnectWithoutBenefitRequirementInput | RegistrationDocumentCreateOrConnectWithoutBenefitRequirementInput[]
+    createMany?: RegistrationDocumentCreateManyBenefitRequirementInputEnvelope
+    connect?: RegistrationDocumentWhereUniqueInput | RegistrationDocumentWhereUniqueInput[]
+  }
+
+  export type RegistrationDocumentUncheckedCreateNestedManyWithoutBenefitRequirementInput = {
+    create?: XOR<RegistrationDocumentCreateWithoutBenefitRequirementInput, RegistrationDocumentUncheckedCreateWithoutBenefitRequirementInput> | RegistrationDocumentCreateWithoutBenefitRequirementInput[] | RegistrationDocumentUncheckedCreateWithoutBenefitRequirementInput[]
+    connectOrCreate?: RegistrationDocumentCreateOrConnectWithoutBenefitRequirementInput | RegistrationDocumentCreateOrConnectWithoutBenefitRequirementInput[]
+    createMany?: RegistrationDocumentCreateManyBenefitRequirementInputEnvelope
+    connect?: RegistrationDocumentWhereUniqueInput | RegistrationDocumentWhereUniqueInput[]
+  }
+
   export type BenefitsUpdateOneRequiredWithoutBenefit_requirementsNestedInput = {
     create?: XOR<BenefitsCreateWithoutBenefit_requirementsInput, BenefitsUncheckedCreateWithoutBenefit_requirementsInput>
     connectOrCreate?: BenefitsCreateOrConnectWithoutBenefit_requirementsInput
     upsert?: BenefitsUpsertWithoutBenefit_requirementsInput
     connect?: BenefitsWhereUniqueInput
     update?: XOR<XOR<BenefitsUpdateToOneWithWhereWithoutBenefit_requirementsInput, BenefitsUpdateWithoutBenefit_requirementsInput>, BenefitsUncheckedUpdateWithoutBenefit_requirementsInput>
+  }
+
+  export type RegistrationDocumentUpdateManyWithoutBenefitRequirementNestedInput = {
+    create?: XOR<RegistrationDocumentCreateWithoutBenefitRequirementInput, RegistrationDocumentUncheckedCreateWithoutBenefitRequirementInput> | RegistrationDocumentCreateWithoutBenefitRequirementInput[] | RegistrationDocumentUncheckedCreateWithoutBenefitRequirementInput[]
+    connectOrCreate?: RegistrationDocumentCreateOrConnectWithoutBenefitRequirementInput | RegistrationDocumentCreateOrConnectWithoutBenefitRequirementInput[]
+    upsert?: RegistrationDocumentUpsertWithWhereUniqueWithoutBenefitRequirementInput | RegistrationDocumentUpsertWithWhereUniqueWithoutBenefitRequirementInput[]
+    createMany?: RegistrationDocumentCreateManyBenefitRequirementInputEnvelope
+    set?: RegistrationDocumentWhereUniqueInput | RegistrationDocumentWhereUniqueInput[]
+    disconnect?: RegistrationDocumentWhereUniqueInput | RegistrationDocumentWhereUniqueInput[]
+    delete?: RegistrationDocumentWhereUniqueInput | RegistrationDocumentWhereUniqueInput[]
+    connect?: RegistrationDocumentWhereUniqueInput | RegistrationDocumentWhereUniqueInput[]
+    update?: RegistrationDocumentUpdateWithWhereUniqueWithoutBenefitRequirementInput | RegistrationDocumentUpdateWithWhereUniqueWithoutBenefitRequirementInput[]
+    updateMany?: RegistrationDocumentUpdateManyWithWhereWithoutBenefitRequirementInput | RegistrationDocumentUpdateManyWithWhereWithoutBenefitRequirementInput[]
+    deleteMany?: RegistrationDocumentScalarWhereInput | RegistrationDocumentScalarWhereInput[]
+  }
+
+  export type RegistrationDocumentUncheckedUpdateManyWithoutBenefitRequirementNestedInput = {
+    create?: XOR<RegistrationDocumentCreateWithoutBenefitRequirementInput, RegistrationDocumentUncheckedCreateWithoutBenefitRequirementInput> | RegistrationDocumentCreateWithoutBenefitRequirementInput[] | RegistrationDocumentUncheckedCreateWithoutBenefitRequirementInput[]
+    connectOrCreate?: RegistrationDocumentCreateOrConnectWithoutBenefitRequirementInput | RegistrationDocumentCreateOrConnectWithoutBenefitRequirementInput[]
+    upsert?: RegistrationDocumentUpsertWithWhereUniqueWithoutBenefitRequirementInput | RegistrationDocumentUpsertWithWhereUniqueWithoutBenefitRequirementInput[]
+    createMany?: RegistrationDocumentCreateManyBenefitRequirementInputEnvelope
+    set?: RegistrationDocumentWhereUniqueInput | RegistrationDocumentWhereUniqueInput[]
+    disconnect?: RegistrationDocumentWhereUniqueInput | RegistrationDocumentWhereUniqueInput[]
+    delete?: RegistrationDocumentWhereUniqueInput | RegistrationDocumentWhereUniqueInput[]
+    connect?: RegistrationDocumentWhereUniqueInput | RegistrationDocumentWhereUniqueInput[]
+    update?: RegistrationDocumentUpdateWithWhereUniqueWithoutBenefitRequirementInput | RegistrationDocumentUpdateWithWhereUniqueWithoutBenefitRequirementInput[]
+    updateMany?: RegistrationDocumentUpdateManyWithWhereWithoutBenefitRequirementInput | RegistrationDocumentUpdateManyWithWhereWithoutBenefitRequirementInput[]
+    deleteMany?: RegistrationDocumentScalarWhereInput | RegistrationDocumentScalarWhereInput[]
   }
 
   export type SeniorCreateNestedOneWithoutApplicationsInput = {
@@ -16122,14 +16412,6 @@ export namespace Prisma {
     delete?: SeniorCategoryWhereInput | boolean
     connect?: SeniorCategoryWhereUniqueInput
     update?: XOR<XOR<SeniorCategoryUpdateToOneWithWhereWithoutApplicationsInput, SeniorCategoryUpdateWithoutApplicationsInput>, SeniorCategoryUncheckedUpdateWithoutApplicationsInput>
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -16270,6 +16552,17 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -16313,6 +16606,20 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -16499,6 +16806,7 @@ export namespace Prisma {
     file_name: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    benefitRequirement?: BenefitRequirementsCreateNestedOneWithoutRegistrationDocumentsInput
   }
 
   export type RegistrationDocumentUncheckedCreateWithoutSeniorInput = {
@@ -16510,6 +16818,7 @@ export namespace Prisma {
     file_name: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    benefit_requirement_id?: number | null
   }
 
   export type RegistrationDocumentCreateOrConnectWithoutSeniorInput = {
@@ -16602,6 +16911,7 @@ export namespace Prisma {
     seniors_id?: IntFilter<"RegistrationDocument"> | number
     createdAt?: DateTimeFilter<"RegistrationDocument"> | Date | string
     updatedAt?: DateTimeFilter<"RegistrationDocument"> | Date | string
+    benefit_requirement_id?: IntNullableFilter<"RegistrationDocument"> | number | null
   }
 
   export type ApplicationsUpsertWithWhereUniqueWithoutSeniorInput = {
@@ -16646,6 +16956,8 @@ export namespace Prisma {
     contact_no: string
     emergency_no: string
     pwd?: boolean
+    deletedAt?: Date | string | null
+    releasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     remarks?: RemarksCreateNestedOneWithoutSeniorsInput
@@ -16667,6 +16979,8 @@ export namespace Prisma {
     emergency_no: string
     pwd?: boolean
     remarks_id?: number
+    deletedAt?: Date | string | null
+    releasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     Applications?: ApplicationsUncheckedCreateNestedManyWithoutSeniorInput
@@ -16675,6 +16989,26 @@ export namespace Prisma {
   export type SeniorCreateOrConnectWithoutDocumentsInput = {
     where: SeniorWhereUniqueInput
     create: XOR<SeniorCreateWithoutDocumentsInput, SeniorUncheckedCreateWithoutDocumentsInput>
+  }
+
+  export type BenefitRequirementsCreateWithoutRegistrationDocumentsInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    benefit: BenefitsCreateNestedOneWithoutBenefit_requirementsInput
+  }
+
+  export type BenefitRequirementsUncheckedCreateWithoutRegistrationDocumentsInput = {
+    id?: number
+    name: string
+    benefitsId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BenefitRequirementsCreateOrConnectWithoutRegistrationDocumentsInput = {
+    where: BenefitRequirementsWhereUniqueInput
+    create: XOR<BenefitRequirementsCreateWithoutRegistrationDocumentsInput, BenefitRequirementsUncheckedCreateWithoutRegistrationDocumentsInput>
   }
 
   export type SeniorUpsertWithoutDocumentsInput = {
@@ -16701,6 +17035,8 @@ export namespace Prisma {
     contact_no?: StringFieldUpdateOperationsInput | string
     emergency_no?: StringFieldUpdateOperationsInput | string
     pwd?: BoolFieldUpdateOperationsInput | boolean
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    releasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     remarks?: RemarksUpdateOneRequiredWithoutSeniorsNestedInput
@@ -16722,9 +17058,37 @@ export namespace Prisma {
     emergency_no?: StringFieldUpdateOperationsInput | string
     pwd?: BoolFieldUpdateOperationsInput | boolean
     remarks_id?: IntFieldUpdateOperationsInput | number
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    releasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Applications?: ApplicationsUncheckedUpdateManyWithoutSeniorNestedInput
+  }
+
+  export type BenefitRequirementsUpsertWithoutRegistrationDocumentsInput = {
+    update: XOR<BenefitRequirementsUpdateWithoutRegistrationDocumentsInput, BenefitRequirementsUncheckedUpdateWithoutRegistrationDocumentsInput>
+    create: XOR<BenefitRequirementsCreateWithoutRegistrationDocumentsInput, BenefitRequirementsUncheckedCreateWithoutRegistrationDocumentsInput>
+    where?: BenefitRequirementsWhereInput
+  }
+
+  export type BenefitRequirementsUpdateToOneWithWhereWithoutRegistrationDocumentsInput = {
+    where?: BenefitRequirementsWhereInput
+    data: XOR<BenefitRequirementsUpdateWithoutRegistrationDocumentsInput, BenefitRequirementsUncheckedUpdateWithoutRegistrationDocumentsInput>
+  }
+
+  export type BenefitRequirementsUpdateWithoutRegistrationDocumentsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    benefit?: BenefitsUpdateOneRequiredWithoutBenefit_requirementsNestedInput
+  }
+
+  export type BenefitRequirementsUncheckedUpdateWithoutRegistrationDocumentsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    benefitsId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SeniorCreateWithoutRemarksInput = {
@@ -16740,6 +17104,8 @@ export namespace Prisma {
     contact_no: string
     emergency_no: string
     pwd?: boolean
+    deletedAt?: Date | string | null
+    releasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     documents?: RegistrationDocumentCreateNestedManyWithoutSeniorInput
@@ -16760,6 +17126,8 @@ export namespace Prisma {
     contact_no: string
     emergency_no: string
     pwd?: boolean
+    deletedAt?: Date | string | null
+    releasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     documents?: RegistrationDocumentUncheckedCreateNestedManyWithoutSeniorInput
@@ -16810,6 +17178,8 @@ export namespace Prisma {
     emergency_no?: StringFilter<"Senior"> | string
     pwd?: BoolFilter<"Senior"> | boolean
     remarks_id?: IntFilter<"Senior"> | number
+    deletedAt?: DateTimeNullableFilter<"Senior"> | Date | string | null
+    releasedAt?: DateTimeNullableFilter<"Senior"> | Date | string | null
     createdAt?: DateTimeFilter<"Senior"> | Date | string
     updatedAt?: DateTimeFilter<"Senior"> | Date | string
   }
@@ -16931,6 +17301,7 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    registrationDocuments?: RegistrationDocumentCreateNestedManyWithoutBenefitRequirementInput
   }
 
   export type BenefitRequirementsUncheckedCreateWithoutBenefitInput = {
@@ -16938,6 +17309,7 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    registrationDocuments?: RegistrationDocumentUncheckedCreateNestedManyWithoutBenefitRequirementInput
   }
 
   export type BenefitRequirementsCreateOrConnectWithoutBenefitInput = {
@@ -16988,7 +17360,7 @@ export namespace Prisma {
     NOT?: BenefitRequirementsScalarWhereInput | BenefitRequirementsScalarWhereInput[]
     id?: IntFilter<"BenefitRequirements"> | number
     name?: StringFilter<"BenefitRequirements"> | string
-    benefit_id?: IntFilter<"BenefitRequirements"> | number
+    benefitsId?: IntFilter<"BenefitRequirements"> | number
     createdAt?: DateTimeFilter<"BenefitRequirements"> | Date | string
     updatedAt?: DateTimeFilter<"BenefitRequirements"> | Date | string
   }
@@ -17015,6 +17387,39 @@ export namespace Prisma {
   export type BenefitsCreateOrConnectWithoutBenefit_requirementsInput = {
     where: BenefitsWhereUniqueInput
     create: XOR<BenefitsCreateWithoutBenefit_requirementsInput, BenefitsUncheckedCreateWithoutBenefit_requirementsInput>
+  }
+
+  export type RegistrationDocumentCreateWithoutBenefitRequirementInput = {
+    tag: string
+    path: string
+    public_id?: string | null
+    imageUrl?: string | null
+    file_name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    senior: SeniorCreateNestedOneWithoutDocumentsInput
+  }
+
+  export type RegistrationDocumentUncheckedCreateWithoutBenefitRequirementInput = {
+    id?: number
+    tag: string
+    path: string
+    public_id?: string | null
+    imageUrl?: string | null
+    file_name: string
+    seniors_id: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type RegistrationDocumentCreateOrConnectWithoutBenefitRequirementInput = {
+    where: RegistrationDocumentWhereUniqueInput
+    create: XOR<RegistrationDocumentCreateWithoutBenefitRequirementInput, RegistrationDocumentUncheckedCreateWithoutBenefitRequirementInput>
+  }
+
+  export type RegistrationDocumentCreateManyBenefitRequirementInputEnvelope = {
+    data: RegistrationDocumentCreateManyBenefitRequirementInput | RegistrationDocumentCreateManyBenefitRequirementInput[]
+    skipDuplicates?: boolean
   }
 
   export type BenefitsUpsertWithoutBenefit_requirementsInput = {
@@ -17047,6 +17452,22 @@ export namespace Prisma {
     applications?: ApplicationsUncheckedUpdateManyWithoutBenefitNestedInput
   }
 
+  export type RegistrationDocumentUpsertWithWhereUniqueWithoutBenefitRequirementInput = {
+    where: RegistrationDocumentWhereUniqueInput
+    update: XOR<RegistrationDocumentUpdateWithoutBenefitRequirementInput, RegistrationDocumentUncheckedUpdateWithoutBenefitRequirementInput>
+    create: XOR<RegistrationDocumentCreateWithoutBenefitRequirementInput, RegistrationDocumentUncheckedCreateWithoutBenefitRequirementInput>
+  }
+
+  export type RegistrationDocumentUpdateWithWhereUniqueWithoutBenefitRequirementInput = {
+    where: RegistrationDocumentWhereUniqueInput
+    data: XOR<RegistrationDocumentUpdateWithoutBenefitRequirementInput, RegistrationDocumentUncheckedUpdateWithoutBenefitRequirementInput>
+  }
+
+  export type RegistrationDocumentUpdateManyWithWhereWithoutBenefitRequirementInput = {
+    where: RegistrationDocumentScalarWhereInput
+    data: XOR<RegistrationDocumentUpdateManyMutationInput, RegistrationDocumentUncheckedUpdateManyWithoutBenefitRequirementInput>
+  }
+
   export type SeniorCreateWithoutApplicationsInput = {
     lastname: string
     firstname: string
@@ -17060,6 +17481,8 @@ export namespace Prisma {
     contact_no: string
     emergency_no: string
     pwd?: boolean
+    deletedAt?: Date | string | null
+    releasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     remarks?: RemarksCreateNestedOneWithoutSeniorsInput
@@ -17081,6 +17504,8 @@ export namespace Prisma {
     emergency_no: string
     pwd?: boolean
     remarks_id?: number
+    deletedAt?: Date | string | null
+    releasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     documents?: RegistrationDocumentUncheckedCreateNestedManyWithoutSeniorInput
@@ -17175,6 +17600,8 @@ export namespace Prisma {
     contact_no?: StringFieldUpdateOperationsInput | string
     emergency_no?: StringFieldUpdateOperationsInput | string
     pwd?: BoolFieldUpdateOperationsInput | boolean
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    releasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     remarks?: RemarksUpdateOneRequiredWithoutSeniorsNestedInput
@@ -17196,6 +17623,8 @@ export namespace Prisma {
     emergency_no?: StringFieldUpdateOperationsInput | string
     pwd?: BoolFieldUpdateOperationsInput | boolean
     remarks_id?: IntFieldUpdateOperationsInput | number
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    releasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     documents?: RegistrationDocumentUncheckedUpdateManyWithoutSeniorNestedInput
@@ -17316,6 +17745,7 @@ export namespace Prisma {
     file_name: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    benefit_requirement_id?: number | null
   }
 
   export type ApplicationsCreateManySeniorInput = {
@@ -17335,6 +17765,7 @@ export namespace Prisma {
     file_name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    benefitRequirement?: BenefitRequirementsUpdateOneWithoutRegistrationDocumentsNestedInput
   }
 
   export type RegistrationDocumentUncheckedUpdateWithoutSeniorInput = {
@@ -17346,6 +17777,7 @@ export namespace Prisma {
     file_name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    benefit_requirement_id?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type RegistrationDocumentUncheckedUpdateManyWithoutSeniorInput = {
@@ -17357,6 +17789,7 @@ export namespace Prisma {
     file_name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    benefit_requirement_id?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ApplicationsUpdateWithoutSeniorInput = {
@@ -17399,6 +17832,8 @@ export namespace Prisma {
     contact_no: string
     emergency_no: string
     pwd?: boolean
+    deletedAt?: Date | string | null
+    releasedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -17416,6 +17851,8 @@ export namespace Prisma {
     contact_no?: StringFieldUpdateOperationsInput | string
     emergency_no?: StringFieldUpdateOperationsInput | string
     pwd?: BoolFieldUpdateOperationsInput | boolean
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    releasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     documents?: RegistrationDocumentUpdateManyWithoutSeniorNestedInput
@@ -17436,6 +17873,8 @@ export namespace Prisma {
     contact_no?: StringFieldUpdateOperationsInput | string
     emergency_no?: StringFieldUpdateOperationsInput | string
     pwd?: BoolFieldUpdateOperationsInput | boolean
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    releasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     documents?: RegistrationDocumentUncheckedUpdateManyWithoutSeniorNestedInput
@@ -17456,6 +17895,8 @@ export namespace Prisma {
     contact_no?: StringFieldUpdateOperationsInput | string
     emergency_no?: StringFieldUpdateOperationsInput | string
     pwd?: BoolFieldUpdateOperationsInput | boolean
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    releasedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -17576,6 +18017,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    registrationDocuments?: RegistrationDocumentUpdateManyWithoutBenefitRequirementNestedInput
   }
 
   export type BenefitRequirementsUncheckedUpdateWithoutBenefitInput = {
@@ -17583,11 +18025,59 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    registrationDocuments?: RegistrationDocumentUncheckedUpdateManyWithoutBenefitRequirementNestedInput
   }
 
   export type BenefitRequirementsUncheckedUpdateManyWithoutBenefitInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RegistrationDocumentCreateManyBenefitRequirementInput = {
+    id?: number
+    tag: string
+    path: string
+    public_id?: string | null
+    imageUrl?: string | null
+    file_name: string
+    seniors_id: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type RegistrationDocumentUpdateWithoutBenefitRequirementInput = {
+    tag?: StringFieldUpdateOperationsInput | string
+    path?: StringFieldUpdateOperationsInput | string
+    public_id?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    file_name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    senior?: SeniorUpdateOneRequiredWithoutDocumentsNestedInput
+  }
+
+  export type RegistrationDocumentUncheckedUpdateWithoutBenefitRequirementInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tag?: StringFieldUpdateOperationsInput | string
+    path?: StringFieldUpdateOperationsInput | string
+    public_id?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    file_name?: StringFieldUpdateOperationsInput | string
+    seniors_id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RegistrationDocumentUncheckedUpdateManyWithoutBenefitRequirementInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tag?: StringFieldUpdateOperationsInput | string
+    path?: StringFieldUpdateOperationsInput | string
+    public_id?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    file_name?: StringFieldUpdateOperationsInput | string
+    seniors_id?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
