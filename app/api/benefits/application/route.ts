@@ -1,3 +1,4 @@
+// app\api\benefits\application\route.ts:
 import { benefitApplicationSchema } from '@/schema/benefit/benefit.schema'
 import prisma from '@/prisma/prisma'
 import { NextRequest, NextResponse } from 'next/server'
@@ -31,12 +32,23 @@ export async function GET() {
         const applications = await prisma.applications.findMany({
             include: {
                 senior: {
-                    select: {
-                        firstname: true,
-                        middlename: true,
-                        lastname: true,
-                        email: true,
+                    // Change 'select' to 'include' to get documents, or
+                    // if you still want to select specific fields AND include relations,
+                    // you need to structure it differently.
+                    // Option 1: Include all senior fields and documents (simpler)
+                    include: {
+                        documents: true, // <--- Add this line!
                     },
+                    // Option 2: Select specific senior fields AND include documents
+                    // select: {
+                    //     firstname: true,
+                    //     middlename: true,
+                    //     lastname: true,
+                    //     email: true,
+                    //     documents: true, // You can put 'documents: true' here too if still using select
+                    //     // Add other senior fields you need for the Senior model for DocumentViewDialog
+                    //     // e.g., id, contact_no, emergency_no, birthdate, age, gender, barangay, purok, pwd, remarks (if needed)
+                    // }
                 },
                 benefit: {
                     select: {
@@ -50,7 +62,6 @@ export async function GET() {
                         },
                     },
                 },
-
                 status: {
                     select: {
                         id: true,

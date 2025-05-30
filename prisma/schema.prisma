@@ -68,6 +68,8 @@ model Senior {
   pwd          Boolean   @default(false)
   remarks_id   Int                    @default(1)
   remarks      Remarks                @relation(fields: [remarks_id], references: [id], onDelete: NoAction)
+  deletedAt    DateTime?
+  releasedAt       DateTime?
 
   documents    RegistrationDocument[] // ONE SENIOR COULD HAVE MANY REGISTRATION DOCUMENTS
   Applications Applications[] // ONE SENIOR COULD HAVE MANY APPLICATIONS
@@ -90,6 +92,9 @@ model RegistrationDocument {
   senior      Senior   @relation(fields: [seniors_id], references: [id], onDelete: Cascade)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+
+  benefit_requirement_id   Int?
+  benefitRequirement       BenefitRequirements? @relation(fields: [benefit_requirement_id], references: [id])
 
   @@map("registration_document")
 }
@@ -146,15 +151,15 @@ model Benefits {
 
 // BENEFIT TABLE SCHEMA
 model BenefitRequirements {
-  id         Int      @id @default(autoincrement())
-  name       String
-  benefit_id Int
-  benefit    Benefits @relation(fields: [benefit_id], references: [id], onDelete: Cascade)
+  id                      Int                   @id @default(autoincrement())
+  name                    String
+  benefitsId              Int
+  benefit                 Benefits              @relation(fields: [benefitsId], references: [id], onDelete: Cascade)
+  registrationDocuments   RegistrationDocument[] 
+  createdAt               DateTime              @default(now())
+  updatedAt               DateTime              @updatedAt
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("benefit_requirements")
+  @@map("benefits_requirements")
 }
 
 // APPLICATIONS TABLE SCHEMA

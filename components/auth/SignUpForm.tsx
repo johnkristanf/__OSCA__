@@ -6,26 +6,27 @@ import { useForm, Controller } from 'react-hook-form'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import PrimaryButton from '../ui/primary-button'
-import { cn } from '@/lib/utils'
-import { Eye, EyeOff } from 'lucide-react'
+import { cn } from '@/lib/utils' // Assuming this is clsx or similar
+import { Eye, EyeOff, Loader2 } from 'lucide-react' // Added Loader2 icon
 
 // Import react-datepicker and its CSS
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import { format } from 'date-fns' 
+import { format } from 'date-fns'
 
 interface SignUpFormProps {
     onBackToLogin: () => void;
 }
 
 const SignUpForm = ({ onBackToLogin }: SignUpFormProps) => {
-    // REACT FORM INITIALIZATION
     const {
         register,
         handleSubmit,
         formState: { errors },
-        control, 
-        watch,
+        control,
+        watch, // Useful if you need to watch a field's value for conditional rendering or validation
+        setError, // For manual error setting
+        clearErrors, // For clearing errors before submission
     } = useForm<SignUpFormData>({
         resolver: zodResolver(signupSchema),
         defaultValues: {
@@ -34,7 +35,7 @@ const SignUpForm = ({ onBackToLogin }: SignUpFormProps) => {
             middleName: '',
             contactNo: '',
             username: '',
-            bday: '', 
+            bday: '',
             email: '',
             password: '',
             confirmPassword: '',
@@ -46,11 +47,13 @@ const SignUpForm = ({ onBackToLogin }: SignUpFormProps) => {
     const [isSigningUp, setIsSigningUp] = useState<boolean>(false)
     const [showPassword, setShowPassword] = useState(false)
     const [showConfirmPassword, setShowConfirmPassword] = useState(false)
-    const [signupError, setSignupError] = useState<string | null>(null);
+
+    // Using setError directly for server-side errors, no need for a separate state
+    // const [signupError, setSignupError] = useState<string | null>(null);
 
     const onSignUp = async (data: SignUpFormData) => {
         setIsSigningUp(true)
-        setSignupError(null)
+        clearErrors('root.serverError') // Clear previous server-side errors
 
         try {
             const response = await fetch('/api/auth/signup', {
@@ -64,257 +67,309 @@ const SignUpForm = ({ onBackToLogin }: SignUpFormProps) => {
             const result = await response.json();
 
             if (!response.ok) {
-                setSignupError(result.message || 'An error occurred during signup.');
-                setIsSigningUp(false);
+                // Set server-side error using react-hook-form's setError
+                setError('root.serverError', {
+                    type: 'manual',
+                    message: result.message || 'An error occurred during signup. Please try again.',
+                });
                 return;
             }
 
+            // On successful signup, navigate back to login and potentially show a success message
             onBackToLogin();
-            alert('Sign up successful! Please log in.');
+            // TODO: Replace with a more sophisticated notification system (e.g., toast library)
+            // For example: toast.success('Sign up successful! Please log in.');
+            alert('Sign up successful! Please log in.'); // Keeping alert for now as per original code
         } catch (error) {
             console.error('Signup error:', error);
-            setSignupError('An unexpected error occurred. Please try again.');
+            setError('root.serverError', {
+                type: 'manual',
+                message: 'An unexpected error occurred. Please try again.',
+            });
         } finally {
             setIsSigningUp(false);
         }
     }
 
     return (
-        <div>
-            <div className="w-full sm:w-[450px] flex min-h-full bg-gray-200 rounded-md flex-1 flex-col justify-center px-6 lg:px-8">
-                <div className="flex items-center justify-center gap-3 sm:mx-auto sm:w-full sm:max-w-sm mt-10">
-                    <h2 className="text-center text-2xl/9 font-bold tracking-tight text-gray-900">
-                        Sign Up
-                    </h2>
-                </div>
+        <div className="w-full">
+            <div className="mb-8 text-center">
+                <h2 className="text-4xl font-bold text-gray-800">Create Your Account</h2>
+                <p className="text-gray-600 mt-2">Join OSCA today and connect with the community.</p>
+            </div>
 
-                <div className="mt-8 pb-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form onSubmit={handleSubmit(onSignUp)} className="space-y-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-6">
-                            {/* First Name */}
-                            <div>
-                                <label htmlFor="firstName" className="block text-sm/6 font-medium text-gray-900">
-                                    First Name
-                                </label>
-                                <div className="mt-2">
-                                    <input
-                                        {...register('firstName')}
-                                        id="firstName"
-                                        placeholder="Enter your first name"
-                                        className="block w-full rounded-md bg-gray-200 px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-400 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-green-600 sm:text-sm/6"
-                                    />
-                                    <span className="text-red-800 mt-1">{errors.firstName?.message}</span>
-                                </div>
-                            </div>
+            <form onSubmit={handleSubmit(onSignUp)} className="space-y-6">
+                <div className="grid grid-cols-1 gap-x-4 gap-y-5 md:grid-cols-2"> {/* Adjusted gap-y */}
+                    {/* First Name */}
+                    <div>
+                        <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
+                            First Name
+                        </label>
+                        <div className="mt-1">
+                            <input
+                                {...register('firstName')}
+                                id="firstName"
+                                placeholder="Enter your first name"
+                                className={cn(
+                                    "block w-full rounded-md border border-gray-300 px-4 py-2 text-base text-gray-900 shadow-sm placeholder:text-gray-400 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500",
+                                    errors.firstName && "border-red-500 focus:border-red-500 focus:ring-red-500"
+                                )}
+                            />
+                            {errors.firstName && (
+                                <p className="mt-1 text-sm text-red-600">{errors.firstName.message}</p>
+                            )}
+                        </div>
+                    </div>
 
-                            {/* Last Name */}
-                            <div>
-                                <label htmlFor="lastName" className="block text-sm/6 font-medium text-gray-900">
-                                    Last Name
-                                </label>
-                                <div className="mt-2">
-                                    <input
-                                        {...register('lastName')}
-                                        id="lastName"
-                                        placeholder="Enter your last name"
-                                        className="block w-full rounded-md bg-gray-200 px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-400 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-green-600 sm:text-sm/6"
-                                    />
-                                    <span className="text-red-800 mt-1">{errors.lastName?.message}</span>
-                                </div>
-                            </div>
+                    {/* Last Name */}
+                    <div>
+                        <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
+                            Last Name
+                        </label>
+                        <div className="mt-1">
+                            <input
+                                {...register('lastName')}
+                                id="lastName"
+                                placeholder="Enter your last name"
+                                className={cn(
+                                    "block w-full rounded-md border border-gray-300 px-4 py-2 text-base text-gray-900 shadow-sm placeholder:text-gray-400 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500",
+                                    errors.lastName && "border-red-500 focus:border-red-500 focus:ring-red-500"
+                                )}
+                            />
+                            {errors.lastName && (
+                                <p className="mt-1 text-sm text-red-600">{errors.lastName.message}</p>
+                            )}
+                        </div>
+                    </div>
 
-                            {/* Middle Name (Optional) */}
-                            <div>
-                                <label htmlFor="middleName" className="block text-sm/6 font-medium text-gray-900">
-                                    Middle Name (Optional)
-                                </label>
-                                <div className="mt-2">
-                                    <input
-                                        {...register('middleName')}
-                                        id="middleName"
-                                        placeholder="Enter your middle name"
-                                        className="block w-full rounded-md bg-gray-200 px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-400 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-green-600 sm:text-sm/6"
-                                    />
-                                    <span className="text-red-800 mt-1">{errors.middleName?.message}</span>
-                                </div>
-                            </div>
+                    {/* Middle Name (Optional) */}
+                    <div>
+                        <label htmlFor="middleName" className="block text-sm font-medium text-gray-700">
+                            Middle Name (Optional)
+                        </label>
+                        <div className="mt-1">
+                            <input
+                                {...register('middleName')}
+                                id="middleName"
+                                placeholder="Enter your middle name"
+                                className={cn(
+                                    "block w-full rounded-md border border-gray-300 px-4 py-2 text-base text-gray-900 shadow-sm placeholder:text-gray-400 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500",
+                                    errors.middleName && "border-red-500 focus:border-red-500 focus:ring-red-500"
+                                )}
+                            />
+                            {errors.middleName && (
+                                <p className="mt-1 text-sm text-red-600">{errors.middleName.message}</p>
+                            )}
+                        </div>
+                    </div>
 
-                            {/* Contact No. */}
-                            <div>
-                                <label htmlFor="contactNo" className="block text-sm/6 font-medium text-gray-900">
-                                    Contact Number
-                                </label>
-                                <div className="mt-2">
-                                    <input
-                                        {...register('contactNo')}
-                                        id="contactNo"
-                                        type="tel"
-                                        maxLength={11}
-                                        placeholder="e.g., 09123456789"
-                                        className="block w-full rounded-md bg-gray-200 px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-400 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-green-600 sm:text-sm/6"
-                                    />
-                                    <span className="text-red-800 mt-1">{errors.contactNo?.message}</span>
-                                </div>
-                            </div>
+                    {/* Contact No. */}
+                    <div>
+                        <label htmlFor="contactNo" className="block text-sm font-medium text-gray-700">
+                            Contact Number
+                        </label>
+                        <div className="mt-1">
+                            <input
+                                {...register('contactNo')}
+                                id="contactNo"
+                                type="tel"
+                                maxLength={11}
+                                placeholder="e.g., 09123456789"
+                                className={cn(
+                                    "block w-full rounded-md border border-gray-300 px-4 py-2 text-base text-gray-900 shadow-sm placeholder:text-gray-400 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500",
+                                    errors.contactNo && "border-red-500 focus:border-red-500 focus:ring-red-500"
+                                )}
+                            />
+                            {errors.contactNo && (
+                                <p className="mt-1 text-sm text-red-600">{errors.contactNo.message}</p>
+                            )}
+                        </div>
+                    </div>
 
-                            {/* Username */}
-                            <div>
-                                <label htmlFor="username" className="block text-sm/6 font-medium text-gray-900">
-                                    Username
-                                </label>
-                                <div className="mt-2">
-                                    <input
-                                        {...register('username')}
-                                        id="username"
-                                        placeholder="Create a username"
-                                        className="block w-full rounded-md bg-gray-200 px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-400 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-green-600 sm:text-sm/6"
-                                    />
-                                    <span className="text-red-800 mt-1">{errors.username?.message}</span>
-                                </div>
-                            </div>
+                    {/* Username */}
+                    <div>
+                        <label htmlFor="username" className="block text-sm font-medium text-gray-700">
+                            Username
+                        </label>
+                        <div className="mt-1">
+                            <input
+                                {...register('username')}
+                                id="username"
+                                placeholder="Create a username"
+                                className={cn(
+                                    "block w-full rounded-md border border-gray-300 px-4 py-2 text-base text-gray-900 shadow-sm placeholder:text-gray-400 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500",
+                                    errors.username && "border-red-500 focus:border-red-500 focus:ring-red-500"
+                                )}
+                            />
+                            {errors.username && (
+                                <p className="mt-1 text-sm text-red-600">{errors.username.message}</p>
+                            )}
+                        </div>
+                    </div>
 
-                            {/* Birthday - Now with DatePicker */}
-                            <div>
-                                <label htmlFor="bday" className="block text-sm/6 font-medium text-gray-900">
-                                    Birthday
-                                </label>
-                                <div className="mt-2">
-                                    <Controller
-                                        name="bday"
-                                        control={control}
-                                        render={({ field }) => (
-                                            <DatePicker
-                                                selected={field.value ? new Date(field.value) : null}
-                                                onChange={(date: Date | null) => {
-                                                    // Format the date to MM/DD/YYYY before sending to field.onChange
-                                                    field.onChange(date ? format(date, 'MM/dd/yyyy') : '');
-                                                }}
-                                                dateFormat={[
-                                                    "MM/dd/yyyy", // Primary format for display and default entry
-                                                    "yyyy-MM-dd",
-                                                    "MMMM d, YYYY", // Allows "April 2, 2000"
-                                                    "MMM d, YYYY",  // Allows "Apr 2, 2000"
-                                                    "MMMM dd, YYYY", // Allows "April 02, 2000"
-                                                    "MMMM dd YYYY", // Allows "April 02 2000"
-                                                    "MM/dd/yyyy", // Allows "04/02/2000"
-                                                ]}
-                                                placeholderText="MM/DD/YYYY or April 2, 2000"
-                                                showYearDropdown
-                                                showMonthDropdown
-                                                dropdownMode="select"
-                                                className="block w-full rounded-md bg-gray-200 px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-400 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-green-600 sm:text-sm/6"
-                                            />
+                    {/* Birthday - Now with DatePicker */}
+                    <div>
+                        <label htmlFor="bday" className="block text-sm font-medium text-gray-700">
+                            Birthday
+                        </label>
+                        <div className="mt-1">
+                            <Controller
+                                name="bday"
+                                control={control}
+                                render={({ field }) => (
+                                    <DatePicker
+                                        selected={field.value ? new Date(field.value) : null}
+                                        onChange={(date: Date | null) => {
+                                            // Format the date to MM/DD/YYYY before sending to field.onChange
+                                            field.onChange(date ? format(date, 'MM/dd/yyyy') : '');
+                                        }}
+                                        dateFormat="MM/dd/yyyy" // Standard format for display
+                                        showYearDropdown
+                                        showMonthDropdown
+                                        dropdownMode="select"
+                                        placeholderText="MM/DD/YYYY"
+                                        className={cn(
+                                            "block w-full rounded-md border border-gray-300 px-4 py-2 text-base text-gray-900 shadow-sm placeholder:text-gray-400 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500",
+                                            errors.bday && "border-red-500 focus:border-red-500 focus:ring-red-500"
                                         )}
                                     />
-                                    <span className="text-red-800 mt-1">{errors.bday?.message}</span>
-                                </div>
-                            </div>
-
-                            {/* Email */}
-                            <div className="md:col-span-2">
-                                <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
-                                    Email Address
-                                </label>
-                                <div className="mt-2">
-                                    <input
-                                        {...register('email')}
-                                        id="email"
-                                        type="email"
-                                        placeholder="Enter your email address"
-                                        className="block w-full rounded-md bg-gray-200 px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-400 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-green-600 sm:text-sm/6"
-                                    />
-                                    <span className="text-red-800 mt-1">{errors.email?.message}</span>
-                                </div>
-                            </div>
-
-                            {/* Password */}
-                            <div className="md:col-span-2">
-                                <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">
-                                    Password
-                                </label>
-                                <div className="mt-2">
-                                    <div className="relative">
-                                        <input
-                                            {...register('password')}
-                                            id="password"
-                                            type={showPassword ? 'text' : 'password'}
-                                            placeholder="Create a password"
-                                            className="block w-full rounded-md bg-gray-200 px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-400 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-green-600 sm:text-sm/6"
-                                        />
-                                        <button
-                                            type="button"
-                                            onClick={() => setShowPassword(!showPassword)}
-                                            className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground focus:outline-none"
-                                            tabIndex={-1}
-                                        >
-                                            {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                                        </button>
-                                    </div>
-                                    <span className="text-red-800 mt-1">{errors.password?.message}</span>
-                                </div>
-                            </div>
-
-                            {/* Confirm Password */}
-                            <div className="md:col-span-2">
-                                <label htmlFor="confirmPassword" className="block text-sm/6 font-medium text-gray-900">
-                                    Confirm Password
-                                </label>
-                                <div className="mt-2">
-                                    <div className="relative">
-                                        <input
-                                            {...register('confirmPassword')}
-                                            id="confirmPassword"
-                                            type={showConfirmPassword ? 'text' : 'password'}
-                                            placeholder="Confirm your password"
-                                            className="block w-full rounded-md bg-gray-200 px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-400 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-green-600 sm:text-sm/6"
-                                        />
-                                        <button
-                                            type="button"
-                                            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                                            className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground focus:outline-none"
-                                            tabIndex={-1}
-                                        >
-                                            {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                                        </button>
-                                    </div>
-                                    <span className="text-red-800 mt-1">{errors.confirmPassword?.message}</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        {signupError && (
-                            <div className="text-red-800 text-sm mt-2 text-center">
-                                {signupError}
-                            </div>
-                        )}
-
-                        <div className="mt-6">
-                            <PrimaryButton
-                                type="submit"
-                                className={cn(
-                                    'flex w-full justify-center rounded-md px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600',
-                                    isSigningUp
-                                        ? 'bg-gray-400'
-                                        : 'bg-green-600 hover:bg-green-700 hover:cursor-pointer'
                                 )}
-                                disabled={isSigningUp}
-                            >
-                                {isSigningUp ? 'Signing Up...' : 'Sign Up'}
-                            </PrimaryButton>
+                            />
+                            {errors.bday && (
+                                <p className="mt-1 text-sm text-red-600">{errors.bday.message}</p>
+                            )}
                         </div>
-                    </form>
-                    <p className="mt-6 text-center text-sm text-gray-500">
-                        Already have an account?{' '}
-                        <button
-                            type="button"
-                            onClick={onBackToLogin}
-                            className="font-semibold leading-6 text-green-600 hover:text-green-500 cursor-pointer"
-                        >
-                            Log in here
-                        </button>
-                    </p>
+                    </div>
+
+                    {/* Email */}
+                    <div className="md:col-span-2"> {/* Takes full width on medium screens and up */}
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                            Email Address
+                        </label>
+                        <div className="mt-1">
+                            <input
+                                {...register('email')}
+                                id="email"
+                                type="email"
+                                placeholder="Enter your email address"
+                                className={cn(
+                                    "block w-full rounded-md border border-gray-300 px-4 py-2 text-base text-gray-900 shadow-sm placeholder:text-gray-400 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500",
+                                    errors.email && "border-red-500 focus:border-red-500 focus:ring-red-500"
+                                )}
+                                autoComplete="email"
+                            />
+                            {errors.email && (
+                                <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Password */}
+                    <div className="md:col-span-2"> {/* Takes full width on medium screens and up */}
+                        <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                            Password
+                        </label>
+                        <div className="mt-1">
+                            <div className="relative">
+                                <input
+                                    {...register('password')}
+                                    id="password"
+                                    type={showPassword ? 'text' : 'password'}
+                                    placeholder="Create a password"
+                                    className={cn(
+                                        "block w-full rounded-md border border-gray-300 px-4 py-2 text-base text-gray-900 shadow-sm placeholder:text-gray-400 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500",
+                                        errors.password && "border-red-500 focus:border-red-500 focus:ring-red-500"
+                                    )}
+                                    autoComplete="new-password"
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
+                                    tabIndex={-1}
+                                >
+                                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                </button>
+                            </div>
+                            {errors.password && (
+                                <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Confirm Password */}
+                    <div className="md:col-span-2"> {/* Takes full width on medium screens and up */}
+                        <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+                            Confirm Password
+                        </label>
+                        <div className="mt-1">
+                            <div className="relative">
+                                <input
+                                    {...register('confirmPassword')}
+                                    id="confirmPassword"
+                                    type={showConfirmPassword ? 'text' : 'password'}
+                                    placeholder="Confirm your password"
+                                    className={cn(
+                                        "block w-full rounded-md border border-gray-300 px-4 py-2 text-base text-gray-900 shadow-sm placeholder:text-gray-400 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500",
+                                        errors.confirmPassword && "border-red-500 focus:border-red-500 focus:ring-red-500"
+                                    )}
+                                    autoComplete="new-password"
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
+                                    tabIndex={-1}
+                                >
+                                    {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                </button>
+                            </div>
+                            {errors.confirmPassword && (
+                                <p className="mt-1 text-sm text-red-600">{errors.confirmPassword.message}</p>
+                            )}
+                        </div>
+                    </div>
                 </div>
-            </div>
+
+                {errors.root?.serverError && ( // Display server-side error
+                    <div className="mt-4 text-center text-sm text-red-600">
+                        {errors.root.serverError.message}
+                    </div>
+                )}
+
+                <div className="mt-6">
+                    <PrimaryButton
+                        type="submit"
+                        className={cn(
+                            'flex w-full items-center justify-center rounded-md px-4 py-2.5 text-lg font-semibold text-white shadow-md transition duration-300 ease-in-out',
+                            isSigningUp
+                                ? 'cursor-not-allowed bg-gray-400'
+                                : 'bg-emerald-600 hover:bg-emerald-700'
+                        )}
+                        disabled={isSigningUp}
+                    >
+                        {isSigningUp ? (
+                            <>
+                                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                                Signing Up...
+                            </>
+                        ) : (
+                            'Sign Up'
+                        )}
+                    </PrimaryButton>
+                </div>
+            </form>
+
+            <p className="mt-6 text-center text-sm text-gray-600">
+                Already have an account?{' '}
+                <button
+                    type="button"
+                    onClick={onBackToLogin}
+                    className="font-semibold text-emerald-600 hover:text-emerald-500 transition duration-200 cursor-pointer underline"
+                >
+                    Log in here
+                </button>
+            </p>
         </div>
     )
 }

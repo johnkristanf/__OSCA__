@@ -73,7 +73,7 @@ const data: { collapsNav: CollapsibleNavItem[] } = {
                 {
                     title: 'Benefits',
                     url: '/admin/applications/benefits',
-                    // roles: ['ADMIN'], // Use 'ADMIN' to match your enum
+                    roles: ['USER'], // Use 'ADMIN' to match your enum
                 },
                 {
                     title: 'Applicants',
@@ -89,9 +89,17 @@ const data: { collapsNav: CollapsibleNavItem[] } = {
                 {
                     title: 'Financial',
                     url: '/admin/applications/financial-monitoring',
+                    roles: ['ADMIN'], 
+                },
+                {
+                    title: 'Release',
+                    url: '/admin/applications/release-monitoring',
+                },
+                {
+                    title: 'Not Release',
+                    url: '/admin/applications/not-release-monitoring',
                 },
             ],
-            roles: ['ADMIN'], // Use 'ADMIN' to match your enum
         },
 
         {
@@ -100,21 +108,25 @@ const data: { collapsNav: CollapsibleNavItem[] } = {
             icon: faGear,
             items: [
                 {
-                    title: 'General',
-                    url: '#',
+                    title: 'Archive',
+                    url: '/admin/settings/archive',
                 },
-                {
-                    title: 'Team',
-                    url: '#',
-                },
-                {
-                    title: 'Billing',
-                    url: '#',
-                },
-                {
-                    title: 'Limits',
-                    url: '#',
-                },
+                // {
+                //     title: 'General',
+                //     url: '#',
+                // },
+                // {
+                //     title: 'Team',
+                //     url: '#',
+                // },
+                // {
+                //     title: 'Billing',
+                //     url: '#',
+                // },
+                // {
+                //     title: 'Limits',
+                //     url: '#',
+                // },
             ],
         },
     ],

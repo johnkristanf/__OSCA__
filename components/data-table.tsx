@@ -61,7 +61,7 @@ export function DataTable<TData, TValue>({
       if (columnId) {
         visibility[columnId] = index < 8; // Set true for the first 5, false otherwise
         // Always ensure 'actions' or 'documents' (if they exist) are not hidden by this rule
-        if (columnId === 'actions' || columnId === 'documents') {
+        if (columnId === 'actions' || columnId === 'documents' || columnId === 'user-actions' || columnId === 'releasedAt' || columnId === 'releaseStatus' || columnId === 'fullname') {
           visibility[columnId] = true;
         }
       }
@@ -99,7 +99,7 @@ export function DataTable<TData, TValue>({
         <div className="relative flex-grow max-w-sm">
           <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
           <Input
-            placeholder="Search columns..."
+            placeholder="Search Name, Brgy, Purok . . . "
             value={globalFilter ?? ''}
             onChange={(event) => setGlobalFilter(event.target.value)}
             className="pl-9 pr-3 py-2 border rounded-md w-full"
